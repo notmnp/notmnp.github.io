@@ -8,7 +8,8 @@ const Home: React.FC = () => {
             <p style={{ marginBottom: '5px' }}>👋 Hey! I'm</p>
             <h1>Milan Pattni</h1>
             <p>
-                Mechatronics Engineering student at the University of Waterloo.
+                a Mechatronics Engineering student at the University of
+                Waterloo.
             </p>
             <div className="button-container">
                 <a
