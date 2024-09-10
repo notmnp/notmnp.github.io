@@ -19,14 +19,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 18vh;
+    padding-top: 20vh;
     padding-bottom: 20px;
     color: #ffffff;
 }
 
 /* Heading style with responsive font size */
 .home-container h1 {
-    font-size: clamp(2.5rem, 6vw, 7rem);
+    font-size: clamp(2.5rem, 6.2vw, 8rem);
     margin: 0;
     padding: 0;
     color: #ffffff;
@@ -100,15 +100,14 @@ body {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Updated Resume button with charcoal grey */
-/* Updated Resume button with muted gold */
+/* Updated Resume button with darker gradient on the right */
 .resume-btn {
-    background: linear-gradient(90deg, #9c7744, #b08d57); /* Muted gold/bronze gradient */
+    background: linear-gradient(90deg, #3c3c3c, #4f4f4f); /* Charcoal grey to darker muted silver */
 }
 
 .resume-btn:hover {
-    background: linear-gradient(90deg, #7b5d34, #9c7744);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(90deg, #2e2e2e, #3f3f3f); /* Even darker tones on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Enhanced shadow for hover effect */
 }
 
 /* Course Clutch button */
