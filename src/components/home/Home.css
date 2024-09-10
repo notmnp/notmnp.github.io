@@ -6,6 +6,17 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+/* Hide scrollbar for Chrome, Safari, and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
 /* Container for centering content */
 .container {
     max-width: 1200px;
@@ -26,7 +37,8 @@ body {
 
 /* Heading style with responsive font size */
 .home-container h1 {
-    font-size: clamp(2.5rem, 6.2vw, 8rem);
+    font-size: clamp(2.5rem, 7vw, 9rem); /* Increase min and max sizes */
+    margin: 0;
     margin: 0;
     padding: 0;
     color: #ffffff;
@@ -34,13 +46,13 @@ body {
 
 /* Paragraph style with responsive font size */
 .home-container p {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-    margin-top: 20px;
+    font-size: clamp(1rem, 2vw, 1.6rem); /* Slightly larger at bigger screens */
+    margin-top: 10px;
     line-height: 1.6;
     color: #ffffff;
-    white-space: normal; /* Ensure the text wraps naturally */
-    overflow-wrap: break-word; /* This allows long words to break correctly */
-    word-break: keep-all; /* Prevent breaking in the middle of words */
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: keep-all;
 }
 
 /* Fade-in and upward animation */
@@ -102,12 +114,12 @@ body {
 
 /* Updated Resume button with darker gradient on the right */
 .resume-btn {
-    background: linear-gradient(90deg, #3c3c3c, #4f4f4f); /* Charcoal grey to darker muted silver */
+    background: linear-gradient(90deg, #3c3c3c, #4f4f4f);
 }
 
 .resume-btn:hover {
-    background: linear-gradient(90deg, #2e2e2e, #3f3f3f); /* Even darker tones on hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Enhanced shadow for hover effect */
+    background: linear-gradient(90deg, #2e2e2e, #3f3f3f);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Course Clutch button */
@@ -138,11 +150,18 @@ body {
 @media (max-width: 600px) {
     .home-container {
         text-align: center;
+        padding-top: 15vh;
     }
 
     .button-container {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 14px 28px; /* Increase padding for larger buttons */
+        font-size: 1.2rem; /* Slightly larger font size */
+        border-radius: 35px; /* Larger border radius for a more prominent button */
     }
 }
 
@@ -157,4 +176,373 @@ body {
     to {
         opacity: 1;
     }
+}
+
+/* Scroll indicator styles */
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 15vh;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator svg {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .scroll-indicator {
+        margin-top: 10vh;
+    }
+}
+
+/* Bouncing animation for scroll indicator */
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Container for experiences section */
+#experiences {
+    display: flex;
+    flex-direction: column; /* Stack title on top */
+    margin: 0 auto;
+    padding: 40px 0; /* Add padding to the section */
+    box-sizing: border-box; /* Make sure padding is included in the total width */
+}
+
+/* Title for the experiences section */
+.experiences-title {
+    font-size: 2rem;
+    text-align: left; /* Align title to the left */
+    margin-top: 25vh;
+    padding-bottom: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Container for navigation and experience cards */
+.experiences-content {
+    display: flex;
+    flex-direction: row; /* Align navigation and content side by side */
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%; /* Make sure the inner content takes full width */
+}
+
+/* Navigation styling */
+.experience-nav {
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    padding: 20px;
+    transition: transform 0.3s ease-in-out; /* Smooth hover transition */
+}
+
+/* Experience content styling */
+.experience-card {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Modern shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    color: white;
+}
+
+/* Navigation list */
+.experience-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Experience content styling */
+.experience-card {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Modern shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    color: white;
+}
+
+/* Experience card hover effect */
+.experience-card:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: scale(1.02); /* Slightly lift the card on hover */
+}
+
+/* Experience title */
+.experience-card h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* Experience company name */
+.experience-card span {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Experience time range */
+.experience-card p.time {
+    font-size: 1rem;
+    color: #d3d3d3;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Experience description */
+.experience-card p.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* Make sure the content has consistent left padding on mobile */
+@media (max-width: 768px) {
+    #experiences {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .experiences-content {
+        flex-direction: column; /* Stack navigation and content vertically on mobile */
+        align-items: center;
+    }
+
+    .experience-nav {
+        width: 82vw; /* Make navigation full width on mobile */
+        margin-bottom: 10px;
+    }
+
+    .experience-card {
+        width: 75vw; /* Make the experience card full width on mobile */
+    }
+
+    .experience-card p.description {
+        font-size: 1rem;
+    }
+}
+
+/* Default neutral background for all experience items */
+.experience-nav li {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+    padding: 15px;
+    border-radius: 10px;
+    transition: background 0.3s, color 0.3s, transform 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px; /* Add space between list items */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.1
+    ); /* Subtle background for each item */
+}
+
+/* Pratt & Whitney (blue gradient) muted hover */
+.experience-nav li.pratt-whitney:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 102, 255, 0.3),
+        rgba(0, 170, 255, 0.3)
+    ); /* More muted blue gradient */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Pratt & Whitney (blue gradient) muted active */
+.experience-nav li.pratt-whitney.active {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 102, 255, 0.6),
+        rgba(0, 170, 255, 0.6)
+    ); /* Slightly more vibrant blue gradient, but still muted */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* TD Bank (green gradient) muted hover */
+.experience-nav li.td-bank:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 150, 0, 0.3),
+        rgba(0, 204, 102, 0.3)
+    ); /* More muted green gradient */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* TD Bank (green gradient) muted active */
+.experience-nav li.td-bank.active {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 150, 0, 0.6),
+        rgba(0, 204, 102, 0.6)
+    ); /* Slightly more vibrant green gradient, but still muted */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Course Clutch (pink gradient) muted hover */
+.experience-nav li.course-clutch:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 20, 147, 0.3),
+        rgba(255, 102, 204, 0.3)
+    ); /* More muted pink gradient */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Course Clutch (pink gradient) muted active */
+.experience-nav li.course-clutch.active {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 20, 147, 0.6),
+        rgba(255, 102, 204, 0.6)
+    ); /* Slightly more vibrant pink gradient, but still muted */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Experience title */
+.experience-card h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+/* Experience company name (Pratt & Whitney gradient) */
+.experience-card span.pratt-whitney {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 102, 255, 1),
+        rgba(0, 170, 255, 1)
+    ); /* Blue gradient */
+    -webkit-background-clip: text;
+    color: transparent; /* Makes the text transparent, allowing the gradient to show */
+    background-clip: text; /* For non-webkit browsers */
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Experience company name (TD Bank gradient) */
+.experience-card span.td-bank {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 150, 0, 1),
+        rgba(0, 204, 102, 1)
+    ); /* Green gradient */
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Experience company name (Course Clutch gradient) */
+.experience-card span.course-clutch {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 20, 147, 1),
+        rgba(255, 102, 204, 1)
+    ); /* Pink gradient */
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.experience-card p.time {
+    font-size: 1rem;
+    color: #d3d3d3;
+    margin-bottom: 20px;
+    font-style: italic;
+    background-color: rgba(255, 255, 255, 0.1); /* Adds a subtle background */
+    padding: 5px 10px; /* Adds padding to the time */
+    border-radius: 5px; /* Rounds the edges */
+    display: inline-block; /* Keeps the time on its own line */
+    margin-top: -10px; /* Moves it slightly higher */
+    margin-bottom: 15px; /* Adjusts space below */
+    font-size: 1.1rem; /* Slightly increases font size */
+}
+
+/* Experience description */
+.experience-card p.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* Styling for the time element in the experience card */
+.experience-time {
+    font-size: 1rem; /* Increase the font size */
+    font-style: italic; /* Keep the italic style */
+    margin-top: -10px;
+    color: #b3b3b3; /* Change to a lighter color */
+    background-color: rgba(255, 255, 255, 0.1); /* Add a subtle background */
+    padding: 8px 12px; /* Add padding */
+    border-radius: 6px; /* Round the edges */
+    display: inline-block; /* Ensure it stays in a block form */
+}
+
+/* Contact Section */
+#contact {
+    margin-top: 50px;
+}
+
+/* Contact Title styling */
+.contact-title {
+    font-size: 2rem; /* Same size as Experience title */
+    text-align: left;
+    margin-top: 2vh;
+    padding-bottom: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Contact Container styling */
+.contact-container {
+    padding: 10px 30px; /* Padding for spacing */
+    background-color: rgba(255, 255, 255, 0.05); /* Similar background style */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    margin-bottom: 20vh;
+}
+
+.contact-container p {
+    font-size: 1.2rem; /* Matching the experience navigation font size */
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+.contact-container a {
+    color: #00a0dc; /* LinkedIn blue for links */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contact-container a:hover {
+    color: #0077b5; /* Darker blue on hover */
 }

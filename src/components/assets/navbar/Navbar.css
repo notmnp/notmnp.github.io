@@ -8,7 +8,7 @@ html {
 
 /* Navbar container (full width) */
 nav {
-    width: 100%; /* Full width of the viewport */
+    width: 100%;
     position: fixed; /* Always fixed at the top */
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@ nav {
 
 /* Inner container for navbar content */
 .nav-content {
-    max-width: 1200px; /* Limit navbar content width */
+    max-width: 1200px;
     margin: 0 auto; /* Center the content */
     width: 100%; /* Ensure it takes up the full width up to max-width */
     display: flex;
@@ -64,12 +64,14 @@ nav ul {
 }
 
 /* List items */
-nav ul li {
+nav ul li,
+nav ul a {
     margin: 0;
 }
 
 /* Links styling */
-nav ul li a {
+nav ul li a,
+nav ul a {
     color: #fff; /* White text */
     text-decoration: none;
     font-size: 1.1rem;
@@ -80,7 +82,8 @@ nav ul li a {
 }
 
 /* Hover effect for links */
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul a:hover {
     background-color: #555; /* Slightly lighter color on hover */
     color: #f1f1f1;
     border-radius: 15px;
@@ -148,12 +151,14 @@ nav ul li a:hover {
         display: flex;
     }
 
-    nav ul li a {
-        border-radius: 0px;
+    nav ul li a,
+    nav ul a {
+        border-radius: 0;
     }
 
-    nav ul li a:hover {
-        border-radius: 0px;
+    nav ul li a:hover,
+    nav ul a:hover {
+        border-radius: 0;
     }
 
     .signature {

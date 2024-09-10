@@ -1,0 +1,66 @@
+/* Compact Footer styling */
+.footer {
+    background-color: rgba(255, 255, 255, 0.05); /* Grey similar to your divs */
+    color: #ffffff; /* White text */
+    padding: 20px 10px; /* Reduced padding */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    text-align: center; /* Center align for compact design */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 150px; /* More compact section width */
+    padding: 5px;
+}
+
+.footer-section p {
+    font-size: 0.9rem; /* Reduced font size for compactness */
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #00a0dc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #0077b5;
+}
+
+/* Footer bottom */
+.footer-bottom {
+    font-size: 0.85rem; /* Compact font size */
+    color: #b3b3b3;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+.heart-icon {
+    color: #ff6347; /* A red color for the heart icon */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-section {
+        text-align: center; /* Center each section on smaller screens */
+    }
+}
