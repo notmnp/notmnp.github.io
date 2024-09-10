@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
         if (section) {
             const sectionTop =
                 section.getBoundingClientRect().top + window.pageYOffset;
-            const offset = window.innerHeight * 0.2; // 10% of the screen height
+            const offset = window.innerHeight * 0.15; // 10% of the screen height
             window.scrollTo({
                 top: sectionTop + offset,
                 behavior: 'smooth',

@@ -160,7 +160,7 @@ const Home: React.FC = () => {
                                 window.pageYOffset;
 
                             // Calculate the offset (20% of the screen's height)
-                            const offset = window.innerHeight * 0.2;
+                            const offset = window.innerHeight * 0.15;
 
                             // Scroll to the element with the offset
                             window.scrollTo({
