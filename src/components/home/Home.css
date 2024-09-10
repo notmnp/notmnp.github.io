@@ -1,69 +1,69 @@
-/* Apply a dark background to the whole page */
+/* Dark background for the entire page */
 body {
-    background-color: #121212; /* Very dark background */
+    background-color: #121212;
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
 }
 
-/* Common container for centering and alignment */
+/* Container for centering content */
 .container {
-    max-width: 1200px; /* Ensure consistent width with navbar */
-    margin: 0 auto; /* Center the content */
-    padding: 0 20px; /* Add padding for spacing */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
-/* Container for the Home component */
+/* Container for the home content */
 .home-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 18vh; /* You can adjust this for more top spacing */
-    padding-bottom: 20px; /* Optional, to add some bottom padding */
+    padding-top: 18vh;
+    padding-bottom: 20px;
     color: #ffffff;
 }
 
-/* Large heading */
+/* Heading style with responsive font size */
 .home-container h1 {
-    font-size: clamp(2.5rem, 6vw, 7rem); /* Responsive font size for heading */
+    font-size: clamp(2.5rem, 6vw, 7rem);
     margin: 0;
     padding: 0;
     color: #ffffff;
 }
 
-/* Paragraph text styling */
+/* Paragraph style with responsive font size */
 .home-container p {
-    font-size: clamp(
-        1rem,
-        2.5vw,
-        1.5rem
-    ); /* Responsive font size for paragraphs */
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     margin-top: 20px;
     line-height: 1.6;
     color: #ffffff;
+    white-space: normal; /* Ensure the text wraps naturally */
+    overflow-wrap: break-word; /* This allows long words to break correctly */
+    word-break: keep-all; /* Prevent breaking in the middle of words */
 }
 
-/* Add fadeInUp animation for smooth upward movement */
-.home-container h1,
-.home-container p {
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    animation: fadeInUp 1s forwards ease-in-out;
-}
-
+/* Fade-in and upward animation */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px); /* Start 20px below */
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0); /* End at normal position */
+        transform: translateY(0);
     }
 }
 
-/* Button container styling */
+/* Apply fade-in animation */
+.home-container h1,
+.home-container p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards ease-in-out;
+}
+
+/* Button container styles */
 .button-container {
     margin-top: 20px;
     display: flex;
@@ -71,7 +71,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s forwards ease-in-out;
-    flex-wrap: wrap; /* Wrap buttons on smaller screens */
+    flex-wrap: wrap;
 }
 
 /* Button base styles */
@@ -80,8 +80,8 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px); /* Responsive padding */
-    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size */
+    padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     text-decoration: none;
     border-radius: 30px;
     color: #ffffff;
@@ -100,13 +100,14 @@ body {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Resume button */
+/* Updated Resume button with charcoal grey */
+/* Updated Resume button with muted gold */
 .resume-btn {
-    background: linear-gradient(90deg, #6c757d, #343a40);
+    background: linear-gradient(90deg, #9c7744, #b08d57); /* Muted gold/bronze gradient */
 }
 
 .resume-btn:hover {
-    background: linear-gradient(90deg, #5a6268, #23272b);
+    background: linear-gradient(90deg, #7b5d34, #9c7744);
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -123,25 +124,38 @@ body {
 /* Icon styles */
 .btn svg {
     margin-right: 10px;
-    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive icon size */
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
 .cc-image {
-    height: clamp(20px, 4vw, 26px); /* Responsive image size */
+    height: clamp(20px, 4vw, 26px);
     width: auto;
     margin-right: 10px;
     margin-top: -10px;
     margin-bottom: -10px;
 }
 
-/* Media query for very small screens */
+/* Center text for smaller screens */
 @media (max-width: 600px) {
     .home-container {
-        text-align: center; /* Center text on smaller screens */
+        text-align: center;
     }
 
     .button-container {
-        flex-direction: column; /* Stack buttons vertically on small screens */
-        gap: 10px; /* Less space between buttons */
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Decode text effect */
+.decode span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 0.05s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
     }
 }
