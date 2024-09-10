@@ -19,7 +19,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 60vh;
+    padding-top: 18vh; /* You can adjust this for more top spacing */
+    padding-bottom: 20px; /* Optional, to add some bottom padding */
     color: #ffffff;
 }
 

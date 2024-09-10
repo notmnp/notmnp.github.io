@@ -9,11 +9,23 @@ html {
 /* Navbar container (full width) */
 nav {
     width: 100%; /* Full width of the viewport */
-    position: sticky;
+    position: fixed; /* Always fixed at the top */
     top: 0;
-    background-color: #121212; /* Dark background */
+    left: 0;
+    background-color: rgba(
+        18,
+        18,
+        18,
+        0.6
+    ); /* Dark background with transparency */
+    backdrop-filter: blur(10px); /* Apply the blur effect on desktop */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Slight shadow for depth */
+    padding: 10px 0; /* Padding to prevent content overlap */
+    transition: background-color 0.3s ease-in-out,
+        backdrop-filter 0.3s ease-in-out;
+    height: 60px; /* Fixed height for navbar */
 }
 
 /* Inner container for navbar content */
@@ -30,15 +42,14 @@ nav {
 
 /* Signature image styling */
 .signature {
-    margin-top: 10px;
-    height: 45px; /* Adjust the height as needed */
+    height: 40px; /* Adjust the height as needed */
     width: auto;
 }
 
 /* Hamburger menu icon for mobile */
 .hamburger {
     display: none; /* Hidden on larger screens */
-    font-size: 1.5rem; /* Smaller icon size */
+    font-size: 1.5rem;
     color: white;
     cursor: pointer;
 }
@@ -76,7 +87,7 @@ nav ul li a:hover {
     border-radius: 15px;
 }
 
-/* Overlay that darkens the background when the menu is open */
+/* Overlay for the mobile menu */
 .menu-overlay {
     display: none; /* Hidden by default */
     position: fixed;
@@ -85,7 +96,7 @@ nav ul li a:hover {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
-    z-index: 999; /* Behind the navbar */
+    z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
@@ -98,28 +109,17 @@ nav ul li a:hover {
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
+    /* Remove blur effect on mobile */
+    nav {
+        background-color: #121212; /* Solid background for mobile */
+        backdrop-filter: none; /* Remove blur effect on mobile */
+        -webkit-backdrop-filter: none; /* Safari support */
+    }
+
     /* Flex direction and alignment for smaller screens */
     .nav-content {
         flex-direction: row;
         justify-content: space-between;
-    }
-
-    /* Hide the menu by default in mobile */
-    nav ul {
-        display: none; /* Initially hide the menu */
-        flex-direction: column; /* Stack the links vertically */
-        gap: 10px;
-        width: 100%; /* Take full width */
-        background-color: #121212; /* Background for mobile menu */
-        padding: 10px 0;
-        position: absolute;
-        top: 60px;
-        left: 0;
-    }
-
-    /* Show the menu when active */
-    nav ul.active {
-        display: flex; /* Display the menu */
     }
 
     /* Hamburger menu icon becomes visible */
@@ -129,8 +129,31 @@ nav ul li a:hover {
         z-index: 1001;
     }
 
-    /* Adjust the signature size */
-    .signature {
-        height: 40px; /* Reduce size for smaller screens */
+    /* Hide the menu by default in mobile */
+    nav ul {
+        display: none; /* Initially hide the menu */
+        flex-direction: column; /* Stack the links vertically */
+        gap: 10px;
+        width: 100%; /* Take full width */
+        background-color: #121212; /* Solid background for mobile menu */
+        padding: 10px 0;
+        position: absolute;
+        padding-top: 20px;
+        top: 60px; /* Aligns with the bottom of the navbar */
+        left: 0;
+        box-sizing: border-box; /* Ensure padding is included in the width */
+    }
+
+    /* Show the mobile menu when active */
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li a {
+        border-radius: 0px;
+    }
+
+    nav ul li a:hover {
+        border-radius: 0px;
     }
 }
