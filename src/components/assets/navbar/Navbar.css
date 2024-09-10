@@ -6,24 +6,31 @@ html {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Navbar container */
+/* Navbar container (full width) */
 nav {
-    padding: 10px 20px;
+    width: 100%; /* Full width of the viewport */
     position: sticky;
     top: 0;
-    width: 100%;
-    z-index: 1000; /* Ensures navbar stays on top */
+    background-color: #121212; /* Dark background */
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Inner container for navbar content */
+.nav-content {
+    max-width: 1200px; /* Limit navbar content width */
+    margin: 0 auto; /* Center the content */
+    width: 100%; /* Ensure it takes up the full width up to max-width */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between logo and menu items */
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+    padding: 10px 20px; /* Padding for internal spacing */
+    box-sizing: border-box;
 }
 
 /* Signature image styling */
-nav .signature {
-    padding-top: 10px;
-    padding-left: 10px;
+.signature {
+    margin-top: 10px;
     height: 45px; /* Adjust the height as needed */
     width: auto;
 }
@@ -34,13 +41,12 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Ensure items wrap to prevent overflow */
-    box-sizing: border-box; /* Prevents content from overflowing */
+    gap: 20px; /* Space between list items */
 }
 
 /* List items */
 nav ul li {
-    margin-right: 20px;
+    margin: 0;
 }
 
 /* Links styling */
@@ -63,17 +69,17 @@ nav ul li a:hover {
 
 /* Responsive behavior for smaller screens */
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* Stack the links vertically on small screens */
+    .nav-content {
+        flex-direction: column;
         align-items: flex-start;
     }
 
-    nav ul li {
-        margin-right: 0;
-        margin-bottom: 10px;
+    nav ul {
+        flex-direction: column; /* Stack the links vertically on small screens */
+        gap: 10px;
     }
 
-    nav .signature {
+    .signature {
         height: 40px; /* Reduce size for smaller screens */
     }
 }

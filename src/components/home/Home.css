@@ -8,60 +8,62 @@ body {
 
 /* Container for the Home component */
 .home-container {
+    align-items: center;
+    justify-content: center;
+    padding-left: 0; /* Remove unnecessary padding */
+    text-align: left;
+    color: #ffffff;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(20px); /* Start slightly below */
+    animation: fadeInUp 1s forwards ease-in-out; /* Fade-in and move up */
+}
+
+/* Intro section should align with navbar content */
+.intro {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 60vh;
-    padding-left: 50px; /* Add space from the left edge */
-    text-align: left; /* Left-align text */
-    color: #ffffff; /* White text */
+    max-width: 1200px; /* Same max-width as navbar content */
+    width: 100%; /* Allow full width up to max-width */
+    margin: 0 auto; /* Center the intro content */
+    margin-top: 100px;
+    margin-bottom: -30px;
+    padding: 0 20px; /* Match the navbar padding for alignment */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
 }
 
 /* Large heading */
-.home-container h1 {
-    font-size: 7rem; /* Large heading */
+.intro h1 {
+    font-size: 7rem;
     margin: 0;
     padding: 0;
-    color: #ffffff; /* White text */
+    color: #ffffff;
 }
 
 /* Paragraph text styling */
-.home-container p {
-    font-size: 1.5rem; /* Large text for paragraph */
+.intro p {
+    font-size: 1.5rem;
     margin-top: 20px;
     line-height: 1.6;
-    color: #ffffff; /* White text */
+    color: #ffffff;
 }
 
-/* Add fadeInUp animation for smooth upward movement */
-.home-container h1,
-.home-container p {
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    animation: fadeInUp 1s forwards ease-in-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px); /* Start 20px below */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* End at normal position */
-    }
-}
 /* Button container styling */
 .button-container {
-    margin-top: 20px;
+    max-width: 1200px; /* Same max-width as navbar and intro content */
+    width: 110%; /* Full width up to the max width */
+    margin: 0 auto; /* Center the button container */
     display: flex;
-    gap: 20px; /* Space between the buttons */
+    padding: 0 20px; /* Match the intro and navbar padding for alignment */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    gap: 25px; /* Space between the buttons */
     opacity: 0;
     transform: translateY(20px); /* Start slightly below */
-    animation: fadeInUp 1s forwards ease-in-out; /* Slightly delayed animation */
+    animation: fadeInUp 1s forwards ease-in-out; /* Delayed animation */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
 }
 
-/* Gradient Button base styles */
+/* Base button styles: translucent background and white text */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -70,51 +72,51 @@ body {
     font-size: 1.2rem;
     text-decoration: none;
     border-radius: 30px; /* Fully rounded corners */
-    color: #ffffff;
+    color: #ffffff; /* Text is always white */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.1
+    ); /* Default translucent background */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
     font-family: 'Arial', sans-serif;
     cursor: pointer;
     transition: background 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Ensure the button's glow is contained */
+    overflow: hidden; /* Contain the glow within the button */
+    backdrop-filter: blur(10px); /* Add glassy effect with blur */
 }
 
-/* LinkedIn button with official LinkedIn blue gradient */
-.linkedin-btn {
-    background: linear-gradient(
-        90deg,
-        #0077b5,
-        #00a0dc
-    ); /* LinkedIn blue gradient */
+/* Apply glow effect to the button with the variable glow color */
+[glow] .glowable-text {
+    background-color: var(--glow-color); /* Set background to glow color */
+    color: #ffffff; /* Ensure text is always white */
+    backdrop-filter: blur(10px); /* Add glassy effect */
 }
 
-.linkedin-btn:hover {
-    background: linear-gradient(
-        90deg,
-        #005582,
-        #007ab8
-    ); /* Darker blue on hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
-}
-
-/* Resume button with a neutral, professional gradient */
-.resume-btn {
-    background: linear-gradient(
-        90deg,
-        #6c757d,
-        #343a40
-    ); /* Neutral grey gradient */
-}
-
-.resume-btn:hover {
-    background: linear-gradient(
-        90deg,
-        #5a6268,
-        #23272b
-    ); /* Darker grey on hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+.cc-image {
+    height: 26px;
+    width: auto;
+    margin-right: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
 }
 
 /* Icon styles */
 .btn svg {
     margin-right: 10px;
     font-size: 1.5rem;
+}
+
+/* Fade in and move up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
 }

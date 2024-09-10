@@ -6,30 +6,32 @@ import './Navbar.css';
 const Navbar: React.FC = () => {
     return (
         <nav>
-            <Link to="/" className="brand">
-                <img
-                    src={Signature}
-                    alt="Milan Pattni Signature"
-                    className="signature"
-                />
-            </Link>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
-                <li>
-                    <Link to="/experiences">Experiences</Link>
-                </li>
-                <li>
-                    <Link to="/projects">Projects</Link>
-                </li>
-                <li>
-                    <Link to="/contact">Contact</Link>
-                </li>
-            </ul>
+            <div className="nav-content">
+                <Link to="/" className="brand">
+                    <img
+                        src={Signature}
+                        alt="Milan Pattni Signature"
+                        className="signature"
+                    />
+                </Link>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/about">About</Link>
+                    </li>
+                    <li>
+                        <Link to="/experiences">Experiences</Link>
+                    </li>
+                    <li>
+                        <Link to="/projects">Projects</Link>
+                    </li>
+                    <li>
+                        <Link to="/contact">Contact</Link>
+                    </li>
+                </ul>
+            </div>
         </nav>
     );
 };
