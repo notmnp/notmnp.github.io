@@ -6,31 +6,41 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+/* Common container for centering and alignment */
+.container {
+    max-width: 1200px; /* Ensure consistent width with navbar */
+    margin: 0 auto; /* Center the content */
+    padding: 0 20px; /* Add padding for spacing */
+    box-sizing: border-box;
+}
+
 /* Container for the Home component */
 .home-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 60vh;
-    padding-left: 50px; /* Add space from the left edge */
-    text-align: left; /* Left-align text */
-    color: #ffffff; /* White text */
+    color: #ffffff;
 }
 
 /* Large heading */
 .home-container h1 {
-    font-size: 7rem; /* Large heading */
+    font-size: clamp(2.5rem, 6vw, 7rem); /* Responsive font size for heading */
     margin: 0;
     padding: 0;
-    color: #ffffff; /* White text */
+    color: #ffffff;
 }
 
 /* Paragraph text styling */
 .home-container p {
-    font-size: 1.5rem; /* Large text for paragraph */
+    font-size: clamp(
+        1rem,
+        2.5vw,
+        1.5rem
+    ); /* Responsive font size for paragraphs */
     margin-top: 20px;
     line-height: 1.6;
-    color: #ffffff; /* White text */
+    color: #ffffff;
 }
 
 /* Add fadeInUp animation for smooth upward movement */
@@ -51,70 +61,86 @@ body {
         transform: translateY(0); /* End at normal position */
     }
 }
+
 /* Button container styling */
 .button-container {
     margin-top: 20px;
     display: flex;
-    gap: 20px; /* Space between the buttons */
+    gap: 20px;
     opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    animation: fadeInUp 1s forwards ease-in-out; /* Slightly delayed animation */
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards ease-in-out;
+    flex-wrap: wrap; /* Wrap buttons on smaller screens */
 }
 
-/* Gradient Button base styles */
+/* Button base styles */
 .btn {
+    font-weight: bold;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
-    font-size: 1.2rem;
+    padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px); /* Responsive padding */
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size */
     text-decoration: none;
-    border-radius: 30px; /* Fully rounded corners */
+    border-radius: 30px;
     color: #ffffff;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    font-family: 'Arial', sans-serif;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* LinkedIn button with official LinkedIn blue gradient */
+/* LinkedIn button */
 .linkedin-btn {
-    background: linear-gradient(
-        90deg,
-        #0077b5,
-        #00a0dc
-    ); /* LinkedIn blue gradient */
+    background: linear-gradient(90deg, #0077b5, #00a0dc);
 }
 
 .linkedin-btn:hover {
-    background: linear-gradient(
-        90deg,
-        #005582,
-        #007ab8
-    ); /* Darker blue on hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+    background: linear-gradient(90deg, #005582, #007ab8);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Resume button with a neutral, professional gradient */
+/* Resume button */
 .resume-btn {
-    background: linear-gradient(
-        90deg,
-        #6c757d,
-        #343a40
-    ); /* Neutral grey gradient */
+    background: linear-gradient(90deg, #6c757d, #343a40);
 }
 
 .resume-btn:hover {
-    background: linear-gradient(
-        90deg,
-        #5a6268,
-        #23272b
-    ); /* Darker grey on hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+    background: linear-gradient(90deg, #5a6268, #23272b);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Course Clutch button */
+.cc-btn {
+    background: linear-gradient(90deg, #662d8c, #ed1e79);
+}
+
+.cc-btn:hover {
+    background: linear-gradient(90deg, #542673, #c21863);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Icon styles */
 .btn svg {
     margin-right: 10px;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive icon size */
+}
+
+.cc-image {
+    height: clamp(20px, 4vw, 26px); /* Responsive image size */
+    width: auto;
+    margin-right: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+/* Media query for very small screens */
+@media (max-width: 600px) {
+    .home-container {
+        text-align: center; /* Center text on smaller screens */
+    }
+
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 10px; /* Less space between buttons */
+    }
 }
