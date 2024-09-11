@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ee2e09b4.css",
-    "main.js": "/static/js/main.f284782b.js",
+    "main.css": "/static/css/main.225e9f5d.css",
+    "main.js": "/static/js/main.8b624c4f.js",
     "static/js/453.1407b060.chunk.js": "/static/js/453.1407b060.chunk.js",
     "static/media/waterloo.png": "/static/media/waterloo.3546c58be39b6df8cef9.png",
     "static/media/rtx.png": "/static/media/rtx.180b2aa996084219580a.png",
@@ -9,12 +9,12 @@
     "static/media/td.png": "/static/media/td.3b28d762922f203b7046.png",
     "static/media/courseclutch.png": "/static/media/courseclutch.0cdb1820c78445013397.png",
     "index.html": "/index.html",
-    "main.ee2e09b4.css.map": "/static/css/main.ee2e09b4.css.map",
-    "main.f284782b.js.map": "/static/js/main.f284782b.js.map",
+    "main.225e9f5d.css.map": "/static/css/main.225e9f5d.css.map",
+    "main.8b624c4f.js.map": "/static/js/main.8b624c4f.js.map",
     "453.1407b060.chunk.js.map": "/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee2e09b4.css",
-    "static/js/main.f284782b.js"
+    "static/css/main.225e9f5d.css",
+    "static/js/main.8b624c4f.js"
   ]
 }
