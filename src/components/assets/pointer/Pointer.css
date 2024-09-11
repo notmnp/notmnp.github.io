@@ -1,0 +1,51 @@
+:root {
+    --custom-blob-color: linear-gradient(to right, aquamarine, mediumpurple);
+    --custom-blob-size: 150px;
+}
+
+.custom-body {
+    background-color: #000;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.custom-blob {
+    animation: custom-rotate360 20s infinite;
+    background: var(--custom-blob-color);
+    filter: blur(calc(var(--custom-blob-size) / 4));
+    width: var(--custom-blob-size);
+    height: var(--custom-blob-size);
+    position: fixed;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.1s ease-out;
+    will-change: transform;
+}
+
+@keyframes custom-rotate360 {
+    from {
+        rotate: 0deg;
+    }
+    50% {
+        scale: 1 1.15;
+    }
+    to {
+        rotate: 360deg;
+    }
+}
+
+.custom-blob-blur {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+}
