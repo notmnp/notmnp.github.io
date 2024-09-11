@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
                 <p>
                     Made with ☕️ and 🏓 breaks.
                 </p>
-                <p>&copy; 2024 Milan Pattni.</p>
+                <p>&copy; 2024 Milan Pattni</p>
             </div>
         </footer>
     );

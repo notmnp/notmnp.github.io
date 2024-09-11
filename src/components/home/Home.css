@@ -403,24 +403,24 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Course Clutch (pink gradient) muted hover */
+/* Course Clutch (purple-to-pink gradient) */
 .experience-nav li.course-clutch:hover {
     background: linear-gradient(
         90deg,
-        rgba(255, 20, 147, 0.3),
-        rgba(255, 102, 204, 0.3)
-    ); /* More muted pink gradient */
+        rgba(102, 45, 140, 0.5), /* Muted purple */
+        rgba(237, 30, 121, 0.5)  /* Muted pink */
+    );
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Course Clutch (pink gradient) muted active */
+/* Course Clutch (purple-to-pink gradient) active */
 .experience-nav li.course-clutch.active {
     background: linear-gradient(
         90deg,
-        rgba(255, 20, 147, 0.6),
-        rgba(255, 102, 204, 0.6)
-    ); /* Slightly more vibrant pink gradient, but still muted */
+        rgba(102, 45, 140, 0.75), /* More vibrant purple */
+        rgba(237, 30, 121, 0.75)  /* More vibrant pink */
+    );
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -547,4 +547,104 @@ body {
 
 .contact-container a:hover {
     color: #0077b5; /* Darker blue on hover */
+}
+
+/* Container for the skills */
+.skills-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Allows skills to wrap to the next line if they exceed the width */
+    gap: 5px; /* Adds space between the skill cards */
+}
+
+/* Style for the Skills Heading */
+.skills-heading {
+    margin-top: 20px; /* Add some spacing before the heading */
+    font-size: 1.2rem; /* Make the font slightly smaller than the title */
+    font-weight: bold; /* Make the text bold */
+    color: #ffffff; /* White color */
+    margin-bottom: 10px; /* Add spacing between the heading and the skills */
+}
+
+/* General styles for the skills cards */
+.skill-card {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #ffffff; /* White text for better contrast */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Pratt & Whitney - Blue background */
+.pratt-whitney-skills .skill-card {
+    background-color: rgba(0, 102, 255, 0.7); /* Blue background */
+}
+
+.pratt-whitney-skills .skill-card:hover {
+    background-color: rgba(0, 102, 255, 1); /* Darker on hover */
+}
+
+/* TD Bank - Green background */
+.td-bank-skills .skill-card {
+    background-color: rgba(0, 204, 102, 0.7); /* Green background */
+}
+
+.td-bank-skills .skill-card:hover {
+    background-color: rgba(0, 204, 102, 1); /* Darker on hover */
+}
+
+/* Course Clutch - Pink background */
+.course-clutch-skills .skill-card {
+    background-color: rgba(255, 20, 147, 0.7); /* Pink background */
+}
+
+.course-clutch-skills .skill-card:hover {
+    background-color: rgba(255, 20, 147, 1); /* Darker on hover */
+}
+
+/* University of Waterloo (yellow gradient) muted hover */
+.experience-nav li.waterloo:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 204, 0, 0.3),
+        rgba(255, 153, 0, 0.3)
+    ); /* More muted yellow gradient */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* University of Waterloo (yellow gradient) muted active */
+.experience-nav li.waterloo.active {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 204, 0, 0.6),
+        rgba(255, 153, 0, 0.6)
+    ); /* Slightly more vibrant yellow gradient */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Experience company name (Waterloo gradient) */
+.experience-card span.waterloo {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 204, 0, 1),
+        rgba(255, 153, 0, 1)
+    ); /* Yellow gradient */
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Waterloo skills background */
+.waterloo-skills .skill-card {
+    background-color: rgba(255, 204, 0, 0.7); /* Yellow background */
+}
+
+.waterloo-skills .skill-card:hover {
+    background-color: rgba(255, 204, 0, 1); /* Darker on hover */
 }

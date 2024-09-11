@@ -4,6 +4,7 @@ import './Home.css'; // Import the CSS file
 import CourseClutch from '../../images/courseclutch.png';
 import RTX from '../../images/rtx.png';
 import TD from '../../images/td.png';
+import Waterloo from '../../images/waterloo.png';
 
 const decodeText = (elementId: string, finalText: string, delay: number) => {
     const element = document.getElementById(elementId);
@@ -24,7 +25,7 @@ const decodeText = (elementId: string, finalText: string, delay: number) => {
         element.appendChild(span);
 
         let iterations = 0;
-        const maxIterations = Math.random() * 5 + 5;
+        const maxIterations = Math.random() * 10 + 5;
 
         const randomizeLetter = setInterval(() => {
             if (iterations >= maxIterations) {
@@ -52,6 +53,7 @@ const experiences = [
             '• Tasked with optimizing the performance of existing Oracle management tools to increase processing speed and ensure a smoother user experience for the engineering team.',
             '• Responsible for creating new frameworks and refining existing ones to improve the graphical user interface (GUI) of control system tools, to facilitate more intuitive development, navigation and usability.',
         ],
+        skills: ['PHP', 'Javascript'],
         className: 'pratt-whitney', // Add class name for styling
     },
     {
@@ -64,6 +66,7 @@ const experiences = [
             '• Implemented a cache-buster for a suite of microapps through Apache Maven, reducing loading errors by 25%, ensuring up-to-date content delivery and increasing application reliability.',
             '• Managed GIT repositories, reducing merge conflicts by 40%, and collaborated with 15+ team members using Jira for Agile development to improve overall team efficiency and workflow.',
         ],
+        skills: ['Java', 'Typescript', 'React', 'HTML', 'CSS'],
         className: 'td-bank', // Add class name for styling
     },
     {
@@ -76,7 +79,21 @@ const experiences = [
             '• Leveraged FastAPI on the backend to automate and refresh enrollment statistics from the University of Waterloo’s API every 10 minutes, and utilized Supabase with PostgreSQL to store and manage order information, ensuring accurate course information delivery and efficient data management.',
             '• Deployed Docker containers with AWS Lambda and S3 for backend hosting, and integrated Stripe’s API for secure payment processing, reducing operational expenses by 90% and enhancing system scalability and transaction security',
         ],
+        skills: ['Python', 'SQL', 'AWS', 'Stripe', 'React'],
         className: 'course-clutch', // Add class name for styling
+    },
+    {
+        id: 4,
+        title: 'University of Waterloo',
+        role: 'Mechatronics Engineering',
+        time: 'September 2023 - April 2028',
+        description: [
+            '• Planning to take the Artificial Intelligence Option to deepen my understanding of machine learning and AI applications.',
+            '• Building a strong foundation through courses like Data Structures and Algorithms, Digital Computation, Calculus II, Linear Algebra, Statics, and Circuits.',
+            '• Developing practical skills in problem-solving, programming, and system design, preparing for future work in software and hardware integration.',
+        ],
+        skills: ['C++', 'Python'],
+        className: 'waterloo', // Add class name for styling
     },
 ];
 
@@ -86,7 +103,7 @@ const Home: React.FC = () => {
     );
 
     useEffect(() => {
-        decodeText('name', 'Milan Pattni', 0.05);
+        decodeText('name', 'Milan Pattni', 0.1);
 
         // Reveal the experience section when scrolled into view
         const handleScroll = () => {
@@ -227,6 +244,19 @@ const Home: React.FC = () => {
                                             }}
                                         />
                                     )}
+                                    {exp.className === 'waterloo' && (
+                                        <img
+                                            src={Waterloo}
+                                            alt="University of Waterloo Logo"
+                                            style={{
+                                                height: '24px',
+                                                width: 'auto',
+                                                margin: '-10px',
+                                                marginTop: '-7px',
+                                                marginLeft: '1.5px',
+                                            }}
+                                        />
+                                    )}
                                     {exp.title}
                                 </li>
                             ))}
@@ -248,6 +278,18 @@ const Home: React.FC = () => {
                         {selectedExperience.description.map((desc, index) => (
                             <p key={index}>{desc}</p>
                         ))}
+                        {/* Add Skills Heading */}
+                        <h4 className="skills-heading">Skills</h4>
+                        {/* Render Skills */}
+                        <div
+                            className={`skills-container ${selectedExperience.className}-skills`}
+                        >
+                            {selectedExperience.skills.map((skill, index) => (
+                                <span key={index} className="skill-card">
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -256,7 +298,7 @@ const Home: React.FC = () => {
                 <div className="contact-container">
                     <p>
                         I'm interested in Summer 2025 internship opportunities.
-                        Feel free to reach out to me on{' '}
+                        Feel free to connect with me on{' '}
                         <a
                             href="https://www.linkedin.com/in/pattni"
                             target="_blank"
