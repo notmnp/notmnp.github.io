@@ -1,6 +1,6 @@
 :root {
     --custom-blob-color: linear-gradient(to right, aquamarine, mediumpurple);
-    --custom-blob-size: 150px;
+    --custom-blob-size: 200px;
 }
 
 .custom-body {
@@ -48,4 +48,12 @@
     z-index: -1;
     backdrop-filter: blur(10px);
     pointer-events: none;
+}
+
+/* Hide the custom blob and blur on mobile devices */
+@media (max-width: 768px) {
+    .custom-blob,
+    .custom-blob-blur {
+        display: none;
+    }
 }
