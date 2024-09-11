@@ -314,7 +314,7 @@ body {
 }
 
 /* Make sure the content has consistent left padding on mobile */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     #experiences {
         flex-direction: column;
         width: 95%;
@@ -407,8 +407,8 @@ body {
 .experience-nav li.course-clutch:hover {
     background: linear-gradient(
         90deg,
-        rgba(102, 45, 140, 0.5), /* Muted purple */
-        rgba(237, 30, 121, 0.5)  /* Muted pink */
+        rgba(102, 45, 140, 0.5),
+        /* Muted purple */ rgba(237, 30, 121, 0.5) /* Muted pink */
     );
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -418,8 +418,9 @@ body {
 .experience-nav li.course-clutch.active {
     background: linear-gradient(
         90deg,
-        rgba(102, 45, 140, 0.75), /* More vibrant purple */
-        rgba(237, 30, 121, 0.75)  /* More vibrant pink */
+        rgba(102, 45, 140, 0.75),
+        /* More vibrant purple */ rgba(237, 30, 121, 0.75)
+            /* More vibrant pink */
     );
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -647,4 +648,153 @@ body {
 
 .waterloo-skills .skill-card:hover {
     background-color: rgba(255, 204, 0, 1); /* Darker on hover */
+}
+
+/* Parent container to rotate the entire group of neon strips */
+.neon-strip-wrapper {
+    position: absolute;
+    top: 100px;
+    left: 60vw; /* Default for medium screens */
+    transform: rotate(
+        20deg
+    ); /* Rotate the entire group of neon strips 20 degrees clockwise */
+    transform-origin: center;
+    z-index: 1;
+}
+
+/* For large screens (greater than 1200px) */
+@media (max-width: 1400px) and (min-width: 1100px) {
+    .neon-strip-wrapper {
+        left: 75vw; /* Shift left for larger screens */
+    }
+}
+
+/* For medium screens (between 768px and 1200px) */
+@media (max-width: 1100px) and (min-width: 768px) {
+    .neon-strip-wrapper {
+        left: 85vw; /* Default position for medium screens */
+    }
+}
+
+/* General Neon Strip Styles */
+.neon-strip {
+    width: 12px; /* Thickness */
+    height: 300px; /* Equal height for all neon strips */
+    background: linear-gradient(
+        to bottom,
+        aquamarine,
+        mediumpurple
+    ); /* Gradient */
+    border-radius: 10px; /* Smooth round edges */
+    box-shadow: 0px 0px 0px rgba(0, 255, 255, 0),
+        0px 0px 0px rgba(186, 85, 211, 0); /* Lights off initially */
+    opacity: 0; /* Initially invisible for fade-in effect */
+    transform: translateY(30px); /* Preposition for animation */
+    transition: all 1s ease-in-out; /* Smooth transition for fade-in and movement */
+}
+
+/* Light Turn-On Animation */
+@keyframes lightsOn {
+    0% {
+        box-shadow: 0px 0px 0px rgba(0, 255, 255, 0),
+            0px 0px 0px rgba(186, 85, 211, 0); /* Lights off */
+        opacity: 0;
+    }
+    50% {
+        opacity: 1; /* Lights dimming on */
+        box-shadow: 0px 0px 100px rgba(0, 255, 255, 0.8),
+            0px 0px 150px rgba(186, 85, 211, 0.8); /* Even and bright light */
+    }
+    100% {
+        opacity: 1;
+        box-shadow: 0px 0px 150px rgba(0, 255, 255, 1),
+            0px 0px 200px rgba(186, 85, 211, 1),
+            0px 0px 50px rgba(255, 255, 255, 0.7); /* Full glow, even on all sides */
+    }
+}
+
+/* Flicker Animation */
+@keyframes flicker {
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+        opacity: 1;
+        box-shadow: 0px 0px 150px rgba(0, 255, 255, 1),
+            0px 0px 200px rgba(186, 85, 211, 1),
+            0px 0px 50px rgba(255, 255, 255, 0.7); /* Fully on */
+    }
+    20%,
+    22%,
+    24%,
+    55% {
+        opacity: 0.5;
+        box-shadow: 0px 0px 80px rgba(0, 255, 255, 0.5),
+            0px 0px 100px rgba(186, 85, 211, 0.5),
+            0px 0px 30px rgba(255, 255, 255, 0.3); /* Dim flicker */
+    }
+}
+
+/* Fade-in and move up animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Start from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Move to the final position */
+    }
+}
+
+/* First Neon Strip (aligned within the wrapper) */
+.neon-strip-1 {
+    top: 60px;
+    left: 0px;
+    position: absolute;
+    animation: lightsOn 1.5s forwards ease-in-out,
+        fadeInUp 1.5s forwards ease-in-out, flicker 2s infinite ease-in-out 1.5s;
+}
+
+/* Second Neon Strip */
+.neon-strip-2 {
+    top: 160px; /* Positioned below the first strip */
+    left: 30px;
+    position: absolute;
+    animation: lightsOn 1.5s forwards ease-in-out,
+        fadeInUp 1.5s forwards ease-in-out, flicker 2s infinite ease-in-out 2s;
+}
+
+/* Third Neon Strip */
+.neon-strip-3 {
+    top: 260px;
+    left: 60px;
+    position: absolute;
+    animation: lightsOn 1.5s forwards ease-in-out,
+        fadeInUp 1.5s forwards ease-in-out, flicker 2s infinite ease-in-out 2.5s;
+}
+
+/* Fourth Neon Strip */
+.neon-strip-4 {
+    top: 360px;
+    left: 90px;
+    position: absolute;
+    animation: lightsOn 1.5s forwards ease-in-out,
+        fadeInUp 1.5s forwards ease-in-out, flicker 2s infinite ease-in-out 3s;
+}
+
+/* Keep the neon strips scrolling with the page vertically */
+.home-container {
+    position: relative; /* To allow the neon strips to move up and down with the page */
+}
+
+/* Disappear neon strips on smaller screens */
+@media (max-width: 800px) {
+    .neon-strip-wrapper {
+        display: none;
+    }
 }

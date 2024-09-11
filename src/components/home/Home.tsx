@@ -119,6 +119,13 @@ const Home: React.FC = () => {
     return (
         <div className="container">
             <div className="home-container">
+                <div className="neon-strip-wrapper">
+                    <div className="neon-strip neon-strip-1"></div>
+                    <div className="neon-strip neon-strip-2"></div>
+                    <div className="neon-strip neon-strip-3"></div>
+                    <div className="neon-strip neon-strip-4"></div>
+                </div>
+
                 <p style={{ marginBottom: '5px' }}>👋 Hey! I'm</p>
                 <h1
                     id="name"
