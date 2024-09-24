@@ -7,7 +7,7 @@ import './Navbar.css';
 const Navbar: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
-    const [scrolled, setScrolled] = useState(false); // New state for scroll tracking
+    const [scrolled, setScrolled] = useState(false); // State for scroll tracking
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -49,10 +49,10 @@ const Navbar: React.FC = () => {
     // Handle scrolling to change navbar opacity
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 100) {
-                setScrolled(true); 
+            if (window.scrollY > 1) {
+                setScrolled(true);
             } else {
-                setScrolled(false); 
+                setScrolled(false);
             }
         };
 
@@ -93,10 +93,13 @@ const Navbar: React.FC = () => {
                 ></div>
             )}
 
-            <nav>
-                <div className={`nav-content ${scrolled ? 'scrolled' : ''}`}>
-                    {' '}
-                    {/* Apply "scrolled" to .nav-content */}
+            {/* Apply "scrolled" and "menu-open" classes to <nav> */}
+            <nav
+                className={`${scrolled ? 'scrolled' : ''} ${
+                    menuOpen ? 'menu-open' : ''
+                }`}
+            >
+                <div className="nav-content">
                     {/* Scroll to top when clicking the signature */}
                     <Link to="/" className="brand" onClick={scrollToTop}>
                         <img
@@ -124,16 +127,18 @@ const Navbar: React.FC = () => {
                                 Home
                             </Link>
                         </li>
-                        <a
-                            href="#experiences"
-                            onClick={(e) => {
-                                e.preventDefault(); // Prevent default anchor behavior
-                                toggleMenu(); // Close the menu
-                                scrollToSectionWithOffset('experiences'); // Scroll to section with offset
-                            }}
-                        >
-                            Experience
-                        </a>
+                        <li>
+                            <a
+                                href="#experiences"
+                                onClick={(e) => {
+                                    e.preventDefault(); // Prevent default anchor behavior
+                                    toggleMenu(); // Close the menu
+                                    scrollToSectionWithOffset('experiences'); // Scroll to section with offset
+                                }}
+                            >
+                                Experience
+                            </a>
+                        </li>
                         <li>
                             <a
                                 href="#contact" // Update the href to point to the contact section

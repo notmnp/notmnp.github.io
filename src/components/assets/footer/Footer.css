@@ -4,12 +4,12 @@
     color: #b3b3b3; /* Grey text */
     padding: 40px 20px; /* More padding for spacious design */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Shadow to lift it off the page */
-    text-align: center;
+    text-align: center; /* Center align the footer text */
     backdrop-filter: blur(10px); /* Blur effect for glassy look */
     -webkit-backdrop-filter: blur(10px); /* Safari support */
     border-radius: 20px; /* Rounded corners */
     max-width: 1150px; /* Restrict width */
-    margin: 0 auto 50px; /* Center it horizontally and add bottom margin to lift above bottom */
+    margin: 0 auto 50px; /* Center it horizontally and add bottom margin */
     transition: background-color 0.3s ease-in-out;
     z-index: 1;
 }
@@ -17,7 +17,7 @@
 /* Footer content flexbox for layout */
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Align sections with space between */
     flex-wrap: wrap;
     gap: 20px; /* Space between sections */
     max-width: 1000px;
@@ -29,6 +29,12 @@
     flex: 1;
     min-width: 200px;
     text-align: left; /* Align content to the left */
+    padding: 5px;
+}
+
+.footer-section p {
+    font-size: 0.9rem; /* Adjusted font size */
+    margin: 5px 0;
 }
 
 .footer-section a {
@@ -45,21 +51,42 @@
     color: #ffffff; /* Change text and icon color to white on hover */
 }
 
-/* Footer bottom for copyright and final messages */
+/* Heart icon styling */
+.heart-icon {
+    color: #ff6347; /* A red color for the heart icon */
+}
+
+/* Footer bottom for copyright */
 .footer-bottom {
     font-size: 0.85rem;
     color: #b3b3b3; /* Light grey text */
     margin-top: 20px;
 }
 
+.footer-bottom p {
+    margin: 5px 0;
+}
+
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
+    .footer {
+        background-color: #121212; /* Dark grey background on mobile */
+        border-radius: 0;
+        margin-bottom: 0;        
+    }
+
     .footer-content {
-        flex-direction: column; /* Stack sections on top of each other */
+        flex-direction: column; /* Stack sections vertically */
         text-align: center; /* Center text on smaller screens */
+        gap: 10px;
     }
 
     .footer-section {
+        text-align: center; /* Center each section on smaller screens */
         margin-bottom: 20px; /* Add margin between stacked sections */
+    }
+
+    .footer-section a {
+        justify-content: center; /* Center links */
     }
 }

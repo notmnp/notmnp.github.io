@@ -47,9 +47,6 @@ const Footer: React.FC = () => {
                 <p>Made with ☕️ and 🏓 breaks.</p>
                 <p>&copy; 2024 Milan Pattni</p>
             </div>
-
-            {/* Footer gradient */}
-            <div className="footer-gradient"></div>
         </footer>
     );
 };

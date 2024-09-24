@@ -22,35 +22,38 @@ html {
 nav {
     width: 100%;
     position: fixed; /* Always fixed at the top */
-    margin-top: 20px;
+    margin-top: 15px;
     top: 0;
     left: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px); /* More blur and saturation for glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    transition: margin-top 0.3s ease, background-color 0.3s ease; /* Added transition */
+    background-color: transparent; /* Ensure initial background is transparent */
 }
 
 /* Inner container for navbar content with animation */
 .nav-content {
     max-width: 1200px;
-    /* Make the background more transparent and enhance the glass effect */
-    background-color: rgba(18, 18, 18, 0.2); /* Increased transparency */
-    backdrop-filter: blur(10px); /* More blur and saturation for glass effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
     margin: 0 auto; /* Center the content */
     width: 100%; /* Ensure it takes up the full width up to max-width */
     display: flex;
-    border-radius: 15px;
-    background-color: rgba(18, 18, 18, 0.3);
     justify-content: space-between; /* Space between logo and menu items */
     align-items: center;
-    padding: 7px 20px; /* Padding for internal spacing */
+    padding: 10px 20px; /* Padding for internal spacing */
     box-sizing: border-box;
     animation: slideDown 0.8s ease-out; /* Apply the move down animation */
     opacity: 1; /* Ensure it's visible after animation */
 }
 
-/* When scrolled, increase the opacity of .nav-content */
-.nav-content.scrolled {
+nav.scrolled {
+    margin-top: 0px;
     background-color: rgba(18, 18, 18, 0.7); /* Increased opacity on scroll */
+}
+
+/* New styles for when the menu is open */
+nav.menu-open {
+    background-color: #000000; /* Turn navbar background to black */
 }
 
 /* Signature image styling */
@@ -126,9 +129,18 @@ nav ul a:hover {
 @media (max-width: 768px) {
     /* Remove blur effect on mobile */
     nav {
-        background-color: #121212; /* Solid background for mobile */
         backdrop-filter: none; /* Remove blur effect on mobile */
         -webkit-backdrop-filter: none; /* Safari support */
+        transition: margin-top 0.3s ease, background-color 0.3s ease;
+    }
+
+    nav.scrolled {
+        background-color: #121212;
+    }
+
+    /* Ensure nav has black background when menu is open */
+    nav.menu-open {
+        background-color: #121212;
     }
 
     /* Flex direction and alignment for smaller screens */
