@@ -118,6 +118,7 @@ const Home: React.FC = () => {
 
     return (
         <div className="container">
+            <div className="gradient"></div>
             <div className="home-container">
                 <p style={{ marginBottom: '5px' }}>👋 Hey! I'm</p>
                 <h1
@@ -192,7 +193,6 @@ const Home: React.FC = () => {
                     <IoIosArrowDown />
                 </div>
             </div>
-
             <div id="experiences" className="container">
                 <h1 className="experiences-title">Experience</h1>
                 <div className="experiences-content">
@@ -313,7 +313,7 @@ const Home: React.FC = () => {
                         .
                     </p>
                 </div>
-            </div>
+            </div>{' '}
         </div>
     );
 };

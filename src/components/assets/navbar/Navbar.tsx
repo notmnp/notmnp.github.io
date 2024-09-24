@@ -7,6 +7,7 @@ import './Navbar.css';
 const Navbar: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [scrolled, setScrolled] = useState(false); // New state for scroll tracking
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -24,7 +25,7 @@ const Navbar: React.FC = () => {
         if (section) {
             const sectionTop =
                 section.getBoundingClientRect().top + window.pageYOffset;
-            const offset = window.innerHeight * 0.15; // 10% of the screen height
+            const offset = window.innerHeight * 0.15; // 15% of the screen height
             window.scrollTo({
                 top: sectionTop + offset,
                 behavior: 'smooth',
@@ -37,13 +38,29 @@ const Navbar: React.FC = () => {
         if (section) {
             const contop =
                 section.getBoundingClientRect().top + window.pageYOffset;
-            const contset = 100; // Set the offset to 50px higher than the top
+            const contset = 100; // Set the offset to 100px higher than the top
             window.scrollTo({
-                top: contop - contset, // Scroll to 50px above the section
+                top: contop - contset, // Scroll to 100px above the section
                 behavior: 'smooth',
             });
         }
     };
+
+    // Handle scrolling to change navbar opacity
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 100) {
+                setScrolled(true); 
+            } else {
+                setScrolled(false); 
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     // Handle resizing the window to enable/disable mobile menu
     useEffect(() => {
@@ -77,7 +94,9 @@ const Navbar: React.FC = () => {
             )}
 
             <nav>
-                <div className="nav-content">
+                <div className={`nav-content ${scrolled ? 'scrolled' : ''}`}>
+                    {' '}
+                    {/* Apply "scrolled" to .nav-content */}
                     {/* Scroll to top when clicking the signature */}
                     <Link to="/" className="brand" onClick={scrollToTop}>
                         <img

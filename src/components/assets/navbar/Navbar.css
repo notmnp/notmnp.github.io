@@ -6,42 +6,57 @@ html {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Keyframes for moving down animation */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100px); /* Start slightly above */
+        opacity: 0; /* Fully transparent */
+    }
+    100% {
+        transform: translateY(0); /* End in the original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
 /* Navbar container (full width) */
 nav {
     width: 100%;
     position: fixed; /* Always fixed at the top */
+    margin-top: 20px;
     top: 0;
     left: 0;
-    background-color: rgba(
-        18,
-        18,
-        18,
-        0.6
-    ); /* Dark background with transparency */
-    backdrop-filter: blur(10px); /* Apply the blur effect on desktop */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Slight shadow for depth */
-    transition: background-color 0.3s ease-in-out,
-        backdrop-filter 0.3s ease-in-out;
 }
 
-/* Inner container for navbar content */
+/* Inner container for navbar content with animation */
 .nav-content {
     max-width: 1200px;
+    /* Make the background more transparent and enhance the glass effect */
+    background-color: rgba(18, 18, 18, 0.2); /* Increased transparency */
+    backdrop-filter: blur(10px); /* More blur and saturation for glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     margin: 0 auto; /* Center the content */
     width: 100%; /* Ensure it takes up the full width up to max-width */
     display: flex;
+    border-radius: 15px;
+    background-color: rgba(18, 18, 18, 0.3);
     justify-content: space-between; /* Space between logo and menu items */
     align-items: center;
-    padding: 10px 20px; /* Padding for internal spacing */
+    padding: 7px 20px; /* Padding for internal spacing */
     box-sizing: border-box;
+    animation: slideDown 0.8s ease-out; /* Apply the move down animation */
+    opacity: 1; /* Ensure it's visible after animation */
+}
+
+/* When scrolled, increase the opacity of .nav-content */
+.nav-content.scrolled {
+    background-color: rgba(18, 18, 18, 0.7); /* Increased opacity on scroll */
 }
 
 /* Signature image styling */
 .signature {
     margin-top: 10px;
-    height: 45px; /* Adjust the height as needed */
+    height: 36px; /* Adjust the height as needed */
     width: auto;
 }
 
@@ -72,21 +87,19 @@ nav ul a {
 /* Links styling */
 nav ul li a,
 nav ul a {
-    color: #fff; /* White text */
+    color: #ccc; /* Light grey as the default text color */
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 8px 16px;
     display: block;
     border-radius: 15px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out; /* Transition effect for color change */
 }
 
-/* Hover effect for links */
+/* Hover effect for links - only change text color */
 nav ul li a:hover,
 nav ul a:hover {
-    background-color: #555; /* Slightly lighter color on hover */
-    color: #f1f1f1;
-    border-radius: 15px;
+    color: #fff; /* Change text color to white on hover */
 }
 
 /* Overlay for the mobile menu */

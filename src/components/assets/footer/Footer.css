@@ -1,66 +1,65 @@
-/* Compact Footer styling */
+/* Footer styling with rounded corners, transparency, and blur effect */
 .footer {
-    background-color: rgba(255, 255, 255, 0.05); /* Grey similar to your divs */
-    color: #ffffff; /* White text */
-    padding: 20px 10px; /* Reduced padding */
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
-    text-align: center; /* Center align for compact design */
+    background-color: rgba(18, 18, 18, 0.4); /* Transparent black */
+    color: #b3b3b3; /* Grey text */
+    padding: 40px 20px; /* More padding for spacious design */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Shadow to lift it off the page */
+    text-align: center;
+    backdrop-filter: blur(10px); /* Blur effect for glassy look */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: 20px; /* Rounded corners */
+    max-width: 1150px; /* Restrict width */
+    margin: 0 auto 50px; /* Center it horizontally and add bottom margin to lift above bottom */
+    transition: background-color 0.3s ease-in-out;
+    z-index: 1;
 }
 
+/* Footer content flexbox for layout */
 .footer-content {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    max-width: 1200px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between sections */
+    max-width: 1000px;
     margin: 0 auto;
-    gap: 15px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .footer-section {
     flex: 1;
-    min-width: 150px; /* More compact section width */
-    padding: 5px;
-}
-
-.footer-section p {
-    font-size: 0.9rem; /* Reduced font size for compactness */
-    margin: 5px 0;
+    min-width: 200px;
+    text-align: left; /* Align content to the left */
 }
 
 .footer-section a {
-    color: #00a0dc;
+    color: #b3b3b3; /* Grey color for links and icons */
     text-decoration: none;
-    font-weight: bold;
+    font-weight: normal;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
     transition: color 0.3s ease;
 }
 
 .footer-section a:hover {
-    color: #0077b5;
+    color: #ffffff; /* Change text and icon color to white on hover */
 }
 
-/* Footer bottom */
+/* Footer bottom for copyright and final messages */
 .footer-bottom {
-    font-size: 0.85rem; /* Compact font size */
-    color: #b3b3b3;
+    font-size: 0.85rem;
+    color: #b3b3b3; /* Light grey text */
+    margin-top: 20px;
 }
 
-.footer-bottom p {
-    margin: 5px 0;
-}
-
-.heart-icon {
-    color: #ff6347; /* A red color for the heart icon */
-}
-
-/* Responsive styling */
+/* Responsive layout for smaller screens */
 @media (max-width: 768px) {
     .footer-content {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: column; /* Stack sections on top of each other */
+        text-align: center; /* Center text on smaller screens */
     }
 
     .footer-section {
-        text-align: center; /* Center each section on smaller screens */
+        margin-bottom: 20px; /* Add margin between stacked sections */
     }
 }

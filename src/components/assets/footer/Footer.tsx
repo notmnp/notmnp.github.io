@@ -8,7 +8,6 @@ const Footer: React.FC = () => {
             <div className="footer-content">
                 <div className="footer-section">
                     <p>
-                        Email:{' '}
                         <a href="mailto:mpattni@uwaterloo.ca">
                             <IoMdMail /> mpattni@uwaterloo.ca
                         </a>
@@ -45,11 +44,12 @@ const Footer: React.FC = () => {
             </div>
 
             <div className="footer-bottom">
-                <p>
-                    Made with ☕️ and 🏓 breaks.
-                </p>
+                <p>Made with ☕️ and 🏓 breaks.</p>
                 <p>&copy; 2024 Milan Pattni</p>
             </div>
+
+            {/* Footer gradient */}
+            <div className="footer-gradient"></div>
         </footer>
     );
 };
