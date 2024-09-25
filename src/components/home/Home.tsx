@@ -99,6 +99,33 @@ const Home: React.FC = () => {
     ];
 
     useEffect(() => {
+        // Function to handle the intersection and add 'visible' class
+        const handleIntersection = (
+            entries: IntersectionObserverEntry[],
+            observer: IntersectionObserver
+        ) => {
+            entries.forEach((entry: IntersectionObserverEntry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible'); // Add 'visible' class
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        };
+
+        // Create the observer with the intersection handler
+        const observer = new IntersectionObserver(handleIntersection, {
+            threshold: 0.2, // Trigger when 20% of the item is visible
+        });
+
+        // Select all grid items
+        const gridItems = document.querySelectorAll('.grid-item');
+        gridItems.forEach((item) => observer.observe(item)); // Start observing each item
+
+        // Cleanup observer on component unmount
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
         decodeText('name', 'Milan Pattni', 0.1);
 
         // Reveal the experience section when scrolled into view
@@ -206,7 +233,7 @@ const Home: React.FC = () => {
 
                 {/* Education Section */}
                 <div className="education-section grid-item education-box">
-                    <h2 className="grid-header">Mechatronics Engineering</h2>
+                    <h2 className="grid-header" style={{marginBottom:'0px'}}>Mechatronics Engineering</h2>
                     <p className="ai-highlight">
                         Artificial Intelligence Option
                     </p>
