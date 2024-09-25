@@ -1,6 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { IoLogoLinkedin, IoIosDocument, IoIosArrowDown } from 'react-icons/io';
 import './Home.css'; // Import the CSS file
+import {
+    SiReact,
+    SiTypescript,
+    SiJavascript,
+    SiPython,
+    SiHtml5,
+    SiCss3,
+    SiGit,
+    SiGithub,
+    SiFastapi,
+    SiPostgresql,
+    SiMysql,
+    SiPhp,
+    SiDocker,
+    SiCplusplus,
+    SiIntellijidea,
+    SiSelenium,
+    SiConfluence,
+    SiJira,
+    SiPostman,
+    SiSymfony,
+} from 'react-icons/si';
+import { FaAws, FaJava, FaCcStripe } from 'react-icons/fa';
+import { VscVscode } from 'react-icons/vsc';
 import CourseClutch from '../../images/courseclutch.png';
 import RTX from '../../images/rtx.png';
 import TD from '../../images/td.png';
@@ -102,6 +126,36 @@ const Home: React.FC = () => {
         experiences[0]
     );
 
+    const languagesArray = [
+        <SiPython />,
+        <FaJava />,
+        <SiCplusplus />,
+        <SiHtml5 />,
+        <SiCss3 />,
+        <SiJavascript />,
+        <SiTypescript />,
+        <SiPhp />,
+        <SiPostgresql />,
+        <SiMysql />,
+        <SiReact />,
+        <SiFastapi />,
+        <SiSymfony />,
+    ];
+
+    const toolsArray = [
+        <SiGit />,
+        <SiGithub />,
+        <VscVscode />,
+        <SiIntellijidea />,
+        <SiPostman />,
+        <FaAws />,
+        <SiJira />,
+        <SiConfluence />,
+        <SiDocker />,
+        <SiSelenium />,
+        <FaCcStripe />,
+    ];
+
     useEffect(() => {
         decodeText('name', 'Milan Pattni', 0.1);
 
@@ -165,32 +219,117 @@ const Home: React.FC = () => {
                     </a>
                 </div>
 
-                {/* Scroll Indicator */}
-                <div
-                    className="scroll-indicator"
-                    onClick={() => {
-                        const experienceSection =
-                            document.getElementById('experiences');
-                        if (experienceSection) {
-                            // Calculate the top of the element relative to the page
-                            const sectionTop =
-                                experienceSection.getBoundingClientRect().top +
-                                window.pageYOffset;
+                <div className="scroll-indicator">
+                    <IoIosArrowDown
+                        onClick={() => {
+                            const experienceSection =
+                                document.getElementById('experiences');
+                            if (experienceSection) {
+                                // Calculate the top of the element relative to the page
+                                const sectionTop =
+                                    experienceSection.getBoundingClientRect()
+                                        .top + window.pageYOffset;
 
-                            // Calculate the offset (20% of the screen's height)
-                            const offset = window.innerHeight * 0.15;
+                                // Calculate the offset (20% of the screen's height)
+                                const offset = window.innerHeight * 0.15;
 
-                            // Scroll to the element with the offset
-                            window.scrollTo({
-                                top: sectionTop + offset, // Adjust by the offset
-                                behavior: 'smooth', // Smooth scrolling
-                            });
+                                // Scroll to the element with the offset
+                                window.scrollTo({
+                                    top: sectionTop + offset, // Adjust by the offset
+                                    behavior: 'smooth', // Smooth scrolling
+                                });
 
-                            experienceSection.classList.add('visible');
-                        }
-                    }}
-                >
-                    <IoIosArrowDown />
+                                experienceSection.classList.add('visible');
+                            }
+                        }}
+                    />
+                </div>
+            </div>
+            <div className="grid-container">
+                {/* Available for Internship Box */}
+                <div className="small-box grid-item internship-box">
+                    <h2 className="grid-header">Seeking Internships</h2>
+                    <div className="internship-content">
+                        <span className="internship-date">Summer 2025</span>
+                    </div>
+                </div>
+
+                {/* Current Term Box */}
+                <div className="small-box grid-item current-term-box">
+                    <h2 className="grid-header">Current Term</h2>
+                    <div className="current-term-content">
+                        <span className="current-term-number">2A</span>
+                    </div>
+                </div>
+
+                {/* Education Section */}
+                <div className="education-section grid-item education-box">
+                    <h2 className="grid-header">
+                        Mechatronics Engineering
+                    </h2>
+                    <div className="university">
+                        <img
+                            src={Waterloo}
+                            alt="University of Waterloo"
+                            className="university-logo"
+                        />
+                        <span className="university-name">
+                            University of Waterloo
+                        </span>
+                    </div>
+                    <p className="education-dates">
+                        September 2023 - April 2028
+                    </p>
+                    <p className="ai-option">
+                        • Planning to take the{' '}
+                        <span className="ai-highlight">
+                            Artificial Intelligence Option
+                        </span>{' '}
+                        to deepen my understanding of machine learning and AI
+                        applications.
+                    </p>
+
+                    {/* Courses Section */}
+                    <h3 className="grid-header">Courses</h3>
+                    <div className="courses-container">
+                        <span className="course-bubble">
+                            Data Structures and Algorithms
+                        </span>
+                        <span className="course-bubble">
+                            Digital Computation
+                        </span>
+                        <span className="course-bubble">Calculus II</span>
+                        <span className="course-bubble">Linear Algebra</span>
+                        <span className="course-bubble">Statics</span>
+                        <span className="course-bubble">Circuits</span>
+                    </div>
+                </div>
+
+                {/* Carousel Box */}
+                <div className="carousel-box grid-item stacks-box">
+                    <h2 className="grid-header">Stacks</h2>
+                    <div className="icons">
+                        <div className="icons-slide">
+                            {[...languagesArray, ...languagesArray].map(
+                                (icon, index) => (
+                                    <div key={index} className="icon">
+                                        {icon}
+                                    </div>
+                                )
+                            )}
+                        </div>
+                    </div>
+                    <div className="icons">
+                        <div className="icons-slide tools">
+                            {[...toolsArray, ...toolsArray].map(
+                                (icon, index) => (
+                                    <div key={index} className="icon">
+                                        {icon}
+                                    </div>
+                                )
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="experiences" className="container">

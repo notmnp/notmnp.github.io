@@ -29,6 +29,7 @@ nav {
     backdrop-filter: blur(10px); /* More blur and saturation for glass effect */
     -webkit-backdrop-filter: blur(10px); /* Safari support */
     transition: margin-top 0.3s ease, background-color 0.3s ease; /* Added transition */
+    animation: slideDown 0.8s ease-out; /* Apply the move down animation */
     background-color: transparent; /* Ensure initial background is transparent */
 }
 
