@@ -29,6 +29,7 @@ import CourseClutch from '../../images/courseclutch.png';
 import RTX from '../../images/rtx.png';
 import TD from '../../images/td.png';
 import Waterloo from '../../images/waterloo.png';
+import WatAI from '../../images/watai.png';
 
 const decodeText = (elementId: string, finalText: string, delay: number) => {
     const element = document.getElementById(elementId);
@@ -66,66 +67,7 @@ const decodeText = (elementId: string, finalText: string, delay: number) => {
     });
 };
 
-const experiences = [
-    {
-        id: 1,
-        title: 'Pratt & Whitney',
-        role: 'Software Developer Intern',
-        time: 'September 2024 - December 2024',
-        description: [
-            '• Expected to build new content for software build management tools for aircraft engine control systems, to elevate system functionality and optimize development efficiency.',
-            '• Tasked with optimizing the performance of existing Oracle management tools to increase processing speed and ensure a smoother user experience for the engineering team.',
-            '• Responsible for creating new frameworks and refining existing ones to improve the graphical user interface (GUI) of control system tools, to facilitate more intuitive development, navigation and usability.',
-        ],
-        skills: ['PHP', 'Javascript'],
-        className: 'pratt-whitney', // Add class name for styling
-    },
-    {
-        id: 2,
-        title: 'TD Bank',
-        role: 'Software Engineering Intern',
-        time: 'January 2024 - April 2024',
-        description: [
-            '• Designed and developed a React and TypeScript-based application, streamlining data access for 10,000+ corporate users, which enhanced operational efficiency and improved user experience.',
-            '• Implemented a cache-buster for a suite of microapps through Apache Maven, reducing loading errors by 25%, ensuring up-to-date content delivery and increasing application reliability.',
-            '• Managed GIT repositories, reducing merge conflicts by 40%, and collaborated with 15+ team members using Jira for Agile development to improve overall team efficiency and workflow.',
-        ],
-        skills: ['Java', 'Typescript', 'React', 'HTML', 'CSS'],
-        className: 'td-bank', // Add class name for styling
-    },
-    {
-        id: 3,
-        title: 'Course Clutch',
-        role: 'Co-Founder',
-        time: 'February 2024 - Present',
-        description: [
-            '• Developed a responsive and user-friendly frontend using React, TypeScript, and CSS to provide real-time notifications to 40,000+ University of Waterloo students upon availability of course seats, improving enrollment success.',
-            '• Leveraged FastAPI on the backend to automate and refresh enrollment statistics from the University of Waterloo’s API every 10 minutes, and utilized Supabase with PostgreSQL to store and manage order information, ensuring accurate course information delivery and efficient data management.',
-            '• Deployed Docker containers with AWS Lambda and S3 for backend hosting, and integrated Stripe’s API for secure payment processing, reducing operational expenses by 90% and enhancing system scalability and transaction security',
-        ],
-        skills: ['Python', 'SQL', 'AWS', 'Stripe', 'React'],
-        className: 'course-clutch', // Add class name for styling
-    },
-    {
-        id: 4,
-        title: 'University of Waterloo',
-        role: 'Mechatronics Engineering',
-        time: 'September 2023 - April 2028',
-        description: [
-            '• Planning to take the Artificial Intelligence Option to deepen my understanding of machine learning and AI applications.',
-            '• Building a strong foundation through courses like Data Structures and Algorithms, Digital Computation, Calculus II, Linear Algebra, Statics, and Circuits.',
-            '• Developing practical skills in problem-solving, programming, and system design, preparing for future work in software and hardware integration.',
-        ],
-        skills: ['C++', 'Python'],
-        className: 'waterloo', // Add class name for styling
-    },
-];
-
 const Home: React.FC = () => {
-    const [selectedExperience, setSelectedExperience] = useState(
-        experiences[0]
-    );
-
     const languagesArray = [
         <SiPython />,
         <FaJava />,
@@ -264,9 +206,11 @@ const Home: React.FC = () => {
 
                 {/* Education Section */}
                 <div className="education-section grid-item education-box">
-                    <h2 className="grid-header">
-                        Mechatronics Engineering
-                    </h2>
+                    <h2 className="grid-header">Mechatronics Engineering</h2>
+                    <p className="ai-highlight">
+                        Artificial Intelligence Option
+                    </p>
+
                     <div className="university">
                         <img
                             src={Waterloo}
@@ -280,28 +224,18 @@ const Home: React.FC = () => {
                     <p className="education-dates">
                         September 2023 - April 2028
                     </p>
-                    <p className="ai-option">
-                        • Planning to take the{' '}
-                        <span className="ai-highlight">
-                            Artificial Intelligence Option
-                        </span>{' '}
-                        to deepen my understanding of machine learning and AI
-                        applications.
-                    </p>
 
                     {/* Courses Section */}
-                    <h3 className="grid-header">Courses</h3>
-                    <div className="courses-container">
-                        <span className="course-bubble">
+                    <h3 className="bubble-header">Courses</h3>
+                    <div className="bubble-container">
+                        <span className="bubble">
                             Data Structures and Algorithms
                         </span>
-                        <span className="course-bubble">
-                            Digital Computation
-                        </span>
-                        <span className="course-bubble">Calculus II</span>
-                        <span className="course-bubble">Linear Algebra</span>
-                        <span className="course-bubble">Statics</span>
-                        <span className="course-bubble">Circuits</span>
+                        <span className="bubble">Digital Computation</span>
+                        <span className="bubble">Calculus II</span>
+                        <span className="bubble">Linear Algebra</span>
+                        <span className="bubble">Statics</span>
+                        <span className="bubble">Circuits</span>
                     </div>
                 </div>
 
@@ -332,102 +266,121 @@ const Home: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div id="experiences" className="container">
-                <h1 className="experiences-title">Experience</h1>
-                <div className="experiences-content">
-                    <div className="experience-nav">
-                        <ul>
-                            {experiences.map((exp) => (
-                                <li
-                                    key={exp.id}
-                                    className={`${exp.className} ${
-                                        selectedExperience.id === exp.id
-                                            ? 'active'
-                                            : ''
-                                    }`}
-                                    onClick={() => setSelectedExperience(exp)}
-                                >
-                                    {/* Include the appropriate logo inline with the text */}
-                                    {exp.className === 'pratt-whitney' && (
-                                        <img
-                                            src={RTX}
-                                            alt="Pratt & Whitney Logo"
-                                            style={{
-                                                height: '24px',
-                                                width: 'auto',
-                                                marginRight: '10px',
-                                            }}
-                                        />
-                                    )}
-                                    {exp.className === 'td-bank' && (
-                                        <img
-                                            src={TD}
-                                            alt="TD Bank Logo"
-                                            style={{
-                                                height: '30px',
-                                                width: 'auto',
-                                                margin: '-10px',
-                                                marginLeft: '-3px',
-                                            }}
-                                        />
-                                    )}
-                                    {exp.className === 'course-clutch' && (
-                                        <img
-                                            src={CourseClutch}
-                                            alt="Course Clutch Logo"
-                                            style={{
-                                                height: '27px',
-                                                width: 'auto',
-                                                margin: '-10px',
-                                                marginLeft: '-1px',
-                                            }}
-                                        />
-                                    )}
-                                    {exp.className === 'waterloo' && (
-                                        <img
-                                            src={Waterloo}
-                                            alt="University of Waterloo Logo"
-                                            style={{
-                                                height: '24px',
-                                                width: 'auto',
-                                                margin: '-10px',
-                                                marginTop: '-7px',
-                                                marginLeft: '1.5px',
-                                            }}
-                                        />
-                                    )}
-                                    {exp.title}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    {/* Experience Card with dynamic color */}
-                    <div
-                        className={`experience-card ${selectedExperience.className}`}
-                    >
-                        <h3>
-                            {selectedExperience.role} |{' '}
-                            <span className={selectedExperience.className}>
-                                {selectedExperience.title}
-                            </span>
+            {/* Experience Section */}
+            <div id="experiences">
+                <h1 className="experience-title">Experience</h1>{' '}
+                {/* Using the same class for consistency */}
+                <div className="grid-container" style={{ marginTop: '3vh' }}>
+                    {/* Pratt & Whitney Experience Card */}
+                    <div className="grid-item experience-box">
+                        <div className="experience-header">
+                            <img
+                                src={RTX}
+                                alt="Pratt & Whitney Logo"
+                                className="experience-logo"
+                            />
+                            <h2 className="grid-header">Pratt & Whitney</h2>
+                        </div>
+                        <h3 className="experience-position">
+                            Software Developer Intern
                         </h3>
                         <p className="experience-time">
-                            {selectedExperience.time}
-                        </p>{' '}
-                        {selectedExperience.description.map((desc, index) => (
-                            <p key={index}>{desc}</p>
-                        ))}
-                        {/* Add Skills Heading */}
-                        <h4 className="skills-heading">Skills</h4>
-                        {/* Render Skills */}
-                        <div
-                            className={`skills-container ${selectedExperience.className}-skills`}
-                        >
-                            {selectedExperience.skills.map((skill, index) => (
-                                <span key={index} className="skill-card">
-                                    {skill}
-                                </span>
-                            ))}
+                            September 2024 - December 2024
+                        </p>
+
+                        {/* Skills Section */}
+                        <h4 className="bubble-header">Skills</h4>
+                        <div className="bubble-container">
+                            <span className="bubble">PHP</span>
+                            <span className="bubble">JavaScript</span>
+                            <span className="bubble">SQL</span>
+                        </div>
+                    </div>
+
+                    {/* TD Bank Experience Card */}
+                    <div className="grid-item experience-box">
+                        <div className="experience-header">
+                            <img
+                                src={TD}
+                                alt="TD Bank Logo"
+                                className="experience-logo"
+                            />
+                            <h2 className="grid-header">TD Bank</h2>
+                        </div>
+                        <h3 className="experience-position">
+                            Software Engineering Intern
+                        </h3>
+                        <p className="experience-time">
+                            January 2024 - April 2024
+                        </p>
+
+                        {/* Skills Section */}
+                        <h4 className="bubble-header">Skills</h4>
+                        <div className="bubble-container">
+                            <span className="bubble">Java</span>
+                            <span className="bubble">TypeScript</span>
+                            <span className="bubble">React</span>
+                            <span className="bubble">HTML</span>
+                            <span className="bubble">CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Projects Section */}
+            <div id="projects">
+                <h1 className="experience-title">
+                    Projects / Extracurriculars
+                </h1>
+                <div className="grid-container" style={{ marginTop: '3vh' }}>
+                    {/* Course Clutch Project */}
+                    <div className="grid-item experience-box">
+                        <div className="experience-header">
+                            <img
+                                src={CourseClutch}
+                                alt="Course Clutch Logo"
+                                className="experience-logo"
+                            />
+                            <h2 className="grid-header">Course Clutch</h2>
+                        </div>
+                        <h3 className="experience-position">
+                            Co-Founder & Developer
+                        </h3>
+                        <p className="experience-time">
+                            February 2024 - Present
+                        </p>
+
+                        {/* Skills Section */}
+                        <h4 className="bubble-header">Skills</h4>
+                        <div className="bubble-container">
+                            <span className="bubble">Python</span>
+                            <span className="bubble">SQL</span>
+                            <span className="bubble">FastAPI</span>
+                            <span className="bubble">React</span>
+                            <span className="bubble">AWS</span>
+                        </div>
+                    </div>
+
+                    {/* WAT.ai Project */}
+                    <div className="grid-item experience-box">
+                        <div className="experience-header">
+                            <img
+                                src={WatAI}
+                                alt="WAT.ai Logo"
+                                className="experience-logo"
+                            />
+                            <h2 className="grid-header">WAT.ai</h2>
+                        </div>
+                        <h3 className="experience-position">Core Developer</h3>
+                        <p className="experience-time">
+                            September 2024 - Present
+                        </p>
+
+                        {/* Skills Section */}
+                        <h4 className="bubble-header">Skills</h4>
+                        <div className="bubble-container">
+                            <span className="bubble">Machine Learning</span>
+                            <span className="bubble">Python</span>
+                            <span className="bubble">TensorFlow</span>
                         </div>
                     </div>
                 </div>
