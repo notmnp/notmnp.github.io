@@ -72,17 +72,17 @@ const Footer: React.FC = () => {
                 {/* Section 2: Email and GitHub */}
                 <div className="footer-section">
                     <p>
-                        <a href="mailto:mpattni@uwaterloo.ca">
-                            <IoMdMail /> Email
-                        </a>
-                    </p>
-                    <p>
                         <a
                             href="https://www.linkedin.com/in/pattni"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <IoLogoLinkedin /> LinkedIn
+                        </a>
+                    </p>
+                    <p>
+                        <a href="mailto:mpattni@uwaterloo.ca">
+                            <IoMdMail /> Email
                         </a>
                     </p>
                     <p>

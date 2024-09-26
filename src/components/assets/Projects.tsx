@@ -1,0 +1,81 @@
+import React from 'react';
+import CC from '../../images/cc.png';
+import CourseClutch from '../../images/courseclutch.png';
+import AI from '../../images/ai.png';
+import WatAI from '../../images/watai.png';
+
+type Project = {
+    name: string;
+    role: string;
+    time: string;
+    logo: string;
+    image: string;
+    skills: string[];
+    className: string;
+};
+
+const projects: Project[] = [
+    {
+        name: 'Course Clutch',
+        role: 'Co-Founder & Architect',
+        time: 'February 2024 - Present',
+        logo: CourseClutch,
+        image: CC,
+        skills: ['Python', 'SQL', 'FastAPI', 'React', 'AWS'],
+        className: 'cc',
+    },
+    {
+        name: 'WAT.ai',
+        role: 'Core Developer',
+        time: 'September 2024 - Present',
+        logo: WatAI,
+        image: AI,
+        skills: ['Machine Learning', 'Python', 'TensorFlow'],
+        className: 'watai',
+    },
+];
+
+export const Projects: React.FC = () => {
+    return (
+        <div className="projects-section" id="projects">
+            <h1 className="projects-title">Projects & Extracurriculars</h1>
+            <div className="projects-grid-container">
+                {projects.map((project, index) => (
+                    <div key={index} className="projects-card">
+                        <img
+                            src={project.image}
+                            alt={`${project.name} Screenshot`}
+                            className="projects-image"
+                        />
+                        <div className="projects-content">
+                            <div className="projects-header">
+                                <img
+                                    src={project.logo}
+                                    alt={`${project.name} Logo`}
+                                    className="projects-logo"
+                                />
+                                <h2 className="projects-name">
+                                    {project.name}
+                                </h2>
+                            </div>
+                            <h3
+                                className={`projects-position ${project.className}`}
+                            >
+                                {project.role}
+                            </h3>
+                            <p className="projects-time">{project.time}</p>
+                            <h4 className="bubble-header">Skills</h4>
+                            <div className="bubble-container">
+                                {project.skills.map((skill, index) => (
+                                    <span key={index} className="bubble">
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};

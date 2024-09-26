@@ -1,76 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { IoLogoLinkedin, IoIosDocument, IoIosArrowDown } from 'react-icons/io';
 import './Home.css'; // Import the CSS file
-import {
-    SiReact,
-    SiTypescript,
-    SiJavascript,
-    SiPython,
-    SiHtml5,
-    SiCss3,
-    SiGit,
-    SiGithub,
-    SiFastapi,
-    SiPostgresql,
-    SiMysql,
-    SiPhp,
-    SiDocker,
-    SiCplusplus,
-    SiIntellijidea,
-    SiSelenium,
-    SiConfluence,
-    SiJira,
-    SiPostman,
-    SiSymfony,
-} from 'react-icons/si';
-import { FaAws, FaJava, FaCcStripe } from 'react-icons/fa';
-import { VscVscode } from 'react-icons/vsc';
-import { FaLocationPin, FaClock } from 'react-icons/fa6';
+
 import CourseClutch from '../../images/courseclutch.png';
-import CC from '../../images/cc.png';
 import RTX from '../../images/rtx.png';
 import TD from '../../images/td.png';
 import Waterloo from '../../images/waterloo.png';
-import WatAI from '../../images/watai.png';
-import AI from '../../images/ai.png';
 
-const decodeText = (elementId: string, finalText: string, delay: number) => {
-    const element = document.getElementById(elementId);
-    if (!element) return;
+import { useDecodeText } from '../assets/hooks/useDecodeText';
+import { useIntersectionObserver } from '../assets/hooks/useIntersectionObserver';
+import { Experience } from '../assets/Experience';
+import { Carousel } from '../assets/Carousel';
+import { Projects } from '../assets/Projects';
+import Contact from '../assets/Contact';
 
-    element.innerHTML = '';
-
-    const possibleChars =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-    const textArray = finalText
-        .split('')
-        .map((char) => (char === ' ' ? '\u00A0' : char));
-
-    textArray.forEach((char, index) => {
-        const span = document.createElement('span');
-        span.textContent = '';
-        element.appendChild(span);
-
-        let iterations = 0;
-        const maxIterations = Math.random() * 10 + 5;
-
-        const randomizeLetter = setInterval(() => {
-            if (iterations >= maxIterations) {
-                clearInterval(randomizeLetter);
-                span.textContent = char;
-                return;
-            }
-
-            span.textContent = possibleChars.charAt(
-                Math.floor(Math.random() * possibleChars.length)
-            );
-            iterations++;
-        }, delay * 1000);
-    });
-};
-
-type Experience = {
+type ExperienceType = {
     company: string;
     logo: string;
     position: string;
@@ -81,7 +25,7 @@ type Experience = {
     class: string;
 };
 
-const experiences: Experience[] = [
+const experiences: ExperienceType[] = [
     {
         company: 'Pratt & Whitney',
         logo: RTX,
@@ -114,106 +58,32 @@ const experiences: Experience[] = [
 ];
 
 const Home: React.FC = () => {
-    const languagesArray = [
-        <SiPython />,
-        <FaJava />,
-        <SiCplusplus />,
-        <SiHtml5 />,
-        <SiCss3 />,
-        <SiJavascript />,
-        <SiTypescript />,
-        <SiPhp />,
-        <SiPostgresql />,
-        <SiMysql />,
-        <SiReact />,
-        <SiFastapi />,
-        <SiSymfony />,
-    ];
-
-    const toolsArray = [
-        <SiGit />,
-        <SiGithub />,
-        <VscVscode />,
-        <SiIntellijidea />,
-        <SiPostman />,
-        <FaAws />,
-        <SiJira />,
-        <SiConfluence />,
-        <SiDocker />,
-        <SiSelenium />,
-        <FaCcStripe />,
-    ];
-
-    const [selectedExperience, setSelectedExperience] = useState<Experience>(
+    const [selectedExperience, setSelectedExperience] = useState(
         experiences[0]
-    );
+    ); // Default to the first experience
 
-    const handleSelect = (experience: Experience) => {
-        // Temporary opacity transition for experience change
-        const contentElement = document.querySelector('.experience-content');
-        if (contentElement) {
-            contentElement.classList.remove('active'); // Hide current content
+    useIntersectionObserver();
+    useDecodeText('name', 'Milan Pattni', 0.1);
+
+    const handleSelect = (experience: ExperienceType) => {
+        const transitionElement = document.querySelector(
+            '.experience-box-transition'
+        );
+        if (transitionElement) {
+            transitionElement.classList.remove('active');
             setTimeout(() => {
                 setSelectedExperience(experience);
-                contentElement.classList.add('active'); // Show new content
-            }, 300); // Wait for animation to finish before updating
+                transitionElement.classList.add('active');
+            }, 300);
         }
     };
-
-    useEffect(() => {
-        // Function to handle the intersection and add 'visible' class
-        const handleIntersection = (
-            entries: IntersectionObserverEntry[],
-            observer: IntersectionObserver
-        ) => {
-            entries.forEach((entry: IntersectionObserverEntry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible'); // Add 'visible' class
-                    observer.unobserve(entry.target); // Stop observing once visible
-                }
-            });
-        };
-
-        // Create the observer with the intersection handler
-        const observer = new IntersectionObserver(handleIntersection, {
-            threshold: 0.05, // Trigger when 20% of the item is visible
-        });
-
-        // Select all elements to be observed: grid items, sidebar, experience, and project cards
-        const elementsToObserve = document.querySelectorAll(
-            '.grid-item, .experience-sidebar-wrapper, .experience-box, .projects-card, #contact, .experience-title, .projects-title'
-        );
-        elementsToObserve.forEach((item) => observer.observe(item)); // Start observing each item
-
-        // Cleanup observer on component unmount
-        return () => observer.disconnect();
-    }, []);
-
-    useEffect(() => {
-        decodeText('name', 'Milan Pattni', 0.1);
-
-        // Reveal the experience section when scrolled into view
-        const handleScroll = () => {
-            const experienceSection = document.getElementById('experiences');
-            if (experienceSection && window.scrollY > window.innerHeight / 22) {
-                experienceSection.classList.add('visible');
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     return (
         <div className="container">
             <div className="gradient"></div>
             <div className="home-container">
                 <p style={{ marginBottom: '5px' }}>👋 Hi! I'm</p>
-                <h1
-                    id="name"
-                    className="decode"
-                    onClick={() => decodeText('name', 'Milan Pattni', 0.05)}
-                    style={{ cursor: 'pointer' }} // Adds pointer cursor on hover
-                >
+                <h1 id="name" className="decode">
                     Milan Pattni
                 </h1>
                 <p>
@@ -331,28 +201,7 @@ const Home: React.FC = () => {
                 {/* Carousel Box */}
                 <div className="carousel-box grid-item stacks-box">
                     <h2 className="grid-header">Stacks</h2>
-                    <div className="icons">
-                        <div className="icons-slide">
-                            {[...languagesArray, ...languagesArray].map(
-                                (icon, index) => (
-                                    <div key={index} className="icon">
-                                        {icon}
-                                    </div>
-                                )
-                            )}
-                        </div>
-                    </div>
-                    <div className="icons">
-                        <div className="icons-slide tools">
-                            {[...toolsArray, ...toolsArray].map(
-                                (icon, index) => (
-                                    <div key={index} className="icon">
-                                        {icon}
-                                    </div>
-                                )
-                            )}
-                        </div>
-                    </div>
+                    <Carousel />
                 </div>
             </div>
             {/* Experience Section */}
@@ -382,158 +231,15 @@ const Home: React.FC = () => {
                             ))}
                         </ul>
                     </div>
-
                     {/* Experience Content */}
-                    <div
-                        className={`experience-content active ${selectedExperience.class}`}
-                    >
-                        <div className="experience-box">
-                            <div className="experience-header">
-                                <img
-                                    src={selectedExperience.logo}
-                                    alt={`${selectedExperience.company} Logo`}
-                                    className="experience-logo"
-                                />
-                                <h2 className="company-header">
-                                    {selectedExperience.company}
-                                </h2>
-                            </div>
-                            <h3 className="experience-position">
-                                {selectedExperience.position}
-                            </h3>
-
-                            {/* Time and Location with Icons */}
-                            <div className="experience-details">
-                                <p className="experience-time">
-                                    <FaClock className="company-icon" />
-                                    {selectedExperience.time}
-                                </p>
-                                <p className="experience-location">
-                                    <FaLocationPin className="company-icon" />
-                                    {selectedExperience.location}
-                                </p>
-                            </div>
-
-                            {/* Description Section */}
-                            <ul className="experience-description">
-                                {selectedExperience.description.map(
-                                    (item, index) => (
-                                        <li
-                                            key={index}
-                                            className="description-item"
-                                        >
-                                            {item}
-                                        </li>
-                                    )
-                                )}
-                            </ul>
-
-                            {/* Skills Section */}
-                            <h4 className="bubble-header">Skills</h4>
-                            <div className="bubble-container">
-                                {selectedExperience.skills.map(
-                                    (skill, index) => (
-                                        <span key={index} className="bubble">
-                                            {skill}
-                                        </span>
-                                    )
-                                )}
-                            </div>
-                        </div>
+                    <div className="experience-box-transition active">
+                        <Experience experience={selectedExperience} />
                     </div>
                 </div>
             </div>
             {/* Projects Section */}
-            <div className="projects-section" id="projects">
-                <h1 className="projects-title">Projects / Extracurriculars</h1>
-                <div className="projects-grid-container">
-                    {/* Course Clutch Project */}
-                    <div className="projects-card">
-                        <img
-                            src={CC} // Screenshot of Course Clutch website
-                            alt="Course Clutch Screenshot"
-                            className="projects-image"
-                        />
-                        <div className="projects-content">
-                            <div className="projects-header">
-                                <img
-                                    src={CourseClutch} // Logo of Course Clutch
-                                    alt="Course Clutch Logo"
-                                    className="projects-logo"
-                                    style={{ width: '28px' }}
-                                />
-                                <h2 className="projects-name">Course Clutch</h2>
-                            </div>
-                            <h3 className="projects-position">
-                                Co-Founder & Developer
-                            </h3>
-                            <p className="projects-time">
-                                February 2024 - Present
-                            </p>
-                            <h4 className="bubble-header">Skills</h4>
-                            <div className="bubble-container">
-                                <span className="bubble">Python</span>
-                                <span className="bubble">SQL</span>
-                                <span className="bubble">FastAPI</span>
-                                <span className="bubble">React</span>
-                                <span className="bubble">AWS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* WAT.ai Project */}
-                    <div className="projects-card">
-                        <img
-                            src={AI} // Screenshot of WAT.ai website
-                            alt="WAT.ai Screenshot"
-                            className="projects-image"
-                        />
-                        <div className="projects-content">
-                            <div className="projects-header">
-                                <img
-                                    src={WatAI} // Logo of WAT.ai
-                                    alt="WAT.ai Logo"
-                                    className="projects-logo"
-                                />
-                                <h2 className="projects-name">WAT.ai</h2>
-                            </div>
-                            <h3 className="projects-position">
-                                Core Developer
-                            </h3>
-                            <p className="projects-time">
-                                September 2024 - Present
-                            </p>
-                            <h4 className="bubble-header">Skills</h4>
-                            <div className="bubble-container">
-                                <span className="bubble">Machine Learning</span>
-                                <span className="bubble">Python</span>
-                                <span className="bubble">TensorFlow</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="contact">
-                <h2 className="contact-title">Contact</h2>
-                <div className="contact-container">
-                    <p>
-                        I'm interested in Summer 2025 internship opportunities.
-                        Feel free to connect with me on{' '}
-                        <a
-                            href="https://www.linkedin.com/in/pattni"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            LinkedIn
-                        </a>{' '}
-                        or via email at{' '}
-                        <a href="mailto:mpattni@uwaterloo.ca">
-                            mpattni@uwaterloo.ca
-                        </a>
-                        .
-                    </p>
-                </div>
-            </div>{' '}
+            <Projects />
+            <Contact />
         </div>
     );
 };
