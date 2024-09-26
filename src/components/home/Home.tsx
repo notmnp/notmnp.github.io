@@ -64,7 +64,7 @@ const Home: React.FC = () => {
     ); // Default to the first experience
 
     useIntersectionObserver();
-    useDecodeText('name', 'Milan Pattni', 0.1);
+    useDecodeText('name', 'Milan Pattni', 100);
 
     const handleExperienceSelect = (experience: ExperienceType) => {
         setSelectedExperience(experience); // Update selected experience in Home

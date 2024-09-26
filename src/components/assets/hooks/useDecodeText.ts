@@ -1,4 +1,3 @@
-// hooks/useDecodeText.ts
 import { useEffect } from 'react';
 
 export const useDecodeText = (
@@ -15,32 +14,49 @@ export const useDecodeText = (
             const element = document.getElementById(elementId);
             if (!element) return;
 
-            element.innerHTML = '';
+            element.innerHTML = ''; // Clear the element initially
+
             const possibleChars =
                 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             const textArray = finalText
                 .split('')
                 .map((char) => (char === ' ' ? '\u00A0' : char));
+            const maxIterations = 25; // Max number of iterations per character
 
+            // Create a span for each character in the final text
             textArray.forEach((char, index) => {
                 const span = document.createElement('span');
-                span.textContent = '';
+                span.textContent = ''; // Empty span initially
                 element.appendChild(span);
 
                 let iterations = 0;
-                const maxIterations = Math.random() * 10 + 5;
+                let isFinalized = false;
 
-                const randomizeLetter = setInterval(() => {
-                    if (iterations >= maxIterations) {
-                        clearInterval(randomizeLetter);
+                // Create interval for each character
+                const intervalId = setInterval(() => {
+                    if (iterations >= maxIterations || isFinalized) {
                         span.textContent = char;
+                        clearInterval(intervalId); // Clear interval when finalized
                         return;
                     }
-                    span.textContent = possibleChars.charAt(
+
+                    const randomChar = possibleChars.charAt(
                         Math.floor(Math.random() * possibleChars.length)
                     );
+
+                    // Adjust the probability of hitting the correct letter as iterations increase
+                    const probability = iterations / maxIterations; // Probability grows with iterations
+
+                    // If randomization matches or probability condition passes, finalize the character
+                    if (randomChar === char || Math.random() < probability) {
+                        span.textContent = char;
+                        isFinalized = true;
+                    } else {
+                        span.textContent = randomChar;
+                    }
+
                     iterations++;
-                }, delay * 1000);
+                }, delay);
             });
         };
 
