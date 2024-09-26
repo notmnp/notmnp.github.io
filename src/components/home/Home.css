@@ -451,7 +451,7 @@ body {
     font-size: clamp(0.9rem, 1.2vw, 1.5rem);
     opacity: 0;
     transform: translateY(20px); /* Slight upward movement for better effect */
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 /* Visible state when the item is in view */
@@ -1044,7 +1044,7 @@ body {
 .experience-sidebar-wrapper {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .experience-sidebar-wrapper.visible {
@@ -1056,7 +1056,7 @@ body {
 .experience-box {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .experience-box.visible {
@@ -1068,7 +1068,7 @@ body {
 .projects-card {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .projects-card.visible {
@@ -1080,7 +1080,7 @@ body {
 #contact {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 #contact.visible {
@@ -1092,7 +1092,7 @@ body {
 .experience-title {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .experience-title.visible {
@@ -1104,7 +1104,7 @@ body {
 .projects-title {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .projects-title.visible {

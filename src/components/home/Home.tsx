@@ -176,7 +176,7 @@ const Home: React.FC = () => {
 
         // Create the observer with the intersection handler
         const observer = new IntersectionObserver(handleIntersection, {
-            threshold: 0.1, // Trigger when 20% of the item is visible
+            threshold: 0.05, // Trigger when 20% of the item is visible
         });
 
         // Select all elements to be observed: grid items, sidebar, experience, and project cards
