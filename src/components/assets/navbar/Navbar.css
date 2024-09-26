@@ -6,24 +6,31 @@ html {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Keyframes for moving down animation (still applied for desktop) */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100px); /* Start slightly above */
+        opacity: 0; /* Fully transparent */
+    }
+    100% {
+        transform: translateY(0); /* End in the original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
 /* Navbar container (full width) */
 nav {
     width: 100%;
     position: fixed; /* Always fixed at the top */
+    margin-top: 15px;
     top: 0;
     left: 0;
-    background-color: rgba(
-        18,
-        18,
-        18,
-        0.6
-    ); /* Dark background with transparency */
-    backdrop-filter: blur(10px); /* Apply the blur effect on desktop */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Slight shadow for depth */
-    transition: background-color 0.3s ease-in-out,
-        backdrop-filter 0.3s ease-in-out;
+    backdrop-filter: blur(10px); /* More blur and saturation for glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    transition: margin-top 0.3s ease, background-color 0.3s ease; /* Added transition */
+    animation: slideDown 0.8s ease-out; /* Apply the move down animation */
+    background-color: transparent; /* Ensure initial background is transparent */
 }
 
 /* Inner container for navbar content */
@@ -36,12 +43,18 @@ nav {
     align-items: center;
     padding: 10px 20px; /* Padding for internal spacing */
     box-sizing: border-box;
+    animation: slideDown 0.8s ease-out; /* Apply the move down animation */
+}
+
+nav.scrolled {
+    margin-top: 0px;
+    background-color: rgba(18, 18, 18, 0.7); /* Increased opacity on scroll */
 }
 
 /* Signature image styling */
 .signature {
     margin-top: 10px;
-    height: 45px; /* Adjust the height as needed */
+    height: 36px; /* Adjust the height as needed */
     width: auto;
 }
 
@@ -60,68 +73,43 @@ nav ul {
     padding: 0;
     display: flex;
     gap: 20px; /* Space between list items */
-    transition: all 0.3s ease-in-out;
-}
-
-/* List items */
-nav ul li,
-nav ul a {
-    margin: 0;
 }
 
 /* Links styling */
 nav ul li a,
 nav ul a {
-    color: #fff; /* White text */
+    color: #ccc; /* Light grey as the default text color */
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 8px 16px;
     display: block;
     border-radius: 15px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out; /* Transition effect for color change */
 }
 
 /* Hover effect for links */
 nav ul li a:hover,
 nav ul a:hover {
-    background-color: #555; /* Slightly lighter color on hover */
-    color: #f1f1f1;
-    border-radius: 15px;
-}
-
-/* Overlay for the mobile menu */
-.menu-overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-/* Show overlay when the menu is active */
-.menu-overlay.active {
-    display: block;
-    opacity: 1;
+    color: #fff; /* Change text color to white on hover */
 }
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     /* Remove blur effect on mobile */
     nav {
-        background-color: #121212; /* Solid background for mobile */
+        transition: none;
+        margin-top: 0;
         backdrop-filter: none; /* Remove blur effect on mobile */
         -webkit-backdrop-filter: none; /* Safari support */
     }
 
-    /* Flex direction and alignment for smaller screens */
-    .nav-content {
-        flex-direction: row;
-        justify-content: space-between;
+    nav.scrolled {
+        background-color: #121212;
+    }
+
+    /* Ensure nav has black background when menu is open */
+    nav.menu-open {
+        background-color: #121212;
     }
 
     /* Hamburger menu icon becomes visible */
@@ -151,17 +139,12 @@ nav ul a:hover {
         display: flex;
     }
 
-    nav ul li a,
-    nav ul a {
-        border-radius: 0;
-    }
-
-    nav ul li a:hover,
-    nav ul a:hover {
-        border-radius: 0;
-    }
-
     .signature {
         height: 40px;
+    }
+
+    /* Remove fade-in and transitions for mobile */
+    nav ul {
+        transition: none; /* Disable fade-in transitions for mobile */
     }
 }

@@ -1,66 +1,105 @@
-/* Compact Footer styling */
+/* General footer styling */
 .footer {
-    background-color: rgba(255, 255, 255, 0.05); /* Grey similar to your divs */
-    color: #ffffff; /* White text */
-    padding: 20px 10px; /* Reduced padding */
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
-    text-align: center; /* Center align for compact design */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.05
+    ); /* Semi-transparent background */
+    color: #b3b3b3; /* Light grey text */
+    padding: 20px 30px; /* Padding around the content */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    backdrop-filter: blur(10px); /* Glassy blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: 15px; /* Rounded corners */
+    max-width: 1100px; /* Align with container */
+    margin: 0 auto 50px; /* Center the footer and add space at the bottom */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Light border to match other elements */
+    transition: all 0.3s ease-in-out;
 }
 
+/* Flexbox layout for footer content */
 .footer-content {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    max-width: 1200px;
+    justify-content: space-between; /* Space between sections */
+    flex-wrap: wrap;
+    gap: 40px; /* Space between sections */
     margin: 0 auto;
-    gap: 15px;
-    padding-bottom: 10px;
 }
 
+/* Footer section styles */
 .footer-section {
     flex: 1;
-    min-width: 150px; /* More compact section width */
-    padding: 5px;
+    min-width: 100px;
+    text-align: left; /* Align content to the left */
 }
 
 .footer-section p {
-    font-size: 0.9rem; /* Reduced font size for compactness */
-    margin: 5px 0;
+    line-height: 2; /* Increase line spacing for better readability */
+    font-size: 1rem; /* Slightly larger font for readability */
+    margin: 10px 0;
 }
 
+/* Link styling in the footer */
 .footer-section a {
-    color: #00a0dc;
+    color: #b3b3b3; /* Light grey text */
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: normal;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    transition: color 0.3s ease-in-out;
 }
 
 .footer-section a:hover {
-    color: #0077b5;
+    color: #ffffff; /* Change text color to white on hover */
 }
 
-/* Footer bottom */
+/* Styling for the "Reach Out!" link to match the contact link */
+.footer-section .reach-out a {
+    color: #00a0dc; /* Use LinkedIn blue for the "Reach Out!" link */
+    font-weight: bold;
+}
+
+.footer-section .reach-out a:hover {
+    color: #0077b5; /* Darker blue on hover */
+}
+
+/* Footer bottom section */
 .footer-bottom {
-    font-size: 0.85rem; /* Compact font size */
-    color: #b3b3b3;
+    text-align: center;
+    font-size: 0.9rem; /* Slightly larger for readability */
+    color: #b3b3b3; /* Light grey text */
+    margin-top: 30px;
 }
 
 .footer-bottom p {
     margin: 5px 0;
 }
 
-.heart-icon {
-    color: #ff6347; /* A red color for the heart icon */
+/* Specific styling for the Feedback link */
+.footer-bottom a {
+    color: #00a0dc; /* LinkedIn blue for the Feedback link */
+    font-weight: bold; /* Make it bold */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-/* Responsive styling */
+.footer-bottom a:hover {
+    color: #0077b5; /* Darker blue on hover */
+}
+
+/* Responsive layout for smaller screens */
 @media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        gap: 10px;
+    .footer {
+        margin-bottom: 0;
     }
 
     .footer-section {
-        text-align: center; /* Center each section on smaller screens */
+        margin-bottom: 10px; /* Add spacing between rows */
+    }
+
+    .footer-section a {
+        justify-content: center; /* Center align links */
     }
 }
