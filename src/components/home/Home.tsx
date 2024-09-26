@@ -13,6 +13,7 @@ import { Experience } from '../assets/Experience';
 import { Carousel } from '../assets/Carousel';
 import { Projects } from '../assets/Projects';
 import Contact from '../assets/Contact';
+import Sidebar from '../assets/Sidebar';
 
 type ExperienceType = {
     company: string;
@@ -65,17 +66,8 @@ const Home: React.FC = () => {
     useIntersectionObserver();
     useDecodeText('name', 'Milan Pattni', 0.1);
 
-    const handleSelect = (experience: ExperienceType) => {
-        const transitionElement = document.querySelector(
-            '.experience-box-transition'
-        );
-        if (transitionElement) {
-            transitionElement.classList.remove('active');
-            setTimeout(() => {
-                setSelectedExperience(experience);
-                transitionElement.classList.add('active');
-            }, 300);
-        }
+    const handleExperienceSelect = (experience: ExperienceType) => {
+        setSelectedExperience(experience); // Update selected experience in Home
     };
 
     return (
@@ -208,29 +200,11 @@ const Home: React.FC = () => {
             <div className="experience-section" id="experiences">
                 <h1 className="experience-title">Work Experience</h1>
                 <div className="experience-container">
-                    {/* Sidebar with company logos */}
-                    <div className="experience-sidebar-wrapper">
-                        <ul className="toc-list experience-sidebar">
-                            {experiences.map((exp, index) => (
-                                <li
-                                    key={index}
-                                    className={`toc-item ${exp.class} ${
-                                        selectedExperience.company ===
-                                        exp.company
-                                            ? 'active'
-                                            : ''
-                                    }`}
-                                    onClick={() => handleSelect(exp)}
-                                >
-                                    <img
-                                        src={exp.logo}
-                                        alt={`${exp.company} Logo`}
-                                        className="toc-logo"
-                                    />
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    {/* Use Sidebar Component */}
+                    <Sidebar
+                        experiences={experiences}
+                        onSelectExperience={handleExperienceSelect}
+                    />
                     {/* Experience Content */}
                     <div className="experience-box-transition active">
                         <Experience experience={selectedExperience} />

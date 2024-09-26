@@ -29,7 +29,7 @@ const Contact: React.FC = () => {
                         rel="noopener noreferrer"
                         className="btn resume-btn contact-btn"
                     >
-                        <IoMdMail /> Email Me
+                        <IoMdMail /> Email
                     </a>
                 </div>
             </div>

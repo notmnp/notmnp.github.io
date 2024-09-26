@@ -972,7 +972,6 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    margin-bottom: 10px;
 }
 
 /* Adjust the project logo */
@@ -984,7 +983,7 @@ body::-webkit-scrollbar {
 
 /* Style for the project name */
 .projects-name {
-    font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+    font-size: clamp(1.5rem, 1.8vw, 1.8rem);
     font-weight: bold;
     text-align: left;
     width: 100%;
@@ -1001,17 +1000,17 @@ body::-webkit-scrollbar {
     max-width: 100%;
     height: auto; /* Maintain aspect ratio while allowing the image to shrink */
     object-fit: contain;
-    margin-bottom: 15px;
 }
 
 /* Position of the contributor in the project */
 .projects-position {
     font-size: clamp(
-        1rem,
+        1.2rem,
         1.5vw,
-        1.4rem
+        1.6rem
     ); /* Adjusted to remain slightly larger */
-    margin-bottom: 5px;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
     text-align: left; /* Left align */
     width: 100%;
 }
@@ -1074,7 +1073,8 @@ body::-webkit-scrollbar {
 .experience-sidebar-wrapper,
 .experience-content,
 .projects-card,
-#contact,
+.contact-title,
+.contact-container,
 .experience-title,
 .projects-title {
     opacity: 0;
@@ -1087,7 +1087,8 @@ body::-webkit-scrollbar {
 .experience-sidebar-wrapper.visible,
 .experience-content.visible,
 .projects-card.visible,
-#contact.visible,
+.contact-title.visible,
+.contact-container.visible,
 .experience-title.visible,
 .projects-title.visible {
     opacity: 1;
