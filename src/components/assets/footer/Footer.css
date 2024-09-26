@@ -1,92 +1,105 @@
-/* Footer styling with rounded corners, transparency, and blur effect */
+/* General footer styling */
 .footer {
-    background-color: rgba(18, 18, 18, 0.4); /* Transparent black */
-    color: #b3b3b3; /* Grey text */
-    padding: 40px 20px; /* More padding for spacious design */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Shadow to lift it off the page */
-    text-align: center; /* Center align the footer text */
-    backdrop-filter: blur(10px); /* Blur effect for glassy look */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.05
+    ); /* Semi-transparent background */
+    color: #b3b3b3; /* Light grey text */
+    padding: 20px 30px; /* Padding around the content */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    backdrop-filter: blur(10px); /* Glassy blur effect */
     -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border-radius: 20px; /* Rounded corners */
-    max-width: 1150px; /* Restrict width */
-    margin: 0 auto 50px; /* Center it horizontally and add bottom margin */
-    transition: background-color 0.3s ease-in-out;
-    z-index: 1;
+    border-radius: 15px; /* Rounded corners */
+    max-width: 1100px; /* Align with container */
+    margin: 0 auto 50px; /* Center the footer and add space at the bottom */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Light border to match other elements */
+    transition: all 0.3s ease-in-out;
 }
 
-/* Footer content flexbox for layout */
+/* Flexbox layout for footer content */
 .footer-content {
     display: flex;
-    justify-content: space-between; /* Align sections with space between */
+    justify-content: space-between; /* Space between sections */
     flex-wrap: wrap;
-    gap: 20px; /* Space between sections */
-    max-width: 1000px;
+    gap: 40px; /* Space between sections */
     margin: 0 auto;
-    padding-bottom: 20px;
 }
 
+/* Footer section styles */
 .footer-section {
     flex: 1;
-    min-width: 200px;
+    min-width: 100px;
     text-align: left; /* Align content to the left */
-    padding: 5px;
 }
 
 .footer-section p {
-    font-size: 0.9rem; /* Adjusted font size */
-    margin: 5px 0;
+    line-height: 2; /* Increase line spacing for better readability */
+    font-size: 1rem; /* Slightly larger font for readability */
+    margin: 10px 0;
 }
 
+/* Link styling in the footer */
 .footer-section a {
-    color: #b3b3b3; /* Grey color for links and icons */
+    color: #b3b3b3; /* Light grey text */
     text-decoration: none;
     font-weight: normal;
     display: inline-flex;
     align-items: center;
     gap: 8px; /* Space between icon and text */
-    transition: color 0.3s ease;
+    transition: color 0.3s ease-in-out;
 }
 
 .footer-section a:hover {
-    color: #ffffff; /* Change text and icon color to white on hover */
+    color: #ffffff; /* Change text color to white on hover */
 }
 
-/* Heart icon styling */
-.heart-icon {
-    color: #ff6347; /* A red color for the heart icon */
+/* Styling for the "Reach Out!" link to match the contact link */
+.footer-section .reach-out a {
+    color: #00a0dc; /* Use LinkedIn blue for the "Reach Out!" link */
+    font-weight: bold;
 }
 
-/* Footer bottom for copyright */
+.footer-section .reach-out a:hover {
+    color: #0077b5; /* Darker blue on hover */
+}
+
+/* Footer bottom section */
 .footer-bottom {
-    font-size: 0.85rem;
+    text-align: center;
+    font-size: 0.9rem; /* Slightly larger for readability */
     color: #b3b3b3; /* Light grey text */
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .footer-bottom p {
     margin: 5px 0;
 }
 
+/* Specific styling for the Feedback link */
+.footer-bottom a {
+    color: #00a0dc; /* LinkedIn blue for the Feedback link */
+    font-weight: bold; /* Make it bold */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.footer-bottom a:hover {
+    color: #0077b5; /* Darker blue on hover */
+}
+
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
     .footer {
-        background-color: #121212; /* Dark grey background on mobile */
-        border-radius: 0;
-        margin-bottom: 0;        
-    }
-
-    .footer-content {
-        flex-direction: column; /* Stack sections vertically */
-        text-align: center; /* Center text on smaller screens */
-        gap: 10px;
+        margin-bottom: 0;
     }
 
     .footer-section {
-        text-align: center; /* Center each section on smaller screens */
-        margin-bottom: 20px; /* Add margin between stacked sections */
+        margin-bottom: 10px; /* Add spacing between rows */
     }
 
     .footer-section a {
-        justify-content: center; /* Center links */
+        justify-content: center; /* Center align links */
     }
 }

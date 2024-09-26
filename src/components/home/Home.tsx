@@ -27,10 +27,12 @@ import { FaAws, FaJava, FaCcStripe } from 'react-icons/fa';
 import { VscVscode } from 'react-icons/vsc';
 import { FaLocationPin, FaClock } from 'react-icons/fa6';
 import CourseClutch from '../../images/courseclutch.png';
+import CC from '../../images/cc.png';
 import RTX from '../../images/rtx.png';
 import TD from '../../images/td.png';
 import Waterloo from '../../images/waterloo.png';
 import WatAI from '../../images/watai.png';
+import AI from '../../images/ai.png';
 
 const decodeText = (elementId: string, finalText: string, delay: number) => {
     const element = document.getElementById(elementId);
@@ -174,12 +176,14 @@ const Home: React.FC = () => {
 
         // Create the observer with the intersection handler
         const observer = new IntersectionObserver(handleIntersection, {
-            threshold: 0.2, // Trigger when 20% of the item is visible
+            threshold: 0.1, // Trigger when 20% of the item is visible
         });
 
-        // Select all grid items
-        const gridItems = document.querySelectorAll('.grid-item');
-        gridItems.forEach((item) => observer.observe(item)); // Start observing each item
+        // Select all elements to be observed: grid items, sidebar, experience, and project cards
+        const elementsToObserve = document.querySelectorAll(
+            '.grid-item, .experience-sidebar-wrapper, .experience-box, .projects-card, #contact, .experience-title, .projects-title'
+        );
+        elementsToObserve.forEach((item) => observer.observe(item)); // Start observing each item
 
         // Cleanup observer on component unmount
         return () => observer.disconnect();
@@ -191,7 +195,7 @@ const Home: React.FC = () => {
         // Reveal the experience section when scrolled into view
         const handleScroll = () => {
             const experienceSection = document.getElementById('experiences');
-            if (experienceSection && window.scrollY > window.innerHeight / 2) {
+            if (experienceSection && window.scrollY > window.innerHeight / 22) {
                 experienceSection.classList.add('visible');
             }
         };
@@ -203,7 +207,7 @@ const Home: React.FC = () => {
         <div className="container">
             <div className="gradient"></div>
             <div className="home-container">
-                <p style={{ marginBottom: '5px' }}>👋 Hey! I'm</p>
+                <p style={{ marginBottom: '5px' }}>👋 Hi! I'm</p>
                 <h1
                     id="name"
                     className="decode"
@@ -252,29 +256,25 @@ const Home: React.FC = () => {
                     <IoIosArrowDown
                         onClick={() => {
                             const experienceSection =
-                                document.getElementById('experiences');
+                                document.getElementById('summary');
                             if (experienceSection) {
-                                // Calculate the top of the element relative to the page
                                 const sectionTop =
                                     experienceSection.getBoundingClientRect()
-                                        .top + window.pageYOffset;
+                                        .top +
+                                    window.scrollY -
+                                    100;
 
-                                // Calculate the offset (20% of the screen's height)
-                                const offset = window.innerHeight * 0.15;
-
-                                // Scroll to the element with the offset
+                                // Adjust the scroll behavior to scroll exactly to the section top
                                 window.scrollTo({
-                                    top: sectionTop + offset, // Adjust by the offset
-                                    behavior: 'smooth', // Smooth scrolling
+                                    top: sectionTop, // Directly scroll to the top of the section
+                                    behavior: 'smooth', // Smooth scrolling effect
                                 });
-
-                                experienceSection.classList.add('visible');
                             }
                         }}
                     />
                 </div>
             </div>
-            <div className="grid-container">
+            <div className="grid-container" id="summary">
                 {/* Available for Internship Box */}
                 <div className="small-box grid-item internship-box">
                     <h2 className="grid-header">Seeking Internships</h2>
@@ -356,9 +356,9 @@ const Home: React.FC = () => {
                 </div>
             </div>
             {/* Experience Section */}
-            <div>
+            <div className="experience-section" id="experiences">
                 <h1 className="experience-title">Work Experience</h1>
-                <div id="experiences" className="experience-container">
+                <div className="experience-container">
                     {/* Sidebar with company logos */}
                     <div className="experience-sidebar-wrapper">
                         <ul className="toc-list experience-sidebar">
@@ -387,7 +387,7 @@ const Home: React.FC = () => {
                     <div
                         className={`experience-content active ${selectedExperience.class}`}
                     >
-                        <div className="grid-item experience-box">
+                        <div className="experience-box">
                             <div className="experience-header">
                                 <img
                                     src={selectedExperience.logo}
@@ -444,58 +444,72 @@ const Home: React.FC = () => {
                 </div>
             </div>
             {/* Projects Section */}
-            <div id="projects">
-                <h1 className="experience-title">
-                    Projects / Extracurriculars
-                </h1>
-                <div className="grid-container" style={{ marginTop: '3vh' }}>
+            <div className="projects-section" id="projects">
+                <h1 className="projects-title">Projects / Extracurriculars</h1>
+                <div className="projects-grid-container">
                     {/* Course Clutch Project */}
-                    <div className="grid-item experience-box">
-                        <div className="experience-header">
-                            <img
-                                src={CourseClutch}
-                                alt="Course Clutch Logo"
-                                className="experience-logo"
-                            />
-                            <h2 className="grid-header">Course Clutch</h2>
-                        </div>
-                        <h3 className="experience-position">
-                            Co-Founder & Developer
-                        </h3>
-                        <p className="experience-time">
-                            February 2024 - Present
-                        </p>
-
-                        {/* Skills Section */}
-                        <h4 className="bubble-header">Skills</h4>
-                        <div className="bubble-container">
-                            <span className="bubble">Python</span>
-                            <span className="bubble">SQL</span>
-                            <span className="bubble">FastAPI</span>
-                            <span className="bubble">React</span>
-                            <span className="bubble">AWS</span>
-                        </div>
-                    </div>
-                </div>
-                {/* WAT.ai Project */}
-                <div className="grid-item experience-box">
-                    <div className="experience-header">
+                    <div className="projects-card">
                         <img
-                            src={WatAI}
-                            alt="WAT.ai Logo"
-                            className="experience-logo"
+                            src={CC} // Screenshot of Course Clutch website
+                            alt="Course Clutch Screenshot"
+                            className="projects-image"
                         />
-                        <h2 className="grid-header">WAT.ai</h2>
+                        <div className="projects-content">
+                            <div className="projects-header">
+                                <img
+                                    src={CourseClutch} // Logo of Course Clutch
+                                    alt="Course Clutch Logo"
+                                    className="projects-logo"
+                                    style={{ width: '28px' }}
+                                />
+                                <h2 className="projects-name">Course Clutch</h2>
+                            </div>
+                            <h3 className="projects-position">
+                                Co-Founder & Developer
+                            </h3>
+                            <p className="projects-time">
+                                February 2024 - Present
+                            </p>
+                            <h4 className="bubble-header">Skills</h4>
+                            <div className="bubble-container">
+                                <span className="bubble">Python</span>
+                                <span className="bubble">SQL</span>
+                                <span className="bubble">FastAPI</span>
+                                <span className="bubble">React</span>
+                                <span className="bubble">AWS</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 className="experience-position">Core Developer</h3>
-                    <p className="experience-time">September 2024 - Present</p>
 
-                    {/* Skills Section */}
-                    <h4 className="bubble-header">Skills</h4>
-                    <div className="bubble-container">
-                        <span className="bubble">Machine Learning</span>
-                        <span className="bubble">Python</span>
-                        <span className="bubble">TensorFlow</span>
+                    {/* WAT.ai Project */}
+                    <div className="projects-card">
+                        <img
+                            src={AI} // Screenshot of WAT.ai website
+                            alt="WAT.ai Screenshot"
+                            className="projects-image"
+                        />
+                        <div className="projects-content">
+                            <div className="projects-header">
+                                <img
+                                    src={WatAI} // Logo of WAT.ai
+                                    alt="WAT.ai Logo"
+                                    className="projects-logo"
+                                />
+                                <h2 className="projects-name">WAT.ai</h2>
+                            </div>
+                            <h3 className="projects-position">
+                                Core Developer
+                            </h3>
+                            <p className="projects-time">
+                                September 2024 - Present
+                            </p>
+                            <h4 className="bubble-header">Skills</h4>
+                            <div className="bubble-container">
+                                <span className="bubble">Machine Learning</span>
+                                <span className="bubble">Python</span>
+                                <span className="bubble">TensorFlow</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

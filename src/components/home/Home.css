@@ -57,6 +57,15 @@ body {
     z-index: -1; /* Behind content */
 }
 
+/* Mobile-specific adjustments for the gradient */
+@media (max-width: 768px) {
+    .gradient {
+        top: -600px; /* Adjust top position to reduce height */
+        width: 1200px; /* Reduce width on smaller screens */
+        height: 800px; /* Reduce height */
+    }
+}
+
 /* Container for centering content */
 .container {
     max-width: 1200px;
@@ -192,7 +201,7 @@ body {
 }
 
 .cc-image {
-    height: 1.3em;
+    height: 1.2em;
     width: auto;
     margin-right: 10px;
 }
@@ -268,40 +277,68 @@ body {
 
 /* Contact Section */
 #contact {
-    margin-top: 50px;
+    display: flex;
+    justify-content: center; /* Center the contact box horizontally */
+    align-items: center; /* Vertically align content */
+    flex-direction: column;
 }
 
 /* Contact Title styling */
 .contact-title {
-    font-size: 2rem; /* Same size as Experience title */
-    text-align: left;
-    margin-top: 2vh;
-    padding-bottom: 20px;
+    font-size: clamp(1.5rem, 2vw, 2rem); /* Similar to other section titles */
     color: white;
+    margin-bottom: 3vh;
+    margin-top: 10vh;
     font-weight: bold;
+    text-align: center; /* Center title */
 }
 
 /* Contact Container styling */
 .contact-container {
-    padding: 10px 30px; /* Padding for spacing */
-    background-color: rgba(255, 255, 255, 0.05); /* Similar background style */
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    color: #ffffff;
-    margin-bottom: 20vh;
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.05
+    ); /* Same background as grid items */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Same border style */
+    border-radius: 15px; /* Same rounded corners as grid items */
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Matching shadow with grid items */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
+    max-width: 800px; /* Limit the width to maintain a clean look */
+    margin-bottom: 20vh; /* Spacing at the bottom */
+    text-align: center;
 }
 
+@media (max-width: 768px) {
+    #contact {
+        align-items: flex-start; /* Aligns items to the start (left) */
+    }
+
+    .contact-container {
+        text-align: left;
+    }
+}
+
+/* Contact Text Styling */
 .contact-container p {
-    font-size: 1.2rem; /* Matching the experience navigation font size */
+    font-size: clamp(
+        1.1rem,
+        1.5vw,
+        1.3rem
+    ); /* Matching font size with grid item content */
     line-height: 1.6;
-    color: #ffffff;
+    color: #f0f0f0; /* Light text for readability */
+    margin-bottom: 1rem;
 }
 
+/* Links Styling */
 .contact-container a {
     color: #00a0dc; /* LinkedIn blue for links */
-    text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .contact-container a:hover {
@@ -688,21 +725,7 @@ body {
 /* Description List Styling */
 .experience-description {
     list-style-type: disc;
-    padding-right: 40px;
-}
-
-.description-item {
-    font-size: clamp(1rem, 1.2vw, 1.1rem);
-    line-height: 1.6;
-    color: #f0f0f0;
-    margin-bottom: 10px;
-}
-
-/* Description List Styling */
-.experience-description {
-    list-style-type: disc;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .description-item {
@@ -746,6 +769,23 @@ body {
     justify-content: center;
 }
 
+.experience-box {
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.05
+    ); /* Same background as grid items */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Same border style */
+    border-radius: 15px; /* Same rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Matching shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Default Styling for icons and positions */
 .experience-box .experience-position {
     transition: color 0.3s ease; /* Smooth color transition */
@@ -769,15 +809,35 @@ body {
     background: none; /* No background */
 }
 
+.experience-sidebar .toc-item.pratt:hover {
+    background-image: linear-gradient(
+        45deg,
+        rgba(0, 58, 98, 0.7),
+        /* Subtle dark blue with transparency */ rgba(11, 96, 154, 0.6)
+            /* Slightly lighter blue with more transparency */
+    );
+    transition: background-image 0.5s ease; /* Smooth transition */
+}
+
 /* Pratt & Whitney Gradient (Blue) */
 .experience-sidebar .toc-item.pratt.active {
     border-color: transparent; /* Hide default border */
     background-image: linear-gradient(
         45deg,
-        #4fc3f7,
-        #81d4fa
-    ); /* Blue gradient */
-    padding: 15px; /* Keep the same padding */
+        #003f72,
+        #0a6ebd /* Original gradient for active state */
+    );
+    padding: 15px;
+}
+
+.experience-sidebar .toc-item.td:hover {
+    background-image: linear-gradient(
+        45deg,
+        rgba(0, 105, 62, 0.5),
+        /* Darker green with 50% transparency */ rgba(0, 168, 89, 0.4)
+            /* Brighter green with 40% transparency */
+    );
+    transition: background-image 0.5s ease; /* Smooth transition */
 }
 
 /* TD Bank Gradient (Green) */
@@ -785,10 +845,10 @@ body {
     border-color: transparent; /* Hide default border */
     background-image: linear-gradient(
         45deg,
-        #28a745,
-        #60c567
-    ); /* Green gradient */
-    padding: 15px; /* Keep the same padding */
+        #00693e,
+        /* Darker TD green */ #00a859 /* Brighter green for gradient effect */
+    );
+    padding: 15px;
 }
 
 /* Logo Image in the TOC */
@@ -807,8 +867,8 @@ body {
 
 /* When the content is active and the fade-in-up animation is triggered */
 .experience-content.active {
-    opacity: 1;  /* Fully visible */
-    transform: translateY(0);  /* Moves up to the final position */
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Moves up to the final position */
 }
 
 /* Pratt & Whitney Gradient for position title */
@@ -853,7 +913,8 @@ body {
     }
 
     .experience-description {
-        padding: 10px;
+        padding: 0px;
+        padding-left: 20px;
         margin-bottom: -3vh;
     }
 
@@ -867,4 +928,186 @@ body {
         justify-content: center;
         gap: 15px;
     }
+}
+
+/* Projects Section Title */
+.projects-title {
+    font-size: clamp(
+        1.5rem,
+        2vw,
+        1.8rem
+    ); /* Adjusted to remain slightly larger */
+    color: white;
+    margin-top: 10vh;
+    font-weight: bold;
+}
+
+/* Grid container for the projects */
+.projects-grid-container {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+    ); /* Simplified responsive grid */
+    gap: 20px; /* Spacing between project cards */
+    margin-top: 3vh;
+}
+
+/* Style for the project card */
+.projects-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Match the grid item border */
+    border-radius: 15px; /* Match the grid item border radius */
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Matching the grid item shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+/* Project header with logo and name aligned in a row */
+.projects-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Adjust the project logo */
+.projects-logo {
+    width: 30px;
+    height: auto;
+    margin-right: 10px; /* Space between the logo and name */
+}
+
+/* Style for the project name */
+.projects-name {
+    font-size: clamp(
+        1.1rem,
+        1.5vw,
+        1.4rem
+    ); /* Adjusted clamp to keep text larger */
+    font-weight: bold;
+    text-align: left; /* Left align the text */
+    width: 100%;
+}
+
+/* Project screenshot */
+.projects-image {
+    width: 100%; /* Ensures the image doesn't grow beyond 100% of its container */
+    height: auto; /* Maintain aspect ratio while allowing the image to shrink */
+    border-radius: 8px; /* Match grid item border radius */
+    margin-bottom: 15px;
+}
+
+/* Position of the contributor in the project */
+.projects-position {
+    font-size: clamp(
+        1rem,
+        1.2vw,
+        1.2rem
+    ); /* Adjusted to remain slightly larger */
+    margin-bottom: 5px;
+    text-align: left; /* Left align */
+    width: 100%;
+}
+
+/* Time period of the project */
+.projects-time {
+    font-size: clamp(
+        0.9rem,
+        1vw,
+        1rem
+    ); /* Adjusted to remain slightly larger */
+    color: #b3b3b3;
+    font-style: italic;
+    margin-bottom: 8px;
+    text-align: left; /* Left align */
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .projects-grid-container {
+        grid-template-columns: 1fr; /* Stack items in one column for mobile */
+        gap: 15px;
+    }
+
+    .projects-card {
+        padding: 15px;
+    }
+}
+
+/* Sidebar fade-in and upward animation */
+.experience-sidebar-wrapper {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.experience-sidebar-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Experience content fade-in and upward animation */
+.experience-box {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.experience-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Projects fade-in and upward animation */
+.projects-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.projects-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Contact section fade-in */
+#contact {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#contact.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Projects fade-in and upward animation */
+.experience-title {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.experience-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Projects fade-in and upward animation */
+.projects-title {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.projects-title.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

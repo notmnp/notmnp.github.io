@@ -6,7 +6,7 @@ html {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Keyframes for moving down animation */
+/* Keyframes for moving down animation (still applied for desktop) */
 @keyframes slideDown {
     0% {
         transform: translateY(-100px); /* Start slightly above */
@@ -33,7 +33,7 @@ nav {
     background-color: transparent; /* Ensure initial background is transparent */
 }
 
-/* Inner container for navbar content with animation */
+/* Inner container for navbar content */
 .nav-content {
     max-width: 1200px;
     margin: 0 auto; /* Center the content */
@@ -44,17 +44,11 @@ nav {
     padding: 10px 20px; /* Padding for internal spacing */
     box-sizing: border-box;
     animation: slideDown 0.8s ease-out; /* Apply the move down animation */
-    opacity: 1; /* Ensure it's visible after animation */
 }
 
 nav.scrolled {
     margin-top: 0px;
     background-color: rgba(18, 18, 18, 0.7); /* Increased opacity on scroll */
-}
-
-/* New styles for when the menu is open */
-nav.menu-open {
-    background-color: #000000; /* Turn navbar background to black */
 }
 
 /* Signature image styling */
@@ -79,13 +73,6 @@ nav ul {
     padding: 0;
     display: flex;
     gap: 20px; /* Space between list items */
-    transition: all 0.3s ease-in-out;
-}
-
-/* List items */
-nav ul li,
-nav ul a {
-    margin: 0;
 }
 
 /* Links styling */
@@ -100,39 +87,20 @@ nav ul a {
     transition: color 0.3s ease-in-out; /* Transition effect for color change */
 }
 
-/* Hover effect for links - only change text color */
+/* Hover effect for links */
 nav ul li a:hover,
 nav ul a:hover {
     color: #fff; /* Change text color to white on hover */
-}
-
-/* Overlay for the mobile menu */
-.menu-overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-/* Show overlay when the menu is active */
-.menu-overlay.active {
-    display: block;
-    opacity: 1;
 }
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     /* Remove blur effect on mobile */
     nav {
+        transition: none;
+        margin-top: 0;
         backdrop-filter: none; /* Remove blur effect on mobile */
         -webkit-backdrop-filter: none; /* Safari support */
-        transition: margin-top 0.3s ease, background-color 0.3s ease;
     }
 
     nav.scrolled {
@@ -142,12 +110,6 @@ nav ul a:hover {
     /* Ensure nav has black background when menu is open */
     nav.menu-open {
         background-color: #121212;
-    }
-
-    /* Flex direction and alignment for smaller screens */
-    .nav-content {
-        flex-direction: row;
-        justify-content: space-between;
     }
 
     /* Hamburger menu icon becomes visible */
@@ -177,17 +139,12 @@ nav ul a:hover {
         display: flex;
     }
 
-    nav ul li a,
-    nav ul a {
-        border-radius: 0;
-    }
-
-    nav ul li a:hover,
-    nav ul a:hover {
-        border-radius: 0;
-    }
-
     .signature {
         height: 40px;
+    }
+
+    /* Remove fade-in and transitions for mobile */
+    nav ul {
+        transition: none; /* Disable fade-in transitions for mobile */
     }
 }
