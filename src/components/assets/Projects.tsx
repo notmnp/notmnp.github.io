@@ -32,7 +32,7 @@ const projects: Project[] = [
     time: "September 2024 - Present",
     logo: WatAI,
     image: AI,
-    skills: ["Machine Learning", "Python", "TensorFlow"],
+    skills: ["Machine Learning", "Python", "TensorFlow", "Jira"],
     className: "watai",
     link: "https://watai.ca/#/",
   },

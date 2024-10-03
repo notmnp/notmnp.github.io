@@ -34,11 +34,11 @@ const experiences: ExperienceType[] = [
     time: "September 2024 - December 2024",
     location: "Toronto, Ontario",
     description: [
-      "Expected to build new content for software build management tools for aircraft engine control systems, to elevate system functionality and optimize development efficiency.",
-      "Tasked with optimizing the performance of existing Oracle management tools to increase processing speed and ensure a smoother user experience for the engineering team.",
-      "Responsible for creating new frameworks and refining existing ones to improve the graphical user interface (GUI) of control system tools, to facilitate more intuitive development, navigation and usability.",
+      "Developed a scalable wiki using Wiki.js (JavaScript, HTML) and integrated PostgreSQL, supporting concurrent queries for 40,000+ employees and developers, optimizing knowledge management and real-time information access.",
+      "Revitalized the UI/UX of WebSuperDock, an internal platform for managing engine part documentation and requirements, modernizing the front-end using JavaScript and CSS to improve responsiveness and ease-of-use.",
+      "Streamlined the backend architecture of control system tools by incorporating new frameworks, including Symfony and PHP, improving data handling, performance, and system reliability for engineering teams.",
     ],
-    skills: ["PHP", "JavaScript", "SQL"],
+    skills: ["PHP", "JavaScript", "PostgreSQL", "HTML", "CSS", "Twig"],
     class: "pratt",
   },
   {
@@ -48,11 +48,11 @@ const experiences: ExperienceType[] = [
     time: "January 2024 - April 2024",
     location: "Toronto, Ontario",
     description: [
-      "Designed and developed a React and TypeScript-based application, streamlining data access for 10,000+ corporate users, which enhanced operational efficiency and improved user experience.",
-      "Implemented a cache-buster for a suite of microapps through Apache Maven, reducing loading errors by 25%, ensuring up-to-date content delivery and increasing application reliability.",
-      "Managed GIT repositories, reducing merge conflicts by 40%, and collaborated with 15+ team members using Jira for Agile development to improve overall team efficiency and workflow.",
+      "Spearheaded the development of a React and TypeScript-based application, simplifying data access for 10,000+ corporate users, which enhanced operational efficiency and user experience.",
+      "Deployed a cache-buster for a suite of microapps through Apache Maven, reducing loading errors by 25%, ensuring up-to-date content delivery and increasing application reliability.",
+      "Facilitated Git repository management, reducing merge conflicts by 40%, and collaborated with 15+ team members using Jira for Agile development to improve workflows and overall team efficiency.",
     ],
-    skills: ["Java", "TypeScript", "React", "HTML", "CSS"],
+    skills: ["Java", "TypeScript", "React", "HTML", "CSS", "Git"],
     class: "td",
   },
   // Add more experiences as needed
