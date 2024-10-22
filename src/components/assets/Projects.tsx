@@ -28,7 +28,7 @@ const projects: Project[] = [
   },
   {
     name: "WAT.ai",
-    role: "Core Developer",
+    role: "Machine Learning Engineer",
     time: "September 2024 - Present",
     logo: WatAI,
     image: AI,
