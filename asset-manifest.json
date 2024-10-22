@@ -1,23 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.84f5ed78.css",
-    "main.js": "/static/js/main.d9788512.js",
+    "main.js": "/static/js/main.6a57e4c8.js",
     "static/js/453.1407b060.chunk.js": "/static/js/453.1407b060.chunk.js",
-    "static/media/ai.png": "/static/media/ai.db78f3bc8c94fcf71559.png",
-    "static/media/cc.png": "/static/media/cc.7f97b4a76c001482bc73.png",
-    "static/media/waterloo.png": "/static/media/waterloo.3546c58be39b6df8cef9.png",
-    "static/media/rtx.png": "/static/media/rtx.180b2aa996084219580a.png",
-    "static/media/watai.png": "/static/media/watai.46a68d31fad57aaa9d98.png",
-    "static/media/td.png": "/static/media/td.805c4a45fb55f0df503e.png",
-    "static/media/signature.png": "/static/media/signature.4fc7058df8f720e3d4d7.png",
-    "static/media/courseclutch.png": "/static/media/courseclutch.5b18eca4f569a1730482.png",
+    "static/media/ai.png": "/static/media/ai.acc9c55b6ac7458ae25d.png",
+    "static/media/cc.png": "/static/media/cc.32677e7359933e73dbd9.png",
+    "static/media/waterloo.png": "/static/media/waterloo.84bd6876b18a05e928f5.png",
+    "static/media/rtx.png": "/static/media/rtx.584b764c04e932b12ce4.png",
+    "static/media/watai.png": "/static/media/watai.d2308a438bc5bb9b9e03.png",
+    "static/media/signature.png": "/static/media/signature.728c2e23789a8b857424.png",
+    "static/media/courseclutch.png": "/static/media/courseclutch.67331873bd3f7d94ecb3.png",
     "index.html": "/index.html",
     "main.84f5ed78.css.map": "/static/css/main.84f5ed78.css.map",
-    "main.d9788512.js.map": "/static/js/main.d9788512.js.map",
+    "main.6a57e4c8.js.map": "/static/js/main.6a57e4c8.js.map",
     "453.1407b060.chunk.js.map": "/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.84f5ed78.css",
-    "static/js/main.d9788512.js"
+    "static/js/main.6a57e4c8.js"
   ]
 }
