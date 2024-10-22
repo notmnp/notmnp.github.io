@@ -532,7 +532,7 @@ body::-webkit-scrollbar {
 }
 
 .university-name {
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
 }
 
 .bubble-header {
@@ -544,7 +544,7 @@ body::-webkit-scrollbar {
 /* AI Option Gradient Text */
 .ai-highlight {
   background: var(--ai-highlight-color);
-  font-size: clamp(1.2rem, 1.7vw, 2rem);
+  font-size: clamp(1.2rem, 1.7vw, 1.8rem);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -560,18 +560,18 @@ body::-webkit-scrollbar {
 }
 
 .education-section .university img {
-  height: 18px;
+  height: clamp(1.2rem, 1.5vw, 1.6rem);
   width: auto;
   margin-right: 8px;
 }
 
 .education-section .university span {
-  font-size: clamp(1.2rem, 1.7vw, 2rem);
+  font-size: clamp(1.2rem, 1.5vw, 1.6rem);
   font-weight: bold;
 }
 
 .education-dates {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
   color: var(--secondary-text-color);
   font-style: italic;
   margin-bottom: 0vh;
