@@ -363,15 +363,6 @@ body::-webkit-scrollbar {
   transform: none; /* No movement on hover */
 }
 
-/* Add box container for the two carousels */
-.carousel-box {
-  border: 2px solid var(--card-border-color);
-  padding: 20px;
-  border-radius: 15px;
-  background-color: var(--card-bg-color);
-  box-shadow: var(--card-box-shadow);
-}
-
 /* Unified Grid Header Class */
 .grid-header {
   font-size: clamp(1.3rem, 2vw, 1.8rem);
@@ -428,7 +419,7 @@ body::-webkit-scrollbar {
 }
 
 .icon {
-  font-size: clamp(35px, 5vw, 40px);
+  font-size: clamp(35px, 4vw, 45px);
   margin: 0 1vw;
   color: var(--primary-text-color);
   vertical-align: middle;
@@ -470,6 +461,16 @@ body::-webkit-scrollbar {
   opacity: 0;
   transform: translateY(20px); /* Slight upward movement for better effect */
   transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Add box container for the two carousels */
+.carousel-box {
+  border: 2px solid var(--card-border-color);
+  padding: 20px;
+  padding-bottom: 15px;
+  border-radius: 15px;
+  background-color: var(--card-bg-color);
+  box-shadow: var(--card-box-shadow);
 }
 
 /* Visible state when the item is in view */
