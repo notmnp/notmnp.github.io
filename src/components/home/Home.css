@@ -774,7 +774,7 @@ body::-webkit-scrollbar {
 .toc-item {
   padding: 15px;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 2px solid #262626; /* Set default border */
   transition: all 0.3s ease;
   display: flex;
   justify-content: center;
@@ -802,7 +802,6 @@ body::-webkit-scrollbar {
   border-radius: 15px; /* Ensure default border-radius is applied */
   padding: 15px;
   transition: all 0.3s ease;
-  border: 2px solid var(--card-border-color); /* Set default border */
   position: relative; /* Maintain relative positioning for active state */
   display: flex;
   justify-content: center;
@@ -827,7 +826,6 @@ body::-webkit-scrollbar {
 
 /* Pratt & Whitney Gradient (Blue) */
 .experience-sidebar .toc-item.pratt.active {
-  border-color: transparent; /* Hide default border */
   background-image: var(--pratt-gradient-color);
   padding: 15px;
 }
@@ -844,7 +842,6 @@ body::-webkit-scrollbar {
 
 /* TD Bank Gradient (Green) */
 .experience-sidebar .toc-item.td.active {
-  border-color: transparent; /* Hide default border */
   background-image: var(--td-gradient-color);
   padding: 15px;
 }
