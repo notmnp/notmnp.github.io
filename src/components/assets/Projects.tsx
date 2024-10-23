@@ -29,7 +29,7 @@ const projects: Project[] = [
   {
     name: "WAT.ai",
     role: "Machine Learning Engineer",
-    time: "October 2024 - Present",
+    time: "October 2024 - April 2025",
     logo: WatAI,
     image: AI,
     skills: ["Machine Learning", "Python", "TensorFlow", "Jira"],
@@ -41,7 +41,7 @@ const projects: Project[] = [
 export const Projects: React.FC = () => {
   return (
     <div className="projects-section" id="projects">
-      <h1 className="projects-title">Projects & Extracurriculars</h1>
+      <h1 className="projects-title">Projects & Teams</h1>
       <div className="projects-grid-container">
         {projects.map((project, index) => (
           <div key={index} className="projects-card">
