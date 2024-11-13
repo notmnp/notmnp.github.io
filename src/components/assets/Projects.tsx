@@ -32,7 +32,7 @@ const projects: Project[] = [
     time: "October 2024 - April 2025",
     logo: WatAI,
     image: AI,
-    skills: ["Machine Learning", "Python", "TensorFlow", "Jira"],
+    skills: ["Python", "Pandas", "NumPy", "Matplotlib", "Jira"],
     className: "watai",
     link: "https://watai.ca/#/",
   },
@@ -45,11 +45,13 @@ export const Projects: React.FC = () => {
       <div className="projects-grid-container">
         {projects.map((project, index) => (
           <div key={index} className="projects-card">
-            <img
-              src={project.image}
-              alt={`${project.name} Screenshot`}
-              className="projects-image"
-            />
+            <a href={project.link} target="_blank" rel="noopener noreferrer">
+              <img
+                src={project.image}
+                alt={`${project.name} Screenshot`}
+                className="projects-image"
+              />
+            </a>
             <div className="projects-content">
               <div className="projects-header">
                 <img

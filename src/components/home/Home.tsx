@@ -30,15 +30,15 @@ const experiences: ExperienceType[] = [
   {
     company: "Pratt & Whitney",
     logo: RTX,
-    position: "Software Developer Intern",
+    position: "Full Stack Developer Intern",
     time: "September 2024 - December 2024",
     location: "Toronto, Ontario",
     description: [
-      "Developed a scalable wiki using Wiki.js (JavaScript, HTML) and integrated PostgreSQL, supporting concurrent queries for 40,000+ employees and developers, optimizing knowledge management and real-time information access.",
-      "Revitalized the UI/UX of WebSuperDock, an internal platform for managing engine part documentation and requirements, modernizing the front-end using JavaScript and CSS to improve responsiveness and ease-of-use.",
-      "Streamlined the backend architecture of control system tools by incorporating new frameworks, including Symfony and PHP, improving data handling, performance, and system reliability for engineering teams.",
+      "Developed a scalable wiki using JavaScript and HTML, integrating PostgreSQL to support concurrent queries for 40,000+ employees and developers, optimizing knowledge management and real-time information access.",
+      "Deployed a company-wide commenting system by interlinking SQL-stored data with a PHP model and AJAX-triggered PHP controller, enabling dynamic rendering through JavaScript and Twig, increasing UI responsiveness by 150%.",
+      "Optimized the backend architecture of control system tools by modularizing 6+ controllers and models with Symfony and PHP, reducing form processing delays by 90%, while maintaining system reliability and data sanitization.",
     ],
-    skills: ["PHP", "JavaScript", "PostgreSQL", "HTML", "CSS", "Twig"],
+    skills: ["PHP", "JavaScript", "PostgreSQL", "HTML", "Twig", "CSS"],
     class: "pratt",
   },
   {
@@ -48,14 +48,13 @@ const experiences: ExperienceType[] = [
     time: "January 2024 - April 2024",
     location: "Toronto, Ontario",
     description: [
-      "Spearheaded the development of a React and TypeScript-based application, simplifying data access for 10,000+ corporate users, which enhanced operational efficiency and user experience.",
-      "Deployed a cache-buster for a suite of microapps through Apache Maven, reducing loading errors by 25%, ensuring up-to-date content delivery and increasing application reliability.",
-      "Facilitated Git repository management, reducing merge conflicts by 40%, and collaborated with 15+ team members using Jira for Agile development to improve workflows and overall team efficiency.",
+      "Spearheaded the development of a React and TypeScript-based application, streamlining account access for 10,000+ staff members, improving operational efficiency by saving an average of 2 hours per week in user navigation time.",
+      "Prototyped a Webpack caching system for a suite of microapps and integrated them with Apache Maven, reducing loading errors by 50% and ensuring up-to-date content delivery, enhancing overall performance and reliability.",
+      "Facilitated Agile development among 15+ team members by leveraging Jira and Confluence for project tracking and documentation, implementing structured Git workflows to improve collaboration and simplify code integration.",
     ],
     skills: ["Java", "TypeScript", "React", "HTML", "CSS", "Git"],
     class: "td",
   },
-  // Add more experiences as needed
 ];
 
 const Home: React.FC = () => {

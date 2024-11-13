@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa"; // Importing icons
 import Signature from "../../../images/signature.png"; // Assuming this is the path to your signature image
 import Hamburger from "hamburger-react";
 import "./Navbar.css";
