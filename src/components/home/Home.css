@@ -305,7 +305,6 @@ body::-webkit-scrollbar {
 /* Contact Section */
 #contact {
   justify-content: center; /* Center the contact box horizontally */
-  align-items: center; /* Vertically align content */
   flex-direction: column;
 }
 
@@ -334,8 +333,8 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 768px) {
-  #contact {
-    align-items: flex-start; /* Aligns items to the start (left) */
+  .contact-title {
+    text-align: left;
   }
 
   .contact-container {
