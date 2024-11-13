@@ -25,11 +25,6 @@ const Navbar: React.FC = () => {
     }
   };
 
-  // Scroll to the contact section
-  const scrollToContact = () => {
-    scrollToSectionWithOffset("contact");
-  };
-
   // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
@@ -113,7 +108,7 @@ const Navbar: React.FC = () => {
                 onClick={(e) => {
                   e.preventDefault(); // Prevent default anchor behavior
                   toggleMenu(); // Close the menu
-                  scrollToSectionWithOffset("summary"); // Scroll to the summary section
+                  scrollToSectionWithOffset("summary");
                 }}
               >
                 Summary
@@ -125,7 +120,7 @@ const Navbar: React.FC = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   toggleMenu();
-                  scrollToSectionWithOffset("experiences"); // Scroll to the experiences section
+                  scrollToSectionWithOffset("experiences");
                 }}
               >
                 Experience
@@ -149,7 +144,7 @@ const Navbar: React.FC = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   toggleMenu();
-                  scrollToContact(); // Scroll to the contact section
+                  scrollToSectionWithOffset("contact");
                 }}
               >
                 Contact

@@ -304,7 +304,6 @@ body::-webkit-scrollbar {
 
 /* Contact Section */
 #contact {
-  display: flex;
   justify-content: center; /* Center the contact box horizontally */
   align-items: center; /* Vertically align content */
   flex-direction: column;
@@ -329,6 +328,7 @@ body::-webkit-scrollbar {
   box-shadow: var(--card-box-shadow); /* Matching shadow with grid items */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
   max-width: 800px; /* Limit the width to maintain a clean look */
+  margin: 0 auto;
   margin-bottom: 20vh; /* Spacing at the bottom */
   text-align: center;
 }
