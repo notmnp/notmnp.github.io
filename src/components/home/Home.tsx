@@ -44,7 +44,7 @@ const experiences: ExperienceType[] = [
   {
     company: "TD Bank",
     logo: TD,
-    position: "Software Engineering Intern",
+    position: "Software Engineer Intern",
     time: "January 2024 - April 2024",
     location: "Toronto, Ontario",
     description: [
