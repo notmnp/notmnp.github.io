@@ -1,5 +1,5 @@
 import React from 'react';
-import { IoLogoLinkedin, IoMdMail, IoMdOpen } from 'react-icons/io'; // Import icons
+import { IoLogoLinkedin, IoIosDocument, IoMdMail, IoMdOpen } from 'react-icons/io'; // Import icons
 import { SiGithub } from 'react-icons/si'; // GitHub icon
 import './Footer.css'; // Assuming you have a Footer.css file for styles
 
@@ -78,6 +78,15 @@ const Footer: React.FC = () => {
                             rel="noopener noreferrer"
                         >
                             <IoLogoLinkedin /> LinkedIn
+                        </a>
+                    </p>
+                    <p>
+                        <a
+                            href="https://drive.google.com/file/d/1PbCPMxl7v5ztaInkgy_vCxyGc2hIEsrI/view?usp=drive_link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <IoIosDocument /> Resume
                         </a>
                     </p>
                     <p>
