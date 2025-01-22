@@ -10,8 +10,8 @@
   --linkedin-btn-hover-bg-color: linear-gradient(to bottom, #1293d2, #0a638f);
   --resume-btn-bg-color: linear-gradient(to bottom, #5e5e5e, #3e3e3e);
   --resume-btn-hover-bg-color: linear-gradient(to bottom, #7a7a7a, #5a5a5a);
-  --cc-btn-bg-color: linear-gradient(to bottom, #a0468c, #652d6d);
-  --cc-btn-hover-bg-color: linear-gradient(to bottom, #b35a9e, #74387d);
+  --gh-btn-bg-color: linear-gradient(to bottom, #684a8e, #4a2f63); /* Purple with subtle pink undertones */
+  --gh-btn-hover-bg-color: linear-gradient(to bottom, #7b5ca3, #5a3b76); /* Slightly brighter with more pink-purple balance for hover */
   --highlight-color: linear-gradient(45deg, #f0c808, #ffdd00, #f9a602, #b78a00);
   --internship-highlight-color: linear-gradient(
     45deg,
@@ -59,11 +59,11 @@ body::-webkit-scrollbar {
 
   background: linear-gradient(
     to right,
-    rgba(58, 123, 213, 0.6) 0%,
-    /* Cool tech blue */ rgba(0, 168, 232, 0.5) 20%,
-    /* Vivid teal blue */ rgba(255, 56, 128, 0.4) 40%,
-    /* Reduced red-pink */ rgba(91, 33, 182, 0.4) 60%,
-    /* Deep tech purple */ rgba(0, 0, 0, 0.8) 100% /* Fade to black */
+    rgba(58, 123, 213, 0.5) 0%, /* Cool tech blue */
+    rgba(102, 210, 234, 0.4) 25%, /* Subtle teal accent */
+    rgba(245, 160, 200, 0.25) 50%, /* Softer pink for subtle warmth */
+    rgba(152, 89, 225, 0.3) 75%, /* Vibrant Silicon Valley purple */
+    rgba(30, 30, 30, 0.7) 100% /* Deep black-gray for depth */
   );
 
   /* Radial opacity mask for quicker fade */
@@ -174,6 +174,7 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
   padding: 14px 28px;
+  min-width: 105px;
   font-size: 1.2rem;
   text-decoration: none;
   border-radius: 30px; /* Rounded buttons */
@@ -211,13 +212,13 @@ body::-webkit-scrollbar {
 }
 
 /* Course Clutch Button with Darker Pink and Purple Gradient */
-.cc-btn {
-  background: var(--cc-btn-bg-color);
+.gh-btn {
+  background: var(--gh-btn-bg-color);
   border: none;
 }
 
-.cc-btn:hover {
-  background: var(--cc-btn-hover-bg-color);
+.gh-btn:hover {
+  background: var(--gh-btn-hover-bg-color);
 }
 
 /* Icon Styles */
@@ -227,11 +228,6 @@ body::-webkit-scrollbar {
   height: 1.2em;
 }
 
-.cc-image {
-  height: 1.2em;
-  width: auto;
-  margin-right: 10px;
-}
 
 /* Center text for smaller screens */
 @media (max-width: 600px) {

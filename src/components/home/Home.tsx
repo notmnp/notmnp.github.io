@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { IoLogoLinkedin, IoIosDocument, IoIosArrowDown } from "react-icons/io";
+import { IoLogoLinkedin, IoIosDocument, IoLogoGithub, IoIosArrowDown } from "react-icons/io";
 import "./Home.css"; // Import the CSS file
 
-import CourseClutch from "../../images/courseclutch.png";
 import RTX from "../../images/rtx.png";
 import TD from "../../images/td.png";
 import Waterloo from "../../images/waterloo.png";
@@ -30,7 +29,7 @@ const experiences: ExperienceType[] = [
   {
     company: "Pratt & Whitney",
     logo: RTX,
-    position: "Full Stack Developer Intern",
+    position: "Software Engineering Intern",
     time: "September 2024 - December 2024",
     location: "Toronto, Ontario",
     description: [
@@ -44,7 +43,7 @@ const experiences: ExperienceType[] = [
   {
     company: "TD Bank",
     logo: TD,
-    position: "Software Engineer Intern",
+    position: "Software Engineering Intern",
     time: "January 2024 - April 2024",
     location: "Toronto, Ontario",
     description: [
@@ -94,17 +93,12 @@ const Home: React.FC = () => {
             <IoIosDocument /> Resume
           </a>
           <a
-            href="https://www.courseclutch.com"
+            href="https://github.com/notmnp"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn cc-btn"
+            className="btn gh-btn"
           >
-            <img
-              src={CourseClutch}
-              alt="Course Clutch Logo"
-              className="cc-image"
-            />
-            Course Clutch
+            <IoLogoGithub /> GitHub
           </a>
         </div>
 
@@ -165,11 +159,11 @@ const Home: React.FC = () => {
           {/* Courses Section */}
           <h3 className="bubble-header">Courses</h3>
           <div className="bubble-container">
-            <span className="bubble">Data Structures and Algorithms</span>
+            <span className="bubble">Data Structures & Algorithms</span>
             <span className="bubble">Digital Computation</span>
+            <span className="bubble">Digital Logic</span>
+            <span className="bubble">AI & Society</span>
             <span className="bubble">Calculus II</span>
-            <span className="bubble">Linear Algebra</span>
-            <span className="bubble">Statics</span>
             <span className="bubble">Circuits</span>
           </div>
         </div>

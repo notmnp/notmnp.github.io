@@ -19,7 +19,7 @@ const projects: Project[] = [
   {
     name: "Course Clutch",
     role: "Co-Founder & Architect",
-    time: "February 2024 - Present",
+    time: "February 2024 - September 2024",
     logo: CourseClutch,
     image: CC,
     skills: ["Python", "SQL", "FastAPI", "React", "AWS"],
