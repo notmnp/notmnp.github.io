@@ -126,7 +126,7 @@ const Footer: React.FC = () => {
                     <a href="mailto:mpattni@uwaterloo.ca">Reach out!</a>
                 </p>
                 <p>Made with ☕️ and 🏓 breaks.</p>
-                <p>&copy; 2024 Milan Pattni</p>
+                <p>&copy; 2025 Milan Pattni</p>
             </div>
         </footer>
     );
