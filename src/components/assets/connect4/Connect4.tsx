@@ -290,7 +290,7 @@ const Connect4: React.FC = () => {
         ? `Computer Played Column ${lastComputerCol + 1}`
         : "Click a Column to Start";
     } else {
-      return "Computer's Turn...";
+      return "Thinking...";
     }
   };
 
@@ -336,38 +336,52 @@ const Connect4: React.FC = () => {
         </div>
       </div>
 
-     {/* How It Works Section */}
-    <h1 className="hiw-title">How it Works</h1>
-    <div className="hiw-container" id="how-it-works">
-        <div className="small-box grid-item">
-            <h2 className="grid-header">Interactive Gameplay</h2>
-            <p className="hiw-paragraph">
-            When you click a column, your move is instantly reflected on the board. The game recalculates and updates the board state in real time, ensuring you always see the most current configuration.
-            </p>
+      {/* How It Works Section */}
+      <h1 className="hiw-title">How it Works</h1>
+      <div className="hiw-container">
+
+        <div className="small-box grid-item algorithm-box">
+            <h2 className="grid-header">Minimax AI & Scoring</h2>
+           
+            <p className="hiw-paragraph">Minimax is a decision-making algorithm used by the AI to determine the optimal move. It evaluates possible future board states and selects the move that leads to the best possible outcome:</p>
+
+            <ul className="hiw-list">
+                <li>Simulates all potential board states up to a fixed depth.</li>
+                <li>Maximizes the AI's advantage while minimizing the opponent's chances.</li>
+                <li>Deeper searches provide stronger AI play but require more computation.</li>
+            </ul>
+
+            <p className="hiw-paragraph">Each board state is assigned a value based on strategic importance:</p>
+            <ul className="hiw-list">
+                <li>Winning move: <strong>+1000</strong></li>
+                <li>Blocking opponent's win: <strong>+100</strong></li>
+                <li>Three-in-a-row: <strong>+10</strong></li>
+                <li>Blocking opponent's three-in-a-row: <strong>-50</strong></li>
+            </ul>
         </div>
 
         <div className="small-box grid-item">
-            <h2 className="grid-header">Intelligent Decision Making</h2>
-            <p className="hiw-paragraph">
-            The AI leverages the Minimax algorithm with Alpha-Beta Pruning to simulate multiple future moves. It carefully examines all possible outcomes, allowing it to choose the most optimal response to your play.
-            </p>
+            <h2 className="grid-header">Alpha-Beta Pruning</h2>
+            <p className="hiw-paragraph">Speeds up AI decision-making by cutting unnecessary calculations.</p>
+
+            <ul className="hiw-list">
+                <li>Skips unneeded branches in the game tree.</li>
+                <li>Improves efficiency without losing accuracy.</li>
+                <li>Allows deeper searches in less time.</li>
+            </ul>
         </div>
 
         <div className="small-box grid-item">
-            <h2 className="grid-header">Algorithm Evaluation</h2>
-            <p className="hiw-paragraph">
-            Each potential board state is scored based on its ability to win, block your moves, and secure strategic advantage. The algorithm evaluates these scores to decide the next move, ensuring calculated and competitive play.
-            </p>
-        </div>
+            <h2 className="grid-header">Instant Board Updates</h2>
+            <p className="hiw-paragraph">Moves are applied instantly, and the game state updates in real time.</p>
 
-        <div className="small-box grid-item">
-            <h2 className="grid-header">Optimizations</h2>
-            <p className="hiw-paragraph">
-            To maintain smooth gameplay, the AI’s search is depth-limited (up to 4 moves ahead). Combined with Alpha-Beta Pruning, this approach minimizes unnecessary calculations while delivering fast and effective decision-making.
-            </p>
+            <ul className="hiw-list">
+                <li>Every move triggers an immediate board update.</li>
+                <li>AI calculates and responds without delay.</li>
+                <li>Game detects wins, losses, and draws automatically.</li>
+            </ul>
         </div>
     </div>
-
     </div>
   );
 };

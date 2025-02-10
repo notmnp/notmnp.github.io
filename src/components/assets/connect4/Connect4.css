@@ -2,15 +2,16 @@
 .connect4-game {
     text-align: center;
     color: var(--primary-text-color);
-    margin-top: 8vh;
-    padding: 20px;
+    padding: 0 20px;
+    max-width: 1170px;
+    margin: 0 auto;
+    margin-top: 12vh;
     animation: fadeIn 1s ease-in-out;
 }
 
 /* Game Container */
 .game-container {
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     background: var(--card-bg-color);
     border: 2px solid var(--card-border-color);
@@ -21,7 +22,7 @@
 /* Animated Gradient Title (Minimax Connect 4) */
 .gradient-title {
     font-size: clamp(1.5rem, 2vw, 2rem);
-    background: linear-gradient(45deg, #00a0dc, #ff0000, #00a0dc);
+    background: linear-gradient(45deg, #00a0dc, #e53935, #00a0dc);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -29,7 +30,7 @@
     text-align: left;
     margin-bottom: 3vh;
     font-weight: bold;
-    animation: gradientAnimation 8s ease infinite;
+    animation: gradientAnimation 15s ease infinite;
 }
 
 @keyframes gradientAnimation {
@@ -44,13 +45,18 @@
     }
 }
 
-/* Turn Indicator & Winner Message (slightly smaller text) */
 .turn-indicator,
 .winner-message {
-    font-size: 1.2rem;
     margin-top: 4vh;
     margin-bottom: 4vh;
     font-weight: bold;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.85), rgba(230, 235, 255, 0.6), rgba(255, 255, 255, 0.85));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientAnimation 30s ease infinite;
 }
 
 /* Uniform, centered board container */
@@ -163,4 +169,44 @@
     line-height: 1.6;
     color: #f0f0f0;
     margin-bottom: 10px;
+}
+
+.algorithm-box {
+    grid-column: span 1;
+    grid-row: span 2;
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+/* Headers */
+.grid-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Subheaders */
+.hiw-subheader {
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+
+/* Lists */
+.hiw-list {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+  max-width: 80%;
+}
+
+.hiw-list li {
+  font-size: 1rem;
+  padding: 5px 0;
+  border-left: 3px solid var(--accent-color);
+  padding-left: 10px;
 }
