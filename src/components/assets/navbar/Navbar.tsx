@@ -1,96 +1,79 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Signature from "../../../images/signature.png"; // Assuming this is the path to your signature image
+import { HashLink } from "react-router-hash-link";
+import Signature from "../../../images/signature.png"; // Adjust the path as needed
 import Hamburger from "hamburger-react";
 import "./Navbar.css";
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [scrolled, setScrolled] = useState(false); // State for scroll tracking
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const scrollToSectionWithOffset = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      const sectionTop =
-        section.getBoundingClientRect().top + window.scrollY - 100; // Adjusting for navbar height offset
-      window.scrollTo({
-        top: sectionTop,
-        behavior: "smooth",
-      });
-    }
+  // Scroll function with offset of -100px
+  const scrollWithOffset = (el: HTMLElement) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -100; // Offset by -100px
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
   };
 
-  // Scroll to top function
+  // Scroll to top function (for clicking the signature)
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Smooth scrolling to top
+      behavior: "smooth",
     });
   };
 
-  // Handle scrolling to change navbar opacity
+  // Track scroll to add a "scrolled" class to the navbar
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 1) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 1);
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle resizing the window to enable/disable mobile menu
+  // Detect mobile screen sizes
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
-        setMenuOpen(false); // Close the menu if resizing to a large screen
+        setMenuOpen(false); // Close menu on larger screens
       }
     };
-
-    handleResize(); // Set the initial value
+    handleResize(); // Set initial value
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <>
-      {/* Dark overlay that appears when the menu is open */}
+      {/* Dark overlay when mobile menu is open */}
       {isMobile && menuOpen && (
         <div className="menu-overlay" onClick={toggleMenu}></div>
       )}
 
-      {/* Apply "scrolled" and "menu-open" classes to <nav> */}
-      <nav
-        className={`${scrolled ? "scrolled" : ""} ${
-          menuOpen ? "menu-open" : ""
-        }`}
-      >
+      {/* Navbar with conditional classes */}
+      <nav className={`${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}>
         <div className="nav-content">
-          {/* Scroll to top when clicking the signature */}
-          <Link to="/" className="brand" onClick={scrollToTop}>
-            <img
-              src={Signature}
-              alt="Milan Pattni Signature"
-              className="signature"
-            />
-          </Link>
-          {/* Hamburger icon - toggle between open and close */}
+          {/* Clicking the signature navigates to home and scrolls to top */}
+          <HashLink
+            smooth
+            to="/#home"
+            scroll={scrollWithOffset}
+            className="brand"
+            onClick={scrollToTop}
+          >
+            <img src={Signature} alt="Milan Pattni Signature" className="signature" />
+          </HashLink>
+
+          {/* Hamburger icon for mobile */}
           {isMobile && (
             <Hamburger
               size={30}
@@ -101,54 +84,27 @@ const Navbar: React.FC = () => {
             />
           )}
 
+          {/* Navigation links */}
           <ul className={menuOpen ? "active" : ""}>
             <li>
-              <a
-                href="#summary"
-                onClick={(e) => {
-                  e.preventDefault(); // Prevent default anchor behavior
-                  toggleMenu(); // Close the menu
-                  scrollToSectionWithOffset("summary");
-                }}
-              >
+              <HashLink smooth to="/#summary" scroll={scrollWithOffset} onClick={toggleMenu}>
                 Summary
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a
-                href="#experiences"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleMenu();
-                  scrollToSectionWithOffset("experiences");
-                }}
-              >
+              <HashLink smooth to="/#experiences" scroll={scrollWithOffset} onClick={toggleMenu}>
                 Experience
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleMenu();
-                  scrollToSectionWithOffset("projects"); // Scroll to the projects section
-                }}
-              >
+              <HashLink smooth to="/#projects" scroll={scrollWithOffset} onClick={toggleMenu}>
                 Projects
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleMenu();
-                  scrollToSectionWithOffset("contact");
-                }}
-              >
+              <HashLink smooth to="/#contact" scroll={scrollWithOffset} onClick={toggleMenu}>
                 Contact
-              </a>
+              </HashLink>
             </li>
           </ul>
         </div>
