@@ -20,7 +20,7 @@ export const useIntersectionObserver = () => {
         });
 
         const elementsToObserve = document.querySelectorAll(
-            '.grid-item, .experience-sidebar-wrapper, .experience-content, .projects-card, .contact-title, .contact-container, .experience-title, .projects-title'
+            '.grid-item, .experience-sidebar-wrapper, .experience-content, .projects-card, .contact-title, .contact-container, .experience-title, .projects-title, .small-box'
         );
         elementsToObserve.forEach((item) => observer.observe(item));
 
