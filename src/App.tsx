@@ -7,7 +7,7 @@ import Connect4 from './components/assets/connect4/Connect4';
 
 function App() {
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
