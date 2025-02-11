@@ -532,7 +532,7 @@ body::-webkit-scrollbar {
 }
 
 .bubble-header {
-  margin-top: 4vh;
+  margin-top: 2vh;
   font-size: clamp(1.1rem, 1.7vw, 1.7rem);
   margin-bottom: 2vh;
 }
@@ -736,7 +736,7 @@ body::-webkit-scrollbar {
 }
 
 .description-item {
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-size: 1rem;
   line-height: 1.6;
   color: #f0f0f0;
   margin-bottom: 10px;
@@ -925,7 +925,7 @@ body::-webkit-scrollbar {
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(250px, 1fr)
+    minmax(400px, 1fr)
   ); /* Simplified responsive grid */
   gap: 20px; /* Spacing between project cards */
   margin-top: 3vh;
@@ -963,9 +963,11 @@ body::-webkit-scrollbar {
 /* Style for the project name */
 .projects-name {
   font-size: clamp(1.5rem, 1.8vw, 1.8rem);
-  font-weight: bold;
+  font-weight: bold; 
   text-align: left;
   width: 100%;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
 }
 
 /* Anchor inside the project name */
@@ -982,7 +984,8 @@ body::-webkit-scrollbar {
 
 .projects-content {
   width: 100%;
-  padding-left: 3vw; /* Remove any extra padding */
+  padding-left: 2vh;
+  padding-right: 2vh;
 }
 
 /* Project screenshot */
@@ -991,6 +994,29 @@ body::-webkit-scrollbar {
   max-width: 100%;
   height: auto; /* Maintain aspect ratio while allowing the image to shrink */
   object-fit: contain;
+}
+
+.projects-button-container {
+  margin-top: 2vh;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; 
+}
+
+.projects-button {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+  min-width: 105px;
+  font-size: 1rem;
+}
+
+.projects-button:hover {
+  transform: none;
+  background-color: white;
+  color:#000;
 }
 
 /* Position of the contributor in the project */
@@ -1007,11 +1033,7 @@ body::-webkit-scrollbar {
 }
 
 .projects-position.cc {
-  background: linear-gradient(
-    45deg,
-    #ff678b,
-    /* Brighter pink */ #c94deb /* More vibrant purple */
-  );
+  background: linear-gradient(45deg, #ff5f96, #cc56c2, #924fe6);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1020,11 +1042,21 @@ body::-webkit-scrollbar {
 .projects-position.watai {
   background: linear-gradient(
     45deg,
-    #f9c802,
-    /* More readable Waterloo yellow */ #ffde00,
-    /* Bright yellow for visibility */ #f5b800
-      /* Slightly darker for contrast */
-  ); /* Inspired by WAT.ai colors */
+    #f9c802,#ffde00,#f5b800);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.projects-position.minimax {
+  background: linear-gradient(45deg, #00eaff, #66baff, #b3d4ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.projects-position.clai {
+  background: linear-gradient(135deg, #00a14a, #00c75a, #1fe67a, #66f0a4);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1033,9 +1065,9 @@ body::-webkit-scrollbar {
 /* Time period of the project */
 .projects-time {
   font-size: clamp(
-    0.9rem,
-    1.3vw,
-    1.1rem
+    0.8rem,
+    1.2vw,
+    1.0rem
   ); /* Adjusted to remain slightly larger */
   color: var(--secondary-text-color);
   font-style: italic;

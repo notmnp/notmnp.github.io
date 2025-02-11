@@ -1,40 +1,62 @@
 import React from "react";
-import CC from "../../images/cc.png";
 import CourseClutch from "../../images/courseclutch.png";
-import AI from "../../images/ai.png";
 import WatAI from "../../images/watai.png";
+import Minimax from "../../images/minimax.png"
+import DocGen from "../../images/dgen.png"
+import { IoLogoLinkedin, IoIosLink, IoLogoGithub, IoIosArrowDown } from "react-icons/io";
+
 
 type Project = {
   name: string;
   role: string;
   time: string;
   logo: string;
-  image: string;
-  skills: string[];
+  description: string;
   className: string;
   link: string;
+  github: string;
 };
 
 const projects: Project[] = [
   {
     name: "Course Clutch",
-    role: "Co-Founder & Architect",
+    role: "Published Project",
     time: "February 2024 - September 2024",
     logo: CourseClutch,
-    image: CC,
-    skills: ["Python", "SQL", "FastAPI", "React", "AWS"],
+    description: "Course enrollment notifier for high-demand classes.",
     className: "cc",
     link: "https://www.courseclutch.com/",
+    github: "",
   },
   {
     name: "WAT.ai",
-    role: "Machine Learning Engineer",
+    role: "Design Team Project",
     time: "October 2024 - April 2025",
     logo: WatAI,
-    image: AI,
-    skills: ["Python", "Pandas", "NumPy", "Matplotlib", "Jira"],
+    description: "Developing an ML model for transit delay predictions.",
     className: "watai",
     link: "https://watai.ca/#/",
+    github: "https://github.com/WAT-ai/DelayNoMore",
+  },
+  {
+    name: "Minimax Connect 4",
+    role: "Personal Project",
+    time: "Feburary 2025",
+    logo: Minimax,
+    description: "AI-powered Connect 4 bot that wins 95% of the time.",
+    className: "minimax",
+    link: "https://notmnp.github.io/#play",
+    github: "https://github.com/notmnp/MinimaxConnect4",
+  },
+  {
+    name: "CLAI",
+    role: "Personal Project",
+    time: "January 2025",
+    logo: DocGen,
+    description: "Document generator using LLMs for structured content creation.",
+    className: "clai",
+    link: "",
+    github: "https://github.com/notmnp/CLAI",
   },
 ];
 
@@ -46,11 +68,7 @@ export const Projects: React.FC = () => {
         {projects.map((project, index) => (
           <div key={index} className="projects-card">
             <a href={project.link} target="_blank" rel="noopener noreferrer">
-              <img
-                src={project.image}
-                alt={`${project.name} Screenshot`}
-                className="projects-image"
-              />
+
             </a>
             <div className="projects-content">
               <div className="projects-header">
@@ -60,26 +78,41 @@ export const Projects: React.FC = () => {
                   className="projects-logo"
                 />
                 <h2 className="projects-name">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {project.name}
-                  </a>
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                    >
+                      {project.name}
+                    </a>
+                  ) : (
+                    <span>{project.name}</span> 
+                  )}
                 </h2>
               </div>
               <h3 className={`projects-position ${project.className}`}>
                 {project.role}
               </h3>
+              <p>{project.description}</p>
               <p className="projects-time">{project.time}</p>
-              <h4 className="bubble-header">Skills</h4>
-              <div className="bubble-container">
-                {project.skills.map((skill, index) => (
-                  <span key={index} className="bubble">
-                    {skill}
-                  </span>
-                ))}
+              <div className="projects-button-container">
+                {project.link && (
+                  <a
+                    href={project.link}
+                    className={`btn projects-button ${project.className}`}
+                  >
+                    <IoIosLink/> Website
+                  </a>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`btn projects-button ${project.className}`}
+                  >
+                    <IoLogoGithub /> GitHub
+                  </a>
+                )}
               </div>
             </div>
           </div>

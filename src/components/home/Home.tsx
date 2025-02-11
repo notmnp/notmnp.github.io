@@ -157,7 +157,7 @@ const Home: React.FC = () => {
           <p className="education-dates">September 2023 - April 2028</p>
 
           {/* Courses Section */}
-          <h3 className="bubble-header">Courses</h3>
+          <h3 className="bubble-header" style={{ marginTop:'3vh' }}>Courses</h3>
           <div className="bubble-container">
             <span className="bubble">Data Structures & Algorithms</span>
             <span className="bubble">Digital Computation</span>
