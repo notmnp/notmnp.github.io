@@ -3,7 +3,7 @@ import CourseClutch from "../../images/courseclutch.png";
 import WatAI from "../../images/watai.png";
 import Minimax from "../../images/minimax.png"
 import DocGen from "../../images/dgen.png"
-import { IoLogoLinkedin, IoIosLink, IoLogoGithub, IoIosArrowDown } from "react-icons/io";
+import { IoIosLink, IoLogoGithub } from "react-icons/io";
 
 
 type Project = {
@@ -99,6 +99,13 @@ export const Projects: React.FC = () => {
                   <a
                     href={project.link}
                     className={`btn projects-button ${project.className}`}
+                    onClick={(e) => {
+                      if (project.link.startsWith("https://notmnp.github.io")) {
+                        e.preventDefault(); // Prevent default navigation
+                        window.location.href = project.link; // Manually set URL
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }}
                   >
                     <IoIosLink/> Website
                   </a>
