@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Connect4.css";
 import "../../home/Home.css"
+import { getWinLossCount } from "./WinLossCount"; 
+import { insertWinLoss } from "./InsertWinLoss";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 // === Game Constants === //
 const HUMAN_PLAYER = "X";
 const AI_PLAYER = "O";
 const EMPTY = " ";
-const DEPTH = 4;
+const DEPTH = 7;
 const ROWS = 6; // Acceptable: 5–7
 const COLS = 7; // Acceptable: 6–8
 
@@ -237,8 +240,33 @@ const Connect4: React.FC = () => {
   const [lastComputerCol, setLastComputerCol] = useState<number | null>(null);
   // Track hovered column index to highlight the entire column
   const [hoveredCol, setHoveredCol] = useState<number | null>(null);
+  const [wins, setWins] = useState<number | null>(null);
+  const [losses, setLosses] = useState<number | null>(null);
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  // Fetch win/loss count from Supabase
+  useEffect(() => {
+    const fetchWinLoss = async () => {
+      const { wins, losses } = await getWinLossCount();
+      setWins(wins);
+      setLosses(losses);
+      console.log(`Wins: ${wins}, Losses: ${losses}`); // Print result to console
+    };
+
+    fetchWinLoss();
+  }, []);
+
+  useEffect(() => {
+    if (gameWinner) {
+      setShowOverlay(false); // Reset before delay
+      setTimeout(() => {
+        setShowOverlay(true); // Show overlay after 2 seconds
+      }, 1000);
+    }
+  }, [gameWinner]);
 
   const startGame = () => {
+    setShowOverlay(false);
     const newBoard = createBoard();
     setBoard(newBoard);
     setGameWinner(null);
@@ -251,6 +279,19 @@ const Connect4: React.FC = () => {
     startGame();
   }, []);
 
+  const handleWin = async (winner: string) => {
+    if (winner === AI_PLAYER) {
+      await insertWinLoss(1);
+    } else if (winner === HUMAN_PLAYER) {
+      await insertWinLoss(0); 
+    }
+
+    // refresh win/loss count after inserting
+    const { wins, losses } = await getWinLossCount();
+    setWins(wins);
+    setLosses(losses);
+  };
+
   const handleHumanMove = (col: number) => {
     if (gameWinner || !playerTurn) return;
     if (board[0][col] !== EMPTY) return;
@@ -258,14 +299,15 @@ const Connect4: React.FC = () => {
     const newBoard = cloneBoard(board);
     dropPiece(newBoard, col, HUMAN_PLAYER);
     setBoard(newBoard);
-    const win = checkWinner(newBoard);
-    if (win) {
-      setGameWinner(win);
+    const winner = checkWinner(newBoard);
+    if (winner) {
+      setGameWinner(winner);
+      handleWin(winner);
       return;
     }
     setPlayerTurn(false);
     setLastComputerCol(null);
-    setTimeout(() => handleAIMove(newBoard), 1000);
+    setTimeout(() => handleAIMove(newBoard), 800);
   };
 
   const handleAIMove = (currentBoard: Board) => {
@@ -275,9 +317,10 @@ const Connect4: React.FC = () => {
     dropPiece(newBoard, column, AI_PLAYER);
     setBoard(newBoard);
     setLastComputerCol(column);
-    const win = checkWinner(newBoard);
-    if (win) {
-      setGameWinner(win);
+    const winner = checkWinner(newBoard);
+    if (winner) {
+      setGameWinner(winner);
+      handleWin(winner);
       return;
     }
     setPlayerTurn(true);
@@ -308,6 +351,11 @@ const Connect4: React.FC = () => {
         <div className="turn-indicator">
           {gameWinner ? renderWinnerMessage() : renderTurnIndicator()}
         </div>
+        {showOverlay && (
+            <div className="game-over-overlay">
+              <button className="play-again-btn" onClick={startGame}>Play Again</button>
+            </div>
+          )}
         <div
           id="board-container"
           className={`board ${!playerTurn || gameWinner ? "disabled" : ""}`}
@@ -336,6 +384,40 @@ const Connect4: React.FC = () => {
         </div>
       </div>
 
+      <h1 className="hiw-title">Cumulative Game Stats</h1>
+      <div className="pbar-container">
+        <div className="small-box grid-item">
+          <div className="total-games">
+            {wins !== null && losses !== null ? wins + losses : 0}+
+          </div>
+          <p className="ai-win-label">Total Games</p>
+        </div>  
+        <div className="small-box grid-item">
+          <div className="ai-win-percentage">
+              {wins !== null && losses !== null && (wins + losses) > 0 ? Math.round((wins / (wins + losses)) * 100) : 0}%
+          </div>
+          <p className="ai-win-label">Win Rate</p>
+        </div>
+        <div className="small-box grid-item pbar-box">
+          <p className="pbar-stats">
+            <span className="pbar-stat-label">Computer Wins:</span> 
+            <span className="pbar-stat-value">{wins !== null ? wins : "Loading..."}</span> 
+            <span className="pbar-separator">|</span> 
+            <span className="pbar-stat-label">Losses:</span> 
+            <span className="pbar-stat-value">{losses !== null ? losses : "Loading..."}</span>
+          </p>          
+          <ProgressBar 
+              completed={wins !== null && losses !== null && (wins + losses) > 0 ? (wins / (wins + losses)) * 100 : 0}
+              animateOnRender
+              customLabel=" "
+              className="progress-bar-wrapper"
+              barContainerClassName="progress-bar-container"
+              height="2.5vh"
+              bgColor='linear-gradient(90deg, #e53935, #b71c1c)'
+          /> 
+        </div> 
+      </div>
+      
       {/* How It Works Section */}
       <h1 className="hiw-title">How it Works</h1>
       <div className="hiw-container">

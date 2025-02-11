@@ -11,6 +11,7 @@
 
 /* Game Container */
 .game-container {
+    position: relative;
     width: 100%;
     margin: 0 auto;
     background: var(--card-bg-color);
@@ -150,12 +151,6 @@
     margin-bottom: 10vh;
 }
 
-@media (max-width: 768px) {
-    .hiw-container {
-      grid-template-columns: repeat(1, 1fr);
-    }
-}
-
 .hiw-title {
     font-size: clamp(1.5rem, 2vw, 2rem);
     text-align: left;
@@ -179,7 +174,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
+}
 
 /* Headers */
 .grid-header {
@@ -209,4 +204,171 @@
   padding: 5px 0;
   border-left: 3px solid var(--accent-color);
   padding-left: 10px;
+}
+/* Progress Bar Container */
+.pbar-container {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .hiw-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .pbar-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Progress Bar Title */
+.pbar-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-text-color);
+    text-align: center;
+}
+
+.pbar-stats {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    font-weight: bold;
+    text-align: center;
+    color: var(--primary-text-color);
+    margin-top: 1vh;
+}
+
+.pbar-stat-label {
+    color: var(--secondary-text-color); /* Subtle color for labels */
+    font-weight: 500;
+}
+
+.pbar-stat-value {
+    color: var(--highlight-color); /* Stand out with highlight */
+    margin-left: 0.7vw;
+    font-weight: 700;
+}
+
+.pbar-separator {
+    margin: 0 10px;
+    color: var(--card-border-color); /* Neutral separator */
+    font-weight: bold;
+}
+
+/* Progress Bar Wrapper */
+.progress-bar-wrapper {
+    margin-top: 3vh;
+    width: 100%;
+}
+
+/* Bar Container (Background) */
+.progress-bar-container {
+    background: var(--card-border-color); /* Keeps background static */
+    border-radius: 50px;
+}
+
+/* Clip animation to just the filled area */
+@keyframes gradientFillAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.ai-win-percentage {
+    font-size: clamp(3rem, 5vw, 4rem);
+    background: linear-gradient(45deg, #00eaff, #66baff, #b3d4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+}
+
+.total-games {
+    font-size: clamp(3rem, 5vw, 4rem);
+    background: var(--highlight-color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+}
+
+/* AI Win Rate Label */
+.ai-win-label {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-weight: bold;
+    color: var(--primary-text-color);
+    opacity: 0.85;
+    margin-top: 0vh;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.5vh;
+}
+
+.pbar-box {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.game-over-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    border-radius: 12px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInAndExpand 0.7s ease-in-out forwards;
+}
+
+/* Minimalist Play Again Button */
+.play-again-btn {
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    background: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px; /* Fully rounded */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    outline: none;
+    z-index: 10;
+}
+
+/* Hover & Click Effects */
+.play-again-btn:hover {
+    transform: scale(1.07); /* Slight scale-up */
+    opacity: 0.9;
+}
+
+.play-again-btn:active {
+    transform: scale(0.95); /* Slight shrink on click */
+    opacity: 0.8;
+}
+
+/* Smooth Fade-In & Scale */
+@keyframes fadeInAndExpand {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
