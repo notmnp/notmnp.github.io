@@ -98,14 +98,10 @@ export const Projects: React.FC = () => {
                 {project.link && (
                   <a
                     href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`btn projects-button ${project.className}`}
-                    onClick={(e) => {
-                      if (project.link.startsWith("https://notmnp.github.io")) {
-                        e.preventDefault(); // Prevent default navigation
-                        window.location.href = project.link; // Manually set URL
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }
-                    }}
+                    
                   >
                     <IoIosLink/> Website
                   </a>

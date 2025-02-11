@@ -111,6 +111,8 @@ const Footer: React.FC = () => {
                     <p>
                         <a
                             href="https://www.courseclutch.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             <IoMdOpen /> Course Clutch
                         </a>
@@ -118,6 +120,8 @@ const Footer: React.FC = () => {
                     <p>
                         <a
                             href="https://notmnp.github.io/#play"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             <IoMdOpen /> Minimax Connect 4
                         </a>
