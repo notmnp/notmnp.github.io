@@ -242,15 +242,16 @@ const Connect4: React.FC = () => {
   const [hoveredCol, setHoveredCol] = useState<number | null>(null);
   const [wins, setWins] = useState<number | null>(null);
   const [losses, setLosses] = useState<number | null>(null);
+  const [draws, setDraws] = useState<number | null>(null);
   const [showOverlay, setShowOverlay] = useState(false);
 
   // Fetch win/loss count from Supabase
   useEffect(() => {
     const fetchWinLoss = async () => {
-      const { wins, losses } = await getWinLossCount();
+      const { wins, losses, draws } = await getWinLossCount();
       setWins(wins);
       setLosses(losses);
-      console.log(`Wins: ${wins}, Losses: ${losses}`); // Print result to console
+      setDraws(draws);
     };
 
     fetchWinLoss();
@@ -285,11 +286,15 @@ const Connect4: React.FC = () => {
     } else if (winner === HUMAN_PLAYER) {
       await insertWinLoss(0); 
     }
+    else {
+      await insertWinLoss(2)
+    }
 
     // refresh win/loss count after inserting
-    const { wins, losses } = await getWinLossCount();
+    const { wins, losses, draws } = await getWinLossCount();
     setWins(wins);
     setLosses(losses);
+    setDraws(draws);
   };
 
   const handleHumanMove = (col: number) => {
@@ -388,26 +393,29 @@ const Connect4: React.FC = () => {
       <div className="pbar-container">
         <div className="small-box grid-item">
           <div className="total-games">
-            {wins !== null && losses !== null ? wins + losses : 0}+
+            {wins !== null && losses !== null && draws !== null ? wins + losses + draws : 0}+
           </div>
           <p className="ai-win-label">Total Games</p>
         </div>  
         <div className="small-box grid-item">
           <div className="ai-win-percentage">
-              {wins !== null && losses !== null && (wins + losses) > 0 ? Math.round((wins / (wins + losses)) * 100) : 0}%
+            {wins !== null && losses !== null && draws !== null && (wins + losses + draws) > 0 ? ((wins / (wins + losses + draws)) * 100).toFixed(1) : "0.0"}%
           </div>
           <p className="ai-win-label">Win Rate</p>
         </div>
         <div className="small-box grid-item pbar-box">
           <p className="pbar-stats">
-            <span className="pbar-stat-label">Computer Wins:</span> 
-            <span className="pbar-stat-value">{wins !== null ? wins : "Loading..."}</span> 
+            <span className="pbar-stat-label">Wins:</span> 
+            <span className="pbar-stat-value">{wins !== null ? wins : "0"}</span> 
             <span className="pbar-separator">|</span> 
             <span className="pbar-stat-label">Losses:</span> 
-            <span className="pbar-stat-value">{losses !== null ? losses : "Loading..."}</span>
+            <span className="pbar-stat-value">{losses !== null ? losses : "0"}</span>
+            <span className="pbar-separator">|</span> 
+            <span className="pbar-stat-label">Draws:</span> 
+            <span className="pbar-stat-value">{draws !== null ? draws : "0"}</span>
           </p>          
           <ProgressBar 
-              completed={wins !== null && losses !== null && (wins + losses) > 0 ? (wins / (wins + losses)) * 100 : 0}
+              completed={wins !== null && losses !== null && draws !== null && (wins + losses + draws) > 0 ? (wins / (wins + losses+ draws)) * 100 : 0}
               animateOnRender
               customLabel=" "
               className="progress-bar-wrapper"
