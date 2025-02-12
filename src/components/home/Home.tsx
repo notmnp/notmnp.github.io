@@ -78,7 +78,7 @@ const Home: React.FC = () => {
         <h1 id="name" className="decode">
           Milan Pattni
         </h1>
-        <p>I Study Mechatronics Engineering at the University of Waterloo.</p>
+        <p>Currently debugging code, engineering, and my sleep schedule at Waterloo.</p>
         <div className="button-container">
           <a
             href="https://www.linkedin.com/in/pattni"

@@ -1001,7 +1001,7 @@ body::-webkit-scrollbar {
 }
 
 .projects-button-container {
-  margin-top: 2vh;
+  margin-top: 2.5vh;
   display: flex;
   gap: 20px;
   flex-wrap: wrap; 
@@ -1069,8 +1069,8 @@ body::-webkit-scrollbar {
 /* Time period of the project */
 .projects-time {
   font-size: clamp(
-    0.8rem,
-    1.2vw,
+    0.9rem,
+    1.1vw,
     1.0rem
   ); /* Adjusted to remain slightly larger */
   color: var(--secondary-text-color);

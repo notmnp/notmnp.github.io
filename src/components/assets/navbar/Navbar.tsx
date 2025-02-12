@@ -62,11 +62,9 @@ const Navbar: React.FC = () => {
       {/* Navbar with conditional classes */}
       <nav className={`${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}>
         <div className="nav-content">
-          <li>
-            <HashLink smooth to="/#" scroll={scrollToTop}>
-              <img src={Signature} alt="Milan Pattni Signature" className="signature" />
-            </HashLink>
-          </li>
+          <HashLink smooth to="/#" scroll={scrollToTop}>
+            <img src={Signature} alt="Milan Pattni Signature" className="signature" />
+          </HashLink>
 
           {/* Hamburger icon for mobile */}
           {isMobile && (
