@@ -358,7 +358,7 @@ const Connect4: React.FC = () => {
         </div>
         {showOverlay && (
             <div className="game-over-overlay">
-              <button className="play-again-btn" onClick={startGame}>Play Again</button>
+              <button className="play-again-btn" onClick={startGame}>Play Again!</button>
             </div>
           )}
         <div

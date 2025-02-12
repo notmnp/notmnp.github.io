@@ -109,7 +109,7 @@
     align-items: center;  /* Ensures vertical alignment */
     justify-content: center;
     vertical-align: middle;
-    margin-bottom: 3px;
+    margin-bottom: 0.25rem;
     margin-left: 0.4em; /* Space between text and circle */
     width: 10px; /* Slightly bigger for better alignment */
     height: 10px;
@@ -121,12 +121,12 @@
 
 @keyframes breathing {
     0% {
-        transform: scale(0.9);
+        transform: scale(0.8);
     }
     50% {
         transform: scale(1.1);
     }
     100% {
-        transform: scale(0.9);
+        transform: scale(0.8);
     }
 }

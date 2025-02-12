@@ -1,72 +1,76 @@
-import React from 'react';
-import { IoLogoLinkedin, IoIosDocument, IoMdMail, IoMdOpen } from 'react-icons/io'; // Import icons
+import React, { useEffect, useState } from 'react';
+import { HashLink } from "react-router-hash-link";
+import { IoLogoLinkedin, IoIosDocument, IoMdMail } from 'react-icons/io'; // Import icons
 import { SiGithub } from 'react-icons/si'; // GitHub icon
 import { FaCircle } from "react-icons/fa";
+import { GiSchoolBag } from "react-icons/gi";
+import { TbGoGame } from "react-icons/tb";
 import './Footer.css'; // Assuming you have a Footer.css file for styles
 
 // Scroll to section function
-const scrollToSectionWithOffset = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-        const sectionTop =
-            section.getBoundingClientRect().top + window.pageYOffset;
-        const offset = 100; // Adjust the offset value if necessary
-        window.scrollTo({
-            top: sectionTop - offset, // Apply the offset
-            behavior: 'smooth',
-        });
-    }
+const scrollWithOffset = (el: HTMLElement) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -100;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
 };
 
 const Footer: React.FC = () => {
+
+    const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchLastCommitDate = async () => {
+            try {
+                const response = await fetch('https://api.github.com/repos/notmnp/notmnp.github.io/commits/gh-pages');
+                const data = await response.json();
+                
+                if (data && data.commit && data.commit.committer) {
+                    const date = new Date(data.commit.committer.date);
+                    const formattedDate = date.toLocaleDateString('en-US', {
+                        month: '2-digit',
+                        day: '2-digit'
+                    });
+    
+                    const formattedTime = date.toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    });
+    
+                    setLastUpdated(`${formattedDate} at ${formattedTime}`);
+                }
+            } catch (error) {
+                setLastUpdated("Way Back When");
+            }
+        };
+    
+        fetchLastCommitDate();
+    }, []);
+
     return (
         <footer className="footer">
             <div className="footer-content">
                 {/* Section 1: Scroll Links */}
                 <div className="footer-section">
                     <p>
-                        <a
-                            href="#summary"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                scrollToSectionWithOffset('summary');
-                            }}
-                        >
+                        <HashLink smooth to="/#summary" scroll={scrollWithOffset}>
                             Summary
-                        </a>
+                        </HashLink>
                     </p>
                     <p>
-                        <a
-                            href="#experiences"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                scrollToSectionWithOffset('experiences');
-                            }}
-                        >
+                        <HashLink smooth to="/#experiences" scroll={scrollWithOffset}>
                             Experience
-                        </a>
+                        </HashLink>
                     </p>
                     <p>
-                        <a
-                            href="#projects"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                scrollToSectionWithOffset('projects');
-                            }}
-                        >
+                        <HashLink smooth to="/#projects" scroll={scrollWithOffset}>
                             Projects
-                        </a>
+                        </HashLink>
                     </p>
                     <p>
-                        <a
-                            href="#contact"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                scrollToSectionWithOffset('contact');
-                            }}
-                        >
+                        <HashLink smooth to="/#contact" scroll={scrollWithOffset}>
                             Contact
-                        </a>
+                        </HashLink>
                     </p>
                 </div>
 
@@ -114,7 +118,7 @@ const Footer: React.FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <IoMdOpen /> Course Clutch
+                            <GiSchoolBag /> Course Clutch
                         </a>
                     </p>
                     <p>
@@ -123,7 +127,7 @@ const Footer: React.FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <IoMdOpen /> Minimax Connect 4
+                            <TbGoGame /> Minimax Connect 4
                         </a>
                     </p>
                 </div>
@@ -133,7 +137,7 @@ const Footer: React.FC = () => {
             <div className="footer-bottom">
                 <p>Made with ☕️ and 🏓 breaks.</p>
                 <p>
-                    Last Updated 02/11 
+                    Last Updated: {lastUpdated ? lastUpdated : "Fetching..."}
                     <span
                     className="status-indicator"
                     onClick={() => window.open("https://github.com/notmnp/notmnp.github.io", "_blank", "noopener,noreferrer")}
@@ -142,7 +146,7 @@ const Footer: React.FC = () => {
                         <FaCircle />
                     </span>
                 </p>                
-                <p>&copy; 2025 Milan Pattni</p>
+                <p>&copy; {new Date().getFullYear()} Milan Pattni</p>
             </div>
         </footer>
     );

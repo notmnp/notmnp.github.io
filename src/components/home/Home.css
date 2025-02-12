@@ -532,7 +532,7 @@ body::-webkit-scrollbar {
 }
 
 .bubble-header {
-  margin-top: 2vh;
+  margin-top: 2rem;
   font-size: clamp(1.1rem, 1.7vw, 1.7rem);
   margin-bottom: 2vh;
 }
@@ -633,6 +633,10 @@ body::-webkit-scrollbar {
   .current-term-box {
     grid-column: span 3;
     grid-row: auto;
+  }
+
+  .bubble-header {
+    margin-top: 3rem;
   }
 }
 
@@ -1056,7 +1060,7 @@ body::-webkit-scrollbar {
 }
 
 .projects-position.clai {
-  background: linear-gradient(135deg, #00a14a, #00c75a, #1fe67a, #66f0a4);
+  background: linear-gradient(135deg, #00c75a, #00e06a, #30ff8a, #80ffb0);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1121,6 +1125,7 @@ body::-webkit-scrollbar {
 
 /* Initially, the content is invisible and moved down */
 .experience-box-transition {
+  width: 100%;
   opacity: 0;
   transform: translateY(30px); /* Start lower */
   transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
@@ -1128,6 +1133,7 @@ body::-webkit-scrollbar {
 
 /* When the content is active and the fade-in-up animation is triggered */
 .experience-box-transition.active {
+  width: 100%;
   opacity: 1; /* Fully visible */
   transform: translateY(0); /* Moves up to the final position */
 }

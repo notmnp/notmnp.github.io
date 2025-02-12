@@ -90,6 +90,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     transition: background 0.3s ease;
 }
 
@@ -337,17 +338,19 @@
 
 /* Minimalist Play Again Button */
 .play-again-btn {
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 5px;
+    min-width: 120px;
     font-size: 1rem;
-    font-weight: bold;
-    color: black;
     background: white;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 50px; /* Fully rounded */
+    border: 1px solid white;
+    color: black;
+    border-radius: 50px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-    outline: none;
-    z-index: 10;
 }
 
 /* Hover & Click Effects */

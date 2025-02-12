@@ -33,11 +33,13 @@ const experiences: ExperienceType[] = [
     time: "September 2024 - December 2024",
     location: "Toronto, Ontario",
     description: [
-      "Developed a scalable wiki using JavaScript and HTML, integrating PostgreSQL to support concurrent queries for 40,000+ employees and developers, optimizing knowledge management and real-time information access",
-      "Deployed a company-wide commenting system by interlinking SQL-stored data with a PHP model and AJAX-triggered PHP controller, enabling dynamic rendering through JavaScript and Twig, increasing UI responsiveness by 250%",
-      "Optimized the backend architecture of control system tools by modularizing 6+ controllers and models with Symfony and PHP, reducing form processing delays by 95%, while maintaining system reliability and data sanitization",
+      "Developed a scalable internal application using JavaScript and PostgreSQL that serves 40,000+ users",
+      "Engineered a reusable, dynamic commenting framework using PHP and AJAX that integrates frontend input with an SQL database, increasing UI responsiveness by 250% across the application",
+      "Optimized form processing with Symfony’s sanitization and controller-model logic, reducing input delays by 95%",
+      "Modularized 10+ backend and frontend components to streamline developer integration and accelerate deployment",
+      "Co-led a live demonstration of the pre-release application to 20+ senior executives, securing future project funding",
     ],
-    skills: ["PHP", "JavaScript", "PostgreSQL", "HTML", "Twig", "CSS"],
+    skills: ["PHP", "JavaScript", "PostgreSQL", "AJAX", "Symfony", "Twig", "HTML/CSS"],
     class: "pratt",
   },
   {
@@ -47,11 +49,13 @@ const experiences: ExperienceType[] = [
     time: "January 2024 - April 2024",
     location: "Toronto, Ontario",
     description: [
-      "Spearheaded the development of a React and TypeScript-based application, streamlining account access for 10,000+ staff members, improving operational efficiency by saving an average of 2 hours per week in user navigation time",
-      "Prototyped a Webpack caching system for a suite of microapps and integrated them with Apache Maven, reducing loading errors by 50% and ensuring up-to-date content delivery, enhancing overall performance and reliability",
-      "Facilitated Agile development among 15+ team members by leveraging Jira and Confluence for project tracking and documentation, implementing structured Git workflows to improve collaboration and simplify code integration",
+      "Designed a TypeScript application that simplifies account navigation and UX for 10,000+ staff, saving 2 hours/week",
+      "Built 3+ REST API endpoints for a microservices platform to optimize data retrieval",
+      "Implemented a Webpack caching solution that asynchronously updates assets, reducing loading errors by 50%",
+      "Tested core Java modules with an extensive JUnit suite to identify 15+ bugs and improve code maintainability",
+      "Collaborated with a 12+ member Agile team through daily stand-ups, sprint planning, and Jira/Confluence workflows",
     ],
-    skills: ["Java", "TypeScript", "React", "HTML", "CSS", "Git"],
+    skills: ["TypeScript", "React", "Java", "REST API", "HTML/CSS", "Jira", "Confluence"],
     class: "td",
   },
 ];
@@ -185,7 +189,9 @@ const Home: React.FC = () => {
           />
           {/* Experience Content */}
           <div className="experience-box-transition active">
-            <Experience experience={selectedExperience} />
+            <div className="experience-box-content">
+              <Experience experience={selectedExperience} />
+            </div>
           </div>
         </div>
       </div>
