@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
       <nav className={`${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}>
         <div className="nav-content">
           <li>
-            <HashLink smooth to="/#" scroll={scrollToTop} onClick={toggleMenu}>
+            <HashLink smooth to="/#" scroll={scrollToTop}>
               <img src={Signature} alt="Milan Pattni Signature" className="signature" />
             </HashLink>
           </li>
