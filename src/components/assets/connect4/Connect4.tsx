@@ -421,8 +421,8 @@ const Connect4: React.FC = () => {
               className="progress-bar-wrapper"
               barContainerClassName="progress-bar-container"
               height="2.5vh"
-              bgColor='linear-gradient(90deg, #e53935, #b71c1c)'
-          /> 
+              bgColor= "linear-gradient(to right, #990000, #d62828, #ff3b3b, #ff6b6b)"
+            /> 
         </div> 
       </div>
       

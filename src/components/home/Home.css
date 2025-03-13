@@ -1049,6 +1049,7 @@ body::-webkit-scrollbar {
 
 /* Ensure hidden items start with opacity 0 and translateY */
 .grid-item,
+.small-box,
 .experience-sidebar-wrapper,
 .experience-content,
 .projects-card,
@@ -1063,6 +1064,7 @@ body::-webkit-scrollbar {
 
 /* When the 'visible' class is added, make the items visible */
 .grid-item.visible,
+.small-box,
 .experience-sidebar-wrapper.visible,
 .experience-content.visible,
 .projects-card.visible,
