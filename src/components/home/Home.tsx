@@ -5,6 +5,7 @@ import "./Home.css"; // Import the CSS file
 import RTX from "../../images/rtx.png";
 import TD from "../../images/td.png";
 import Waterloo from "../../images/waterloo.png";
+import ENTY from "../../images/eightyninety.png"
 
 import { useDecodeText } from "../assets/hooks/useDecodeText";
 import { useIntersectionObserver } from "../assets/hooks/useIntersectionObserver";
@@ -20,25 +21,29 @@ type ExperienceType = {
   position: string;
   time: string;
   location: string;
-  description: string[];
+  description: string;
   skills: string[];
   class: string;
 };
 
 const experiences: ExperienceType[] = [
   {
+    company: "8090 Solutions",
+    logo: ENTY,
+    position: "AI Software Engineering Intern",
+    time: "May 2025 - August 2025",
+    location: "Toronto, Ontario",
+    description: "Incoming Summer 2025. Building AI systems and integrating LLMs to enhance enterprise solutions.",
+    skills: ["To", "Be", "Determined!"],
+    class: "enty",
+  },
+  {
     company: "Pratt & Whitney",
     logo: RTX,
     position: "Software Engineering Intern",
     time: "September 2024 - December 2024",
     location: "Toronto, Ontario",
-    description: [
-      "Developed a scalable internal application using JavaScript and PostgreSQL that serves 40,000+ users",
-      "Engineered a reusable, dynamic commenting framework using PHP and AJAX that integrates frontend input with an SQL database, increasing UI responsiveness by 250% across the application",
-      "Optimized form processing with Symfony’s sanitization and controller-model logic, reducing input delays by 95%",
-      "Modularized 10+ backend and frontend components to streamline developer integration and accelerate deployment",
-      "Co-led a live demonstration of the pre-release application to 20+ senior executives, securing future project funding",
-    ],
+    description: "Developed full-stack internal tools, optimized SQL queries, and improved backend efficiency.",
     skills: ["PHP", "JavaScript", "PostgreSQL", "AJAX", "Symfony", "Twig", "HTML/CSS"],
     class: "pratt",
   },
@@ -48,13 +53,7 @@ const experiences: ExperienceType[] = [
     position: "Software Engineering Intern",
     time: "January 2024 - April 2024",
     location: "Toronto, Ontario",
-    description: [
-      "Designed a TypeScript application that simplifies account navigation and UX for 10,000+ staff, saving 2 hours/week",
-      "Built 3+ REST API endpoints for a microservices platform to optimize data retrieval",
-      "Implemented a Webpack caching solution that asynchronously updates assets, reducing loading errors by 50%",
-      "Tested core Java modules with an extensive JUnit suite to identify 15+ bugs and improve code maintainability",
-      "Collaborated with a 12+ member Agile team through daily stand-ups, sprint planning, and Jira/Confluence workflows",
-    ],
+    description: "Designed TypeScript microapps, built REST APIs, and streamlined asset loading.",
     skills: ["TypeScript", "React", "Java", "REST API", "HTML/CSS", "Jira", "Confluence"],
     class: "td",
   },
@@ -75,10 +74,8 @@ const Home: React.FC = () => {
       <div className="gradient"></div>
       <div className="home-container">
         <p style={{ marginBottom: "5px" }}>👋 Hey! I'm</p>
-        <h1 id="name" className="decode">
-          Milan Pattni
-        </h1>
-        <p>Currently debugging code, engineering, and my sleep schedule at Waterloo.</p>
+        <h1 id="name"></h1>
+        <p>Currently coding, cramming, and caffeinating at the University of Waterloo.</p>
         <div className="button-container">
           <a
             href="https://www.linkedin.com/in/pattni"
@@ -128,15 +125,15 @@ const Home: React.FC = () => {
       </div>
       <div className="grid-container" id="summary">
         {/* Available for Internship Box */}
-        <div className="small-box grid-item internship-box">
+        <div className="grid-item internship-box">
           <h2 className="grid-header">Seeking Internships</h2>
           <div className="internship-content">
-            <span className="internship-date">Summer 2025</span>
+            <span className="internship-date">Winter 2026</span>
           </div>
         </div>
 
         {/* Current Term Box */}
-        <div className="small-box grid-item current-term-box">
+        <div className="grid-item current-term-box">
           <h2 className="grid-header">Current Term</h2>
           <div className="current-term-content">
             <span className="current-term-number">2A</span>

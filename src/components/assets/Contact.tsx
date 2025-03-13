@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
             <h2 className="contact-title">Get in Touch</h2>
             <div className="contact-container">
                 <p>
-                    I'm interested in Summer 2025 internship opportunities. Feel
+                    I'm interested in Winter 2026 internship opportunities. Feel
                     free to reach out if you'd like to connect!
                 </p>
                 <div

@@ -8,7 +8,7 @@ interface ExperienceType {
     position: string;
     time: string;
     location: string;
-    description: string[];
+    description: string;
     skills: string[];
     class: string;
 }
@@ -45,13 +45,11 @@ export const Experience: React.FC<ExperienceProps> = ({ experience }) => (
             </div>
 
             {/* Description Section */}
-            <ul className="experience-description">
-                {experience.description.map((item: string, index: number) => (
-                    <li key={index} className="description-item">
-                        {item}
-                    </li>
-                ))}
-            </ul>
+            <div className="experience-description">
+                <p className="description-item">
+                    {experience.description}
+                </p>
+            </div>
 
             {/* Skills Section */}
             <h4 className="bubble-header">Skills</h4>

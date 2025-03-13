@@ -10,24 +10,21 @@
   --linkedin-btn-hover-bg-color: linear-gradient(to bottom, #1293d2, #0a638f);
   --resume-btn-bg-color: linear-gradient(to bottom, #5e5e5e, #3e3e3e);
   --resume-btn-hover-bg-color: linear-gradient(to bottom, #7a7a7a, #5a5a5a);
-  --gh-btn-bg-color: linear-gradient(to bottom, #684a8e, #4a2f63); /* Purple with subtle pink undertones */
-  --gh-btn-hover-bg-color: linear-gradient(to bottom, #7b5ca3, #5a3b76); /* Slightly brighter with more pink-purple balance for hover */
+  --gh-btn-bg-color: linear-gradient(to bottom, #684a8e, #4a2f63); 
+  --gh-btn-hover-bg-color: linear-gradient(to bottom, #7b5ca3, #5a3b76);
   --highlight-color: linear-gradient(45deg, #f0c808, #ffdd00, #f9a602, #b78a00);
-  --internship-highlight-color: linear-gradient(
-    45deg,
-    #9b59b6,
-    #c56cf0,
-    #d16ba5
-  );
-  --ai-highlight-color: linear-gradient(
-    45deg,
-    #4fc3f7,
-    #81d4fa,
-    #b3e5fc,
-    #81d4fa
-  );
+  --internship-highlight-color: linear-gradient(45deg, #2196f3, #64b5f6, #90caf9);
+  --ai-highlight-color: linear-gradient(45deg, #a678c9, #c99be8, #d890b8);
+  --enty-gradient-color: linear-gradient(45deg, #005F5F, #008F8F, #00B3A6);
+  --enty-text-color: linear-gradient(45deg, #00AFAF, #00D9D9, #00F0F0);
   --pratt-gradient-color: linear-gradient(45deg, #003f72, #0a6ebd);
+  --pratt-text-color: linear-gradient(45deg, #249CD6, #4FC3F7);
   --td-gradient-color: linear-gradient(45deg, #00693e, #00a859);
+  --td-text-color: linear-gradient(45deg, #28a745, #60c567);
+  --cc-gradient: linear-gradient(45deg, #e57399, #c62828, #d83b6d);
+  --watai-gradient: linear-gradient(45deg, #f6c800, #f4a800, #f2b732);
+  --minimax-gradient: linear-gradient(45deg, #2196f3, #ff6b6b, #ff3b30);
+  --clai-gradient: linear-gradient(45deg, #5c6bc0, #6ac7d8, #405e91);
   --card-bg-color: rgba(255, 255, 255, 0.05);
   --card-border-color: rgba(255, 255, 255, 0.1);
   --card-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -48,52 +45,38 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* Linear gradient background with radial opacity fade */
 .gradient {
   position: absolute;
-  top: -1000px; /* Adjust height to position it higher */
+  top: -1000px; 
   left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
-  width: 2000px; /* Adjust size as needed */
+  transform: translateX(-50%); 
+  width: 2000px; 
   height: 1500px;
 
   background: linear-gradient(
     to right,
-    rgba(58, 123, 213, 0.5) 0%, /* Cool tech blue */
-    rgba(102, 210, 234, 0.4) 25%, /* Subtle teal accent */
-    rgba(245, 160, 200, 0.25) 50%, /* Softer pink for subtle warmth */
-    rgba(152, 89, 225, 0.3) 75%, /* Vibrant Silicon Valley purple */
-    rgba(30, 30, 30, 0.7) 100% /* Deep black-gray for depth */
+    rgba(58, 123, 213, 0.5) 0%,
+    rgba(102, 210, 234, 0.4) 25%,
+    rgba(245, 160, 200, 0.25) 50%,
+    rgba(152, 89, 225, 0.3) 75%,
+    rgba(30, 30, 30, 0.7) 100% 
   );
 
-  /* Radial opacity mask for quicker fade */
   mask-image: radial-gradient(
     circle,
-    rgba(0, 0, 0, 1) 0%,
-    /* Fully opaque in the center */ rgba(0, 0, 0, 0.7) 30%,
-    /* Fade begins closer to center */ rgba(0, 0, 0, 0) 60%
-      /* Fully transparent earlier */
-  );
+    rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0) 60%);
   -webkit-mask-image: radial-gradient(
     circle,
-    rgba(0, 0, 0, 1) 0%,
-    /* Fully opaque in the center */ rgba(0, 0, 0, 0.7) 30%,
-    /* Fade begins closer to center */ rgba(0, 0, 0, 0) 60%
-      /* Fully transparent earlier */
-  );
-
-  /* Optional: Add blur for smoother effect */
-  filter: blur(50px); /* Softens the opacity fade */
-
-  z-index: -1; /* Behind content */
+    rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0) 60%);
+  z-index: -1;
 }
 
 /* Mobile-specific adjustments for the gradient */
 @media (max-width: 768px) {
   .gradient {
-    top: -600px; /* Adjust top position to reduce height */
-    width: 1200px; /* Reduce width on smaller screens */
-    height: 800px; /* Reduce height */
+    top: -600px; 
+    width: 1200px;
+    height: 800px;
   }
 }
 
@@ -114,20 +97,18 @@ body::-webkit-scrollbar {
   justify-content: center;
   padding-top: 20vh;
   padding-bottom: 20px;
-  color: var(--primary-text-color);
 }
 
 /* Heading style with responsive font size */
 .home-container h1 {
-  font-size: clamp(2.5rem, 7vw, 9rem); /* Increase min and max sizes */
+  font-size: clamp(2.5rem, 7vw, 9rem);
   margin: 0;
   padding: 0;
   color: var(--primary-text-color);
 }
 
-/* Paragraph style with responsive font size */
 .home-container p {
-  font-size: clamp(1rem, 2vw, 1.6rem); /* Slightly larger at bigger screens */
+  font-size: clamp(1rem, 2vw, 1.6rem);
   margin-top: 10px;
   line-height: 1.6;
   color: var(--primary-text-color);
@@ -136,7 +117,6 @@ body::-webkit-scrollbar {
   word-break: keep-all;
 }
 
-/* Fade-in and upward animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -177,7 +157,7 @@ body::-webkit-scrollbar {
   min-width: 105px;
   font-size: 1.2rem;
   text-decoration: none;
-  border-radius: 30px; /* Rounded buttons */
+  border-radius: 30px; 
   color: var(--primary-text-color);
   border: 1px solid var(--card-border-color);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -211,7 +191,7 @@ body::-webkit-scrollbar {
   background: var(--resume-btn-hover-bg-color);
 }
 
-/* Course Clutch Button with Darker Pink and Purple Gradient */
+/* GitHub Button with Darker Pink and Purple Gradient */
 .gh-btn {
   background: var(--gh-btn-bg-color);
   border: none;
@@ -223,7 +203,7 @@ body::-webkit-scrollbar {
 
 /* Icon Styles */
 .btn svg {
-  margin-right: 8px;
+  margin-right: 0.75rem;
   width: 1.2em;
   height: 1.2em;
 }
@@ -242,24 +222,7 @@ body::-webkit-scrollbar {
   }
 
   .btn {
-    padding: 14px 28px; /* Increase padding for larger buttons */
-    font-size: 1.2rem; /* Slightly larger font size */
-    border-radius: 35px; /* Larger border radius for a more prominent button */
-  }
-}
-
-/* Decode text effect */
-.decode span {
-  display: inline-block;
-  opacity: 0;
-  color: var(--primary-text-color); /* Ensure the text is always white */
-  animation: fadeIn 0.05s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    color: var(--primary-text-color); /* Ensure the final color is white */
+    font-size: 1.2rem; 
   }
 }
 
@@ -711,39 +674,31 @@ body::-webkit-scrollbar {
 .experience-details {
   display: flex;
   gap: 20px;
-  font-size: clamp(1rem, 1.2vw, 1.2rem);
-  color: #000;
+  color: var(--secondary-text-color);
+  font-size: 1.1rem;
   margin-bottom: 10px;
-  align-items: center; /* Align icons and text vertically */
+  align-items: center;
+  font-weight: 500;
 }
 
 .experience-time,
 .experience-location {
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between icon and text */
-  font-size: clamp(1.1rem, 1.4vw, 1.3rem); /* Slightly increased text size */
-  color: #e0e0e0; /* Lighter color for better contrast */
-  font-weight: 500; /* Slightly bolder text */
+  gap: 0.5rem; 
 }
 
 /* Consistent icon size */
 .company-icon {
-  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  font-size: 1.4rem;
   margin-right: 1vh;
 }
 
-/* Description List Styling */
-.experience-description {
-  list-style-type: disc;
-  margin-bottom: 0;
-}
-
 .description-item {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   color: #f0f0f0;
-  margin-bottom: 10px;
+  margin-bottom: 1vh;
 }
 
 /* Sidebar (TOC) with card-like box */
@@ -814,59 +769,61 @@ body::-webkit-scrollbar {
   background: none; /* No background */
 }
 
-.experience-sidebar .toc-item.pratt:hover {
-  background-image: linear-gradient(
-    45deg,
-    rgba(0, 58, 98, 0.7),
-    /* Subtle dark blue with transparency */ rgba(11, 96, 154, 0.6)
-      /* Slightly lighter blue with more transparency */
-  );
-  transition: background-image 0.5s ease; /* Smooth transition */
+/* 8090 Solutions Gradient (Purple) */
+.experience-sidebar .toc-item.enty:hover {
+  background-image: linear-gradient(45deg, rgba(0, 95, 95, 0.8), rgba(0, 143, 143, 0.7), rgba(0, 179, 166, 0.6));
+}
+
+.experience-sidebar .toc-item.enty.active {
+  background-image: var(--enty-gradient-color);
+  padding: 15px;
+}
+
+.experience-position.enty {
+  background: var(--enty-text-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Pratt & Whitney Gradient (Blue) */
+.experience-sidebar .toc-item.pratt:hover {
+  background-image: linear-gradient(45deg, rgba(0, 58, 98, 0.7), rgba(11, 96, 154, 0.6));
+}
+
 .experience-sidebar .toc-item.pratt.active {
   background-image: var(--pratt-gradient-color);
   padding: 15px;
 }
 
-.experience-sidebar .toc-item.td:hover {
-  background-image: linear-gradient(
-    45deg,
-    rgba(0, 105, 62, 0.5),
-    /* Darker green with 50% transparency */ rgba(0, 168, 89, 0.4)
-      /* Brighter green with 40% transparency */
-  );
-  transition: background-image 0.5s ease; /* Smooth transition */
+.experience-position.pratt {
+  background: var(--pratt-text-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* TD Bank Gradient (Green) */
+.experience-sidebar .toc-item.td:hover {
+  background-image: linear-gradient(45deg, rgba(0, 105, 62, 0.5), rgba(0, 168, 89, 0.4));
+}
+
 .experience-sidebar .toc-item.td.active {
   background-image: var(--td-gradient-color);
   padding: 15px;
 }
 
-/* Logo Image in the TOC */
+.experience-position.td {
+  background: var(--td-text-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .toc-logo {
   width: 45px;
   height: auto;
   transition: transform 0.3s ease;
-}
-
-/* Pratt & Whitney Gradient for position title */
-.experience-position.pratt {
-  background: linear-gradient(45deg, #4fc3f7, #81d4fa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* TD Bank Gradient for position title */
-.experience-position.td {
-  background: linear-gradient(45deg, #28a745, #60c567);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 /* Logo Image in the TOC */
@@ -895,8 +852,6 @@ body::-webkit-scrollbar {
   }
 
   .experience-description {
-    padding: 0px;
-    padding-left: 20px;
     margin-bottom: -3vh;
   }
 
@@ -966,7 +921,7 @@ body::-webkit-scrollbar {
 
 /* Style for the project name */
 .projects-name {
-  font-size: clamp(1.5rem, 1.8vw, 1.8rem);
+  font-size: clamp(1.5rem, 2vw, 1.8rem);
   font-weight: bold; 
   text-align: left;
   width: 100%;
@@ -1027,40 +982,38 @@ body::-webkit-scrollbar {
 .projects-position {
   font-size: clamp(
     1.2rem,
-    1.5vw,
-    1.6rem
+    1.8vw,
+    1.4rem
   ); /* Adjusted to remain slightly larger */
-  margin-bottom: 2vh;
+  margin-bottom: 2.5vh;
   margin-top: 1vh;
   text-align: left; /* Left align */
   width: 100%;
 }
 
 .projects-position.cc {
-  background: linear-gradient(45deg, #ff5f96, #cc56c2, #924fe6);
+  background: var(--cc-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .projects-position.watai {
-  background: linear-gradient(
-    45deg,
-    #f9c802,#ffde00,#f5b800);
+  background: var(--watai-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .projects-position.minimax {
-  background: linear-gradient(45deg, #00eaff, #66baff, #b3d4ff);
+  background: var(--minimax-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .projects-position.clai {
-  background: linear-gradient(135deg, #00c75a, #00e06a, #30ff8a, #80ffb0);
+  background: var(--clai-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1069,9 +1022,9 @@ body::-webkit-scrollbar {
 /* Time period of the project */
 .projects-time {
   font-size: clamp(
-    0.9rem,
+    1rem,
     1.1vw,
-    1.0rem
+    1.1rem
   ); /* Adjusted to remain slightly larger */
   color: var(--secondary-text-color);
   font-style: italic;
@@ -1096,7 +1049,6 @@ body::-webkit-scrollbar {
 
 /* Ensure hidden items start with opacity 0 and translateY */
 .grid-item,
-.small-box,
 .experience-sidebar-wrapper,
 .experience-content,
 .projects-card,
@@ -1111,7 +1063,6 @@ body::-webkit-scrollbar {
 
 /* When the 'visible' class is added, make the items visible */
 .grid-item.visible,
-.small-box,
 .experience-sidebar-wrapper.visible,
 .experience-content.visible,
 .projects-card.visible,

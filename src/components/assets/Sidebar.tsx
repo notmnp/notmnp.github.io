@@ -7,7 +7,7 @@ type ExperienceType = {
     position: string;
     time: string;
     location: string;
-    description: string[];
+    description: string;
     skills: string[];
 };
 

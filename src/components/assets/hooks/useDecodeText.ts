@@ -21,12 +21,12 @@ export const useDecodeText = (
             const textArray = finalText
                 .split('')
                 .map((char) => (char === ' ' ? '\u00A0' : char));
-            const maxIterations = 25; // Max number of iterations per character
+            const maxIterations = 50; // Max number of iterations per character
 
             // Create a span for each character in the final text
             textArray.forEach((char, index) => {
                 const span = document.createElement('span');
-                span.textContent = ''; // Empty span initially
+                span.textContent = '';
                 element.appendChild(span);
 
                 let iterations = 0;
