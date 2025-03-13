@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.4bd88fb8.css",
-    "main.js": "/static/js/main.35a36869.js",
+    "main.css": "/static/css/main.25b95314.css",
+    "main.js": "/static/js/main.ed43e01e.js",
     "static/js/952.8795317f.chunk.js": "/static/js/952.8795317f.chunk.js",
     "static/js/453.1407b060.chunk.js": "/static/js/453.1407b060.chunk.js",
     "static/media/waterloo.png": "/static/media/waterloo.528df18e1aa33962bc0c.png",
     "static/media/rtx.png": "/static/media/rtx.584b764c04e932b12ce4.png",
+    "static/media/dgen.png": "/static/media/dgen.160fa421b7bb2237a73e.png",
     "static/media/signature.png": "/static/media/signature.728c2e23789a8b857424.png",
     "static/media/watai.png": "/static/media/watai.46fd9238929d4a63d095.png",
     "static/media/courseclutch.png": "/static/media/courseclutch.67331873bd3f7d94ecb3.png",
     "index.html": "/index.html",
-    "main.4bd88fb8.css.map": "/static/css/main.4bd88fb8.css.map",
-    "main.35a36869.js.map": "/static/js/main.35a36869.js.map",
+    "main.25b95314.css.map": "/static/css/main.25b95314.css.map",
+    "main.ed43e01e.js.map": "/static/js/main.ed43e01e.js.map",
     "952.8795317f.chunk.js.map": "/static/js/952.8795317f.chunk.js.map",
     "453.1407b060.chunk.js.map": "/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4bd88fb8.css",
-    "static/js/main.35a36869.js"
+    "static/css/main.25b95314.css",
+    "static/js/main.ed43e01e.js"
   ]
 }
